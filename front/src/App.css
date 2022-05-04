@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+#map {
+  width: 50vw;
+  height: 50vh;
+  margin : 0 auto;
+}
+
+.piechart {
+  position: relative;
+  display:inline-block;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  transition: 0.3s;
+}
