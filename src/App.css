@@ -1,0 +1,32 @@
+/* 레이아웃 */
+.App {
+  overflow: auto;
+  letter-spacing: 0;
+  line-height: 1.5;
+  font-size: 15px;
+  color: #444;
+  font-weight: 400;
+  font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
+  padding-left: 50%;
+  margin: 0 0 0 -175px;
+  width: 350px;
+  height: 100%;
+  text-align: center;
+}
+
+
+
+#map {
+  width: 50vw;
+  height: 50vh;
+  margin : 0 auto;
+}
+
+.piechart {
+  position: relative;
+  display:inline-block;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  transition: 0.3s;
+}
