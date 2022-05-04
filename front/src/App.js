@@ -11,7 +11,7 @@ import Check from "./Check";
 function App() {
   return (
     <div className="App">
-      <Header></Header>
+      <Header />
       <Nav></Nav>
       <Section01></Section01>
       <KakaoMap></KakaoMap>
