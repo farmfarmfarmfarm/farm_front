@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import Header from './Header'; 
-import Nav from './Nav';
 import Section01 from './Section01';
 import KakaoMap from "./KakaoMap";
 import Chart from "./Chart";
@@ -12,7 +11,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Nav></Nav>
       <Section01></Section01>
       <KakaoMap></KakaoMap>
       <Chart></Chart>
