@@ -1,10 +1,10 @@
 import React from "react";
 import Map from "./Map";
-import './App.css';
 
 function KakaoMap() {
   return (
-    <div className="kakaomap">
+    <div className="kakaomap"
+      style={{position:"relative",width:"100%",height:"50vh"}}>
       <Map />
     </div>
   );

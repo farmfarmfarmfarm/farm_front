@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Header from './Header'; 
-import Section01 from './Section01';
-import KakaoMap from "./KakaoMap";
-import Chart from "./Chart";
-import Check from "./Check";
-
+import Header from './components/Header/Header';
+import Home from 'pages/Home/Home';
+import Login from 'pages/Login/Login';
+import Profile from 'pages/Profile/Profile';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Section01></Section01>
-      <KakaoMap></KakaoMap>
-      <Chart></Chart>
-      <Check></Check>
+      <BrowserRouter>
+        <Header />
+        <div className='main'>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="profile" element={<Profile />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
