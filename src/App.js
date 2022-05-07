@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './App.css';
-import Header from './Header'; 
+// import './App.css';
+import Header from './components/Header/Header';
 import Section01 from './Section01';
 import KakaoMap from "./KakaoMap";
 import Chart from "./Chart";
@@ -11,10 +11,12 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Section01></Section01>
-      <KakaoMap></KakaoMap>
-      <Chart></Chart>
-      <Check></Check>
+      <div className='main'>
+        <Section01></Section01>
+        <KakaoMap></KakaoMap>
+        <Chart></Chart>
+        <Check></Check>
+        </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { markerdata } from "./markerData";
-import './App.css';
+// import './App.css';
 
 const {kakao} = window
 
