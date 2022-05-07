@@ -12,3 +12,12 @@
 |🚚Rename : |파일명, 폴더명 수정 또는 이동|
 |✂️Chore : |사소한 수정, 소스코드 외 내용|
 |✅Test : |테스트 커밋|
+
+
+
+<!-- ------
+npm install react-router-dom
+npm install styled-components
+
+
+ -->

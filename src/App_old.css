@@ -1,0 +1,94 @@
+/* 레이아웃 */
+.App {
+    overflow: auto;
+    letter-spacing: 0;
+    line-height: 1.5;
+    font-size: 15px;
+    color: #444;
+    font-weight: 400;
+    /* font-family: NanumBarunGothic,Dotum,'돋움',sans-serif; */
+    padding-left: 50%;
+    margin: 0 0 0 -175px;
+    width: 350px;
+    height: 100%;
+    text-align: center;
+    /* position: relative;
+    width: 750px;
+    margin: 0 auto;
+    height: 100%; */
+  }
+  
+  /* 내브 */
+  #gnb > ul {
+    position: relative;
+    width: 100%;
+    top: 70px;
+  }
+  ul {
+    list-style-type: none;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+  #gnb ul li {
+    display: list-item;
+  }
+  #gnb>ul>li>a {
+    position: absolute;
+    text-decoration: none;
+    height: 30px;
+    color: black;
+  }
+  #gnb .gnb1{
+    padding:0;
+  }
+  #gnb>ul>li:nth-child(1)>a {
+    left: 10px;
+  }
+  #gnb>ul>li:nth-child(2)>a {
+    left: 100px;
+  }
+  #gnb>ul>li:nth-child(3)>a {
+    right: 100px;
+  }
+  #gnb>ul>li:nth-child(4)>a {
+    right: 10px;
+  }
+  #gnb .gnb1>li.current>a:after, #gnb .gnb1>li>a:hover:after, #gnb .gnb1>li>a:focus:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: black;
+  }
+  
+  .Section01{
+    position: relative;
+    top: 90px;
+  }
+  .kakaomap {
+    position: relative;
+    width: 350px;
+    height: 50px;
+  }
+  #map {
+    position: absolute;
+    width: 20vw;
+    height: 50vh;
+    margin : 0 auto;
+    top:100px;
+  }
+  
+  .piechart {
+    position: relative;
+    display:inline-block;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    transition: 0.3s;
+  }

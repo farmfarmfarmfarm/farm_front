@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { StHeader, StHeaderMain } from './style';
 import logo from 'assets/icons/logo.jpg';
 import login from 'assets/icons/login.png';
+import {Link} from "react-router-dom";
 
 function Header(props) {
   return (
@@ -12,13 +13,11 @@ function Header(props) {
         <img src={login} alt="로고"></img>
       </StHeaderMain>
 
-{/* -nav이름정하기 -라우터로 연결하기 -css */}
+{/* -nav이름정하기 -css */}
         <nav id = "gnb">
           <ul className="gnb1">
-            <li><a href="/" className='gnb-intro' title="소개">소개</a></li>
-            <li><a href="/" className='gnb-map' title="지도">지도</a></li>
-            <li><a href="/" className='gnb-care' title="진단">진단</a></li>
-            <li><a href="/" className='gnb-recipe' title="레시피">레시피</a></li>
+            <li><Link to="/" className='gnb-intro' title="HOME">HOME</Link></li>
+            <li><Link to="/login" className='gnb-intro' title="LOGIN">LOGIN</Link></li>
           </ul>
         </nav>
 
