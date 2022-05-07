@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+    "baseUrl": "src"
+    },
+    "include": ["src"]
+}
+// 경로 기본 위치를 src/로 지정
