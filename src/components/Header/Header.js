@@ -9,8 +9,8 @@ function Header(props) {
   return (
     <StHeader>
       <StHeaderMain>
-        <img src={logo} alt="로고"></img>
-        <img src={login} alt="로고"></img>
+        <Link to="/"><img src={logo} alt="로고"></img></Link>
+        <Link to="/profile"><img src={login} alt="로고"></img></Link>
       </StHeaderMain>
 
 {/* -nav이름정하기 -css */}
