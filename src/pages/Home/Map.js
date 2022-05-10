@@ -50,8 +50,9 @@ function Map() {
     }
   };
   
-  return <div id="map"
-    style={{position:"absolute",width:"100%",height:"50vh",margin:"0 auto"}}></div>;
-}
+  return (
+    <div id="map" style={{position:"absolute",width:"100%",height:"50vh",margin:"0 auto"}}></div>
+  );
+};
 
 export default Map;
