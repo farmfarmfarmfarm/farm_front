@@ -17,7 +17,6 @@ function Header(props) {
         <nav id = "gnb">
           <ul className="gnb1">
             <li><Link to="/" className='gnb-intro' title="HOME">HOME</Link></li>
-            <li><Link to="/login" className='gnb-intro' title="LOGIN">LOGIN</Link></li>
           </ul>
         </nav>
 
@@ -26,7 +25,3 @@ function Header(props) {
 }
 
 export default Header;
-
-
-
-//헤더 내용들 왜안뜨냐
