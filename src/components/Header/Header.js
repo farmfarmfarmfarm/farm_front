@@ -10,14 +10,14 @@ function Header(props) {
     <StHeader>
       <StHeaderMain>
         <Link to="/"><img src={logo} alt="로고"></img></Link>
-        <Link to="/profile"><img src={login} alt="로고"></img></Link>
+        <Link to="/profile"><img src={login} alt="로그인"></img></Link>
       </StHeaderMain>
 
 {/* -nav이름정하기 -css */}
         <nav id = "gnb">
           <ul className="gnb1">
             <li><Link to="/" className='gnb-intro' title="HOME">HOME</Link></li>
-            <li><Link to="/login" className='gnb-intro' title="LOGIN">LOGIN</Link></li>
+            <li><Link to="/login" className='gnb-login' title="LOGIN">LOGIN</Link></li>
           </ul>
         </nav>
 
