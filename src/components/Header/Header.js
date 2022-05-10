@@ -18,6 +18,7 @@ function Header(props) {
           <ul className="gnb1">
             <li><Link to="/" className='gnb-intro' title="HOME">HOME</Link></li>
             <li><Link to="/login" className='gnb-login' title="LOGIN">LOGIN</Link></li>
+            <li><Link to="/care" className='gnb-care' title="CARE">CARE</Link></li>
           </ul>
         </nav>
 

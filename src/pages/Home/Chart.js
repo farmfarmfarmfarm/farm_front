@@ -2,6 +2,7 @@ import { PieChart } from "react-minimal-pie-chart";
 import { Chartcontainer, Chartitem } from 'components/Header/style';
 
 const Chart = () => {
+  const testdata = 30;
   return (
     <Chartcontainer>
       <Chartitem>
@@ -38,7 +39,7 @@ const Chart = () => {
             name: "name1",
           },
         ]}
-        reveal= {30}
+        reveal= {testdata}
         lineWidth={18}
         background="#f3f3f3"
         lengthAngle={360}
