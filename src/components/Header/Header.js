@@ -16,7 +16,7 @@ function Header(props) {
 {/* -nav이름정하기 -css */}
         <nav id = "gnb">
           <ul className="gnb1">
-            <li><Link to="/" className='gnb-intro' title="HOME">HOME</Link></li>
+            <li><Link to="/home" className='gnb-intro' title="HOME">HOME</Link></li>
             <li><Link to="/login" className='gnb-login' title="LOGIN">LOGIN</Link></li>
             <li><Link to="/care" className='gnb-care' title="CARE">CARE</Link></li>
           </ul>

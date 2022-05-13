@@ -2,7 +2,9 @@ import { PieChart } from "react-minimal-pie-chart";
 import { Chartcontainer, Chartitem } from 'components/Header/style';
 
 const Chart = () => {
-  const testdata = 30;
+  const distance = 20;
+  const rating = 30;
+  const recommendation = (distance+rating)/2
   return (
     <Chartcontainer>
       <Chartitem>
@@ -14,7 +16,7 @@ const Chart = () => {
             name: "name1",
           },
         ]}
-        reveal= {20}
+        reveal= {distance}
         lineWidth={18}
         background="#f3f3f3"
         lengthAngle={360}
@@ -39,7 +41,7 @@ const Chart = () => {
             name: "name1",
           },
         ]}
-        reveal= {testdata}
+        reveal= {rating}
         lineWidth={18}
         background="#f3f3f3"
         lengthAngle={360}
@@ -59,12 +61,12 @@ const Chart = () => {
       <PieChart className="chart3"
         data={[
           {
-            value: 40,
+            value: 25,
             color: "#F6CB44", 
             name: "name1",
           },
         ]}
-        reveal= {40}
+        reveal= {recommendation}
         lineWidth={18}
         background="#f3f3f3"
         lengthAngle={360}
