@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate  } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
+import Main from 'pages/Main/Main';
 import Home from 'pages/Home/Home';
 import Login from 'pages/Login/Login';
 import Profile from 'pages/Profile/Profile';
 import {authService} from 'pages/Login/fbase';
 import Router from 'routes/Router';
+import Care from 'pages/Care/Care';
 
 function App() {
   const [init, setInit] = useState(false);
@@ -24,9 +26,20 @@ function App() {
     })
   }, [])
   return (
-    <>
-      { init ? <Router isLoggedIn={isLoggedIn} setUsername={setUsername} username={username}/> : "Loading ..."}
-    </>
+    <div className="App">
+      <BrowserRouter>
+        <Header />
+        <div className='main'>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="home" element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="care" element={<Care />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </div>
   );
 }
 

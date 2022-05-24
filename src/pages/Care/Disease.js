@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 // import './App.css';
 
-const Check = () => {
+const Disease = () => {
   const formData = [
-    {id: 1, name: "주말농장"},
-    {id: 2, name: "치유농장"},
-    {id: 3, name: "체험농장"},
+    {id: 1, name: "시력 저하"},
+    {id: 2, name: "장 운동 저하"},
+    {id: 3, name: "스트레스성 위염"},
   ];
 
   const [isChecked, setIsChecked] = useState(false);
@@ -31,6 +31,7 @@ const Check = () => {
 
   return (
     <div className="contStyle">
+      <h3>진단하기</h3>
       {formData.map((item) => (
         <div>
         <label key={item.id} className="innerBox">
@@ -47,4 +48,4 @@ const Check = () => {
   );
 };
 
-export default Check;
+export default Disease;

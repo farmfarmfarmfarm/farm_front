@@ -16,3 +16,12 @@ export const StHeaderMain = styled.div`
         width:30px;
     }
 `;
+
+export const Chartcontainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+export const Chartitem = styled.div`
+    width: 120px;
+`;
