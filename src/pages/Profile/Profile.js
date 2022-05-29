@@ -5,7 +5,6 @@ import { useRef } from "react";
 const Profile =({username,setUsername})=>{
 
     const [nickname, setNickname] = useState(localStorage.getItem('nickname'));
-
     function onChange(e){
         setNickname(e.target.value);
     }
@@ -18,12 +17,17 @@ const Profile =({username,setUsername})=>{
     }
     return(
         <>
-            THIS IS Profile
-            <div>로그인한거 확인 완료-! </div>
-            <h2>안녕하세요  " {nickname} "</h2>
-            <form onSubmit={onSubmit}>
-                <input onChange={onChange} type="text" placeholder="You can change your nickname" />
-            </form>
+            {nickname === null ?  '로그인하러가시게' 
+            : <>
+                <p>THIS IS Profile</p>
+                <div>로그인한거 확인 완료-! </div>
+                <h2>안녕하세요  " {nickname} "</h2>
+                <form onSubmit={onSubmit}>
+                    <input onChange={onChange} type="text" placeholder="You can change your nickname" />
+                </form>
+            </>
+            }
+            
         </>
     )
 }

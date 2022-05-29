@@ -6,7 +6,6 @@ import Login from 'pages/Login/Login';
 import Profile from 'pages/Profile/Profile';
 
 function Router({isLoggedIn, setUsername, username}) {
-    console.log("라우터에서,",username);
   return (
     <div className="App">
       <BrowserRouter>
@@ -24,3 +23,4 @@ function Router({isLoggedIn, setUsername, username}) {
 }
 
 export default Router;
+//현재 쓰이지않음

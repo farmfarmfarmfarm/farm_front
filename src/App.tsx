@@ -14,6 +14,7 @@ function App() {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
+  const [nickname, setNickname] = useState(localStorage.getItem('nickname'));
 
   useEffect( ()=>{
     authService.onAuthStateChanged((user) =>{
@@ -34,7 +35,10 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route path="home" element={<Home />} />
             <Route path="login" element={<Login />} />
-            <Route path="profile" element={<Profile />} />
+            {nickname !== null ?  <Route path="/profile" element={<Profile setUsername={setUsername} username={username} />} />
+                :  <Route path="/profile" element={ <Login/>} /> }
+            {/* <Route path="profile" element={<Profile username={username} setUsername={setUsername} />} /> */}
+            {/* ISSUE : ts설정  */}
             <Route path="care" element={<Care />} />
           </Routes>
         </div>
