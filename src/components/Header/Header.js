@@ -27,7 +27,3 @@ function Header(props) {
 }
 
 export default Header;
-
-
-
-//헤더 내용들 왜안뜨냐
