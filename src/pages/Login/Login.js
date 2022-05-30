@@ -1,19 +1,19 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { authService } from './fbase';
-import {getAuth,signInWithPopup } from 'firebase/auth';
+import {signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = ()=>{
-    const nname = localStorage.getItem('nickname');
+    const navigate = useNavigate();
     const onSocialClick = async(e)=>{
         let provider;
         provider = new GoogleAuthProvider();
         const data = await signInWithPopup(authService, provider); //auth 가능
         console.log('유저식별id',data.user.uid);
-        localStorage.setItem('nickname', 'annno');
+        localStorage.setItem('nickname', data.user.displayName);
+        navigate("/");
     }
-    useEffect(() => {localStorage.setItem('nickname', 'annno')}, [nname]);
 
     return(
         <>
