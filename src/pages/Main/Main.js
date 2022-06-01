@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Check from "pages/Home/Check";
 
 function Main() {
     return (
         <div>
             <input type="text" placeholder='어느 지역을 찾으시나요?' />
-            <div>찾는 농장을 선택해주세요</div>
+            <div>어떤 농장을 가볼까요?</div>
             <Check></Check>
         </div>
         

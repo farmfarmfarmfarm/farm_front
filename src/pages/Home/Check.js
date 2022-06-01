@@ -20,27 +20,35 @@ const Check = () => {
     if(isChecked) {
       checkedItems.add(id);
       setcheckedItems(checkedItems);
-      box.style.backgroundColor = "#F6CB44";
+      // box.style.backgroundColor = "#F6CB44";
     } else if (!isChecked && checkedItems.has(id)) {
       checkedItems.delete(id);
       setcheckedItems(checkedItems);
-      box.style.backgroundColor = "#fff";
+      // box.style.backgroundColor = "#fff";
     }
     return checkedItems;
   };
+  const farmContainStyle = {
+    display: 'flex',
+    justifyCcontent: 'space-around',
+    padding: '10px 0 18px',
+    textAlign: 'center',
+    color: '#aeaeae',
+    fontSize: '26px',
+  }
 
   return (
-    <div className="contStyle">
+    <div className="contStyle" style={farmContainStyle}>
       {formData.map((item) => (
-        <div>
-        <label key={item.id} className="innerBox">
-          <input
-            type = "checkbox"
-            value={item.name}
-            onChange={(e) => checkHandler(e)}
-          />
-          <span>{item.name}</span>
-        </label>
+        <div key={item.id} >
+          <label className="innerBox">
+            <input
+              type = "checkbox"
+              value={item.name}
+              onChange={(e) => checkHandler(e)}
+            />
+            <span>{item.name}</span>
+          </label>
         </div>
       ))}
     </div>
