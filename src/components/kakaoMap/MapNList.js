@@ -85,8 +85,8 @@ const MapNList = ({ searchPlace }) => {
       <div
         id="mapNList"
         style={{
-          width: '500px',
-          height: '500px',
+          width: '100%',
+          height: '50vh',
         }}
       ></div>
       <div id="result-list">
