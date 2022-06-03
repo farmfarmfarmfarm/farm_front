@@ -27,7 +27,7 @@ const MapNList = ({ searchPlace }) => {
 
         for (let i = 0; i < data.length; i++) {
           displayMarker(data[i])
-          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
+          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x)) //중심좌표 바꾸는 기능임. !입력한주소 좌표를 여기 넣어야할듯
         }
 
         map.setBounds(bounds)

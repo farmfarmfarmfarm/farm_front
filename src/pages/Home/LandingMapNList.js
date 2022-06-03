@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import MapNList from './MapNList'
+import MapNList from "components/kakaoMap/MapNList";
 
-function LandingPage() {
+function  LandingMapNList() {
   const [InputText, setInputText] = useState('')
   const [Place, setPlace] = useState('')
 
@@ -26,4 +26,4 @@ function LandingPage() {
   )
 }
 
-export default LandingPage
+export default LandingMapNList
