@@ -3,6 +3,8 @@ import Chart from "./Chart";
 import Check from "./Check";
 import KakaoMap from './KakaoMap';
 import KakaoMap2 from './KakaoMap2';
+import LandingPage from "./LandingPages";
+import MapNList from "./MapNList";
 
 const Home =()=>{
 
@@ -13,6 +15,8 @@ const Home =()=>{
             <KakaoMap2></KakaoMap2>
             <Chart></Chart>
             <Check></Check>
+            <LandingPage />
+            <MapNList />
         </>
     )
 }
