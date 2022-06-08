@@ -8,6 +8,10 @@ import Login from 'pages/Login/Login';
 import Profile from 'pages/Profile/Profile';
 import {authService} from 'pages/Login/fbase';
 import Care from 'pages/Care/Care';
+import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue } from 'recoil';
+import {textState} from 'pages/Home/TextState';
+import TextInput from 'pages/Home/TextInput';
+
 
 function App() {
   const [init, setInit] = useState(false);

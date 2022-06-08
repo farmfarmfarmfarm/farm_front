@@ -3,6 +3,7 @@ import Chart from "./Chart";
 import Check from "./Check";
 import KakaoMap from './KakaoMap';
 import KakaoMap2 from './KakaoMap2';
+import TMap from './TMap';
 
 const Home =()=>{
 
@@ -10,7 +11,7 @@ const Home =()=>{
         <>
             THIS IS HOME
             <h1>지도에서 찾아보기</h1>
-            <KakaoMap2></KakaoMap2>
+            <TMap></TMap>
             <Chart></Chart>
             <Check></Check>
         </>
