@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {StFarmChooseContainer, StFarmDiv, StFarmInput} from './CheckStyle';
+
 const Check = ({checkedItems, setcheckedItems}) => {
   const formData = [
     {id: 1, name: "주말농장"},
