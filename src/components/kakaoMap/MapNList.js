@@ -2,23 +2,23 @@ import React, { useEffect, useState } from 'react'
 
 const { kakao } = window
 
-const MapNList = ({ searchPlace }) => {
+const MapNList = ({loc, farm, center, searchPlace }) => {
 
   // 검색결과 배열에 담아줌
   const [Places, setPlaces] = useState([])
-  
+  console.log(parseFloat(center.y), parseFloat(center.x));
   useEffect(() => {
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
     var markers = []
     const container = document.getElementById('mapNList')
     const options = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
-      level: 3,
+      center: new kakao.maps.LatLng(parseFloat(center.y), parseFloat(center.x)),
+      level:  8,
     }
     const map = new kakao.maps.Map(container, options)
 
     const ps = new kakao.maps.services.Places()
-    ps.keywordSearch(searchPlace, placesSearchCB)
+    ps.keywordSearch(farm, placesSearchCB)
 
     function placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
@@ -27,10 +27,11 @@ const MapNList = ({ searchPlace }) => {
 
         for (let i = 0; i < data.length; i++) {
           displayMarker(data[i])
-          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x)) //중심좌표 바꾸는 기능임. !입력한주소 좌표를 여기 넣어야할듯
+          bounds.extend(new kakao.maps.LatLng(parseFloat(center.y), parseFloat(center.x))) //중심좌표 바꾸는 기능임. !입력한주소 좌표를 여기 넣어야할듯
         }
 
         map.setBounds(bounds)
+        map.setLevel(10);
         // 페이지 목록 보여주는 displayPagination() 추가
         displayPagination(pagination)
         setPlaces(data)
@@ -79,7 +80,7 @@ const MapNList = ({ searchPlace }) => {
         infowindow.open(map, marker)
       })
     }
-  }, [searchPlace])
+  }, [center.x, center.y, farm])
   return (
     <div>
       <div

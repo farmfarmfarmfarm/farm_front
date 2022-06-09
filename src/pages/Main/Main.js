@@ -47,6 +47,7 @@ function Main() {
         if (place !== '' & checkedItems[0]!==undefined){
             console.log(place, checkedItems[0],"선택완");
             url = '/home/'+place;
+            console.log("url",url);
         }
     }, [place, checkedItems])
     return (
@@ -59,7 +60,7 @@ function Main() {
             <div>어떤 농장을 가볼까요?</div>
             <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check>
             {/* <Navermap /> */}
-            <Link to='/home/1'>농장찾으러가기</Link>
+            {(place !== '' & checkedItems[0]!==undefined) ? <Link to={`/home/${place}/${checkedItems[0]}`}>농장찾으러가기</Link> : null}
         </div>
         
     );
