@@ -8,6 +8,7 @@ import Login from 'pages/Login/Login';
 import Profile from 'pages/Profile/Profile';
 import {authService} from 'pages/Login/fbase';
 import Care from 'pages/Care/Care';
+import {RecoilRoot} from 'recoil';
 
 function App() {
   const [init, setInit] = useState(false);
@@ -24,22 +25,23 @@ function App() {
       setInit(true); //firebase초기화 후 값변경. 초기화 후에야 auth 상태 확인 가능하니까.
     })
   }, [])
-
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Header isLoggedIn={isLoggedIn} />
-        <div className='main'>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="home" element={<Home />} />
-            <Route path="login" element={<Login />} />
-            <Route path="profile" element={<Profile username={username} setUsername={setUsername} />} />
-            <Route path="care" element={<Care />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </div>
+    <RecoilRoot>
+      <div className="App">
+        <BrowserRouter>
+          <Header isLoggedIn={isLoggedIn} />
+          <div className='main'>
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="home" element={<Home />} />
+              <Route path="login" element={<Login />} />
+              <Route path="profile" element={<Profile username={username} setUsername={setUsername} />} />
+              <Route path="care" element={<Care />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </div>
+    </RecoilRoot>
   );
 }
 

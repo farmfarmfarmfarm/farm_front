@@ -3,7 +3,6 @@ import MapNList from "components/kakaoMap/MapNList";
 
 function  LandingMapNList() {
   const [InputText, setInputText] = useState('')
-  const [Place, setPlace] = useState('')
 
   const onChange = (e) => {
     setInputText(e.target.value)
@@ -11,7 +10,6 @@ function  LandingMapNList() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setPlace(InputText)
     setInputText('')
   }
 
@@ -21,7 +19,7 @@ function  LandingMapNList() {
         <input placeholder="검색어를 입력하세요" onChange={onChange} value={InputText} />
         <button type="submit">검색</button>
       </form>
-      <MapNList searchPlace={Place} />
+      <MapNList />
     </>
   )
 }
