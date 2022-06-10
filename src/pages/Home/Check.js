@@ -1,49 +1,46 @@
 import React, { useState } from "react";
-// import './App.css';
-
-const Check = () => {
+import {StFarmChooseContainer, StFarmDiv, StFarmInput} from './CheckStyle';
+const Check = ({checkedItems, setcheckedItems}) => {
   const formData = [
     {id: 1, name: "주말농장"},
     {id: 2, name: "치유농장"},
     {id: 3, name: "체험농장"},
   ];
-
+  const onRemove = id => {
+    setcheckedItems(checkedItems.filter(each => each !== id));
+  };
   const [isChecked, setIsChecked] = useState(false);
-  const [checkedItems, setcheckedItems] = useState(new Set());
-
   const checkHandler = ({ target }) => {
     setIsChecked(!isChecked);
-    checkedItemHandler(target.parentNode, target.value, target.checked);
+    checkedItemHandler(target.parentNode.lastChild, target.value, target.checked);
   };
 
-  const checkedItemHandler = (box, id, isChecked) => {
+  const checkedItemHandler = (text, id, isChecked) => {
     if(isChecked) {
-      checkedItems.add(id);
-      setcheckedItems(checkedItems);
-      box.style.backgroundColor = "#F6CB44";
-    } else if (!isChecked && checkedItems.has(id)) {
-      checkedItems.delete(id);
-      setcheckedItems(checkedItems);
-      box.style.backgroundColor = "#fff";
+      setcheckedItems([...checkedItems, id]);
+      text.style.color = 'black';
+    } else if (!isChecked ) {
+      onRemove(id);
+      text.style.color = '#aeaeae';
     }
     return checkedItems;
   };
 
   return (
-    <div className="contStyle">
+    <StFarmChooseContainer className="contStyle">
       {formData.map((item) => (
-        <div>
-        <label key={item.id} className="innerBox">
-          <input
-            type = "checkbox"
-            value={item.name}
-            onChange={(e) => checkHandler(e)}
-          />
-          <span>{item.name}</span>
-        </label>
-        </div>
+        <StFarmDiv key={item.id} >
+          <label className="innerBox">
+            <StFarmInput
+              type = "checkbox"
+              value={item.name}
+              onChange={(e) => checkHandler(e)}
+            />
+            <span>{item.name}</span>
+          </label>
+        </StFarmDiv>
       ))}
-    </div>
+    </StFarmChooseContainer>
   );
 };
 

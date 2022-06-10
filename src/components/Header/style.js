@@ -8,13 +8,18 @@ export const StHeaderMain = styled.div`
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
-    margin: 10px 16px 48px 20px;
+    padding: 26px 32px;
     -webkit-box-align: center;
     align-items: center;
 
     img {
-        width:30px;
+        width:40px;
     }
+`;
+
+export const StNav = styled.nav`
+    display: flex;
+    justify-content: space-around;
 `;
 
 export const Chartcontainer = styled.div`

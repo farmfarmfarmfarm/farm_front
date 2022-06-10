@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import './App.css';
-import { StHeader, StHeaderMain } from './style';
+import { StHeader, StHeaderMain, StNav } from './style';
 import logo from 'assets/icons/logo.jpg';
 import login from 'assets/icons/login.png';
 import {Link} from "react-router-dom";
@@ -13,15 +13,12 @@ function Header({isLoggedIn}) {
         {isLoggedIn ? <Link to="/profile"><img src={login} alt="프로필"></img></Link>
         : <Link to="/login"><img src={login} alt="로그인"></img></Link> }
       </StHeaderMain>
-
-{/* -nav이름정하기 -css */}
-        <nav id = "gnb">
-          <ul className="gnb1">
-            <li><Link to="/home" className='gnb-intro' title="HOME">HOME</Link></li>
-            <li><Link to="/care" className='gnb-care' title="CARE">CARE</Link></li>
-          </ul>
-        </nav>
-
+      <StNav id = "gnb">
+        {/* <ul className="gnb1"> */}
+          <li style={{listStyle: 'none',}}><Link to="/home" className='gnb-intro' title="HOME">HOME</Link></li>
+          <li style={{listStyle: 'none',}}><Link to="/care" className='gnb-care' title="CARE">CARE</Link></li>
+        {/* </ul> */}
+      </StNav>
     </StHeader>
   );
 }
