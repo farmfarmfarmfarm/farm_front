@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import Check from "pages/Home/Check";
-import { Navermap } from './Navermap';
 import { Link } from 'react-router-dom';
 import {useRecoilState} from 'recoil';
 import {selectedLoc, selectedFarm} from '../../Atom';
