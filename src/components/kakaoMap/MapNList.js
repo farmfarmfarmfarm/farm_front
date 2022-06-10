@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from 'react'
+import {useRecoilState} from 'recoil';
+import {selectedLoc, selectedFarm} from '../../Atom';
 
 const { kakao } = window
 
-const MapNList = ({loc, farm, center, searchPlace }) => {
+const MapNList = () => {
+  const [rcloc, setRcloc] = useRecoilState(selectedLoc);
+  const [rcfarm, setRcfarm] = useRecoilState(selectedFarm);
 
   // 검색결과 배열에 담아줌
   const [Places, setPlaces] = useState([])
-  console.log(parseFloat(center.y), parseFloat(center.x));
   useEffect(() => {
+    console.log("RECOIL","중심좌표:", rcloc, "선택한농장",rcfarm);
+
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
     var markers = []
     const container = document.getElementById('mapNList')
     const options = {
-      center: new kakao.maps.LatLng(parseFloat(center.y), parseFloat(center.x)),
-      level:  8,
+      center: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)),
+      level: 1,
     }
     const map = new kakao.maps.Map(container, options)
 
     const ps = new kakao.maps.services.Places()
-    ps.keywordSearch(farm, placesSearchCB)
+    for (let s=0; s<rcfarm.length; s++){
+      ps.keywordSearch(rcfarm[s], placesSearchCB)
+    }
 
     function placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
@@ -27,11 +34,12 @@ const MapNList = ({loc, farm, center, searchPlace }) => {
 
         for (let i = 0; i < data.length; i++) {
           displayMarker(data[i])
-          bounds.extend(new kakao.maps.LatLng(parseFloat(center.y), parseFloat(center.x))) //중심좌표 바꾸는 기능임. !입력한주소 좌표를 여기 넣어야할듯
+          bounds.extend(new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x))) //중심좌표 바꾸는 기능임. !입력한주소 좌표를 여기 넣어야할듯
         }
 
         map.setBounds(bounds)
-        map.setLevel(10);
+        map.setLevel(10); //확대 정도 변경  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ISSUE
+
         // 페이지 목록 보여주는 displayPagination() 추가
         displayPagination(pagination)
         setPlaces(data)
@@ -80,7 +88,7 @@ const MapNList = ({loc, farm, center, searchPlace }) => {
         infowindow.open(map, marker)
       })
     }
-  }, [center.x, center.y, farm])
+  }, [rcfarm])
   return (
     <div>
       <div

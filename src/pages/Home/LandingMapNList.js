@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import MapNList from "components/kakaoMap/MapNList";
 
-function  LandingMapNList({loc, farm, center}) {
+function  LandingMapNList() {
   const [InputText, setInputText] = useState('')
-  const [Place, setPlace] = useState(loc);
 
   const onChange = (e) => {
     setInputText(e.target.value)
@@ -11,10 +10,8 @@ function  LandingMapNList({loc, farm, center}) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setPlace(InputText)
     setInputText('')
   }
-  console.log(center);
 
   return (
     <>
@@ -22,7 +19,7 @@ function  LandingMapNList({loc, farm, center}) {
         <input placeholder="검색어를 입력하세요" onChange={onChange} value={InputText} />
         <button type="submit">검색</button>
       </form>
-      <MapNList loc={loc} farm={farm} center={center} searchPlace={Place} />
+      <MapNList />
     </>
   )
 }

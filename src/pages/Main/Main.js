@@ -2,14 +2,16 @@ import React, {useState, useEffect} from 'react';
 import Check from "pages/Home/Check";
 import { Navermap } from './Navermap';
 import { Link } from 'react-router-dom';
+import {useRecoilState} from 'recoil';
+import {selectedLoc, selectedFarm} from '../../Atom';
 
 function Main() {
     const { kakao } = window;
+    const [rcloc, setRcloc] = useRecoilState(selectedLoc);
 
     const [checkedItems, setcheckedItems] = useState([]);
     const [inputText, setInputText] = useState('')
     const [place, setPlace] = useState('')
-    const [center, setCenter] = useState({x: 0, y:0});
 
     const onChange = (e) => {
         setInputText(e.target.value)
@@ -20,10 +22,6 @@ function Main() {
         setInputText('')
     }
 
-    console.log( '선택한 농장 : ',checkedItems);
-    console.log('검색위치',place, '중심좌표',center);
-    
-
     useEffect(() => {
         const ps = new kakao.maps.services.Places()
 
@@ -33,23 +31,16 @@ function Main() {
                 setPlace("");
                 alert('해당하는 위치를 찾을 수 없습니다');
             } else {
-                setCenter((prev) => ({
+                setRcloc((prev) => ({
                     ...prev,
                     x: data[0].x,
-                    y: data[0].y
+                    y: data[0].y,
                 })); // 첫번째 검색결과의 좌표를 center좌표로 한다.
             }
         }
+
     }, [place]);
-    
-    let url;
-    useEffect(() => {
-        if (place !== '' & checkedItems[0]!==undefined){
-            console.log(place, checkedItems[0],"선택완");
-            url = '/home/'+place;
-            console.log("url",url);
-        }
-    }, [place, checkedItems])
+
     return (
         <div>
             <form className="inputForm" onSubmit={handleSubmit}>
@@ -60,7 +51,7 @@ function Main() {
             <div>어떤 농장을 가볼까요?</div>
             <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check>
             {/* <Navermap /> */}
-            {(place !== '' & checkedItems[0]!==undefined) ? <Link to={`/home/${place}/${checkedItems[0]}`}>농장찾으러가기</Link> : null}
+            {(place !== '' & checkedItems[0]!==undefined) ? <Link to='/home'>농장찾으러가기</Link> : null}
         </div>
         
     );
