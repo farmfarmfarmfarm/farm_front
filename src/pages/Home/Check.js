@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {StFarmChooseContainer, StFarmDiv, StFarmInput} from './CheckStyle';
+import {useRecoilState} from 'recoil';
+import {selectedFarm} from '../../Atom';
+
 const Check = ({checkedItems, setcheckedItems}) => {
+  const [rcfarm, setRcfarm] = useRecoilState(selectedFarm);
+
   const formData = [
     {id: 1, name: "주말농장"},
     {id: 2, name: "치유농장"},
@@ -25,6 +30,9 @@ const Check = ({checkedItems, setcheckedItems}) => {
     }
     return checkedItems;
   };
+  useEffect(() => {
+    setRcfarm(checkedItems);
+  },[checkedItems]);
 
   return (
     <StFarmChooseContainer className="contStyle">
