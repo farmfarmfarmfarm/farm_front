@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import {useRecoilState} from 'recoil';
 import {selectedLoc, selectedFarm} from '../../Atom';
+import '../../pages/Home/Home.css';
 
 const { kakao } = window
 
 const MapNList = () => {
   const [rcloc, setRcloc] = useRecoilState(selectedLoc);
   const [rcfarm, setRcfarm] = useRecoilState(selectedFarm);
+  const [resultLength, setLength] = useState(10);
 
   // 검색결과 배열에 담아줌
   const [Places, setPlaces] = useState([])
@@ -31,6 +33,7 @@ const MapNList = () => {
       if (status === kakao.maps.services.Status.OK) {
 
         let bounds = new kakao.maps.LatLngBounds()
+        setLength(data.length);
 
         for (let i = 0; i < data.length; i++) {
           displayMarker(data[i])
@@ -40,41 +43,8 @@ const MapNList = () => {
         map.setBounds(bounds)
         map.setLevel(10); //확대 정도 변경  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ISSUE
 
-        // 페이지 목록 보여주는 displayPagination() 추가
-        displayPagination(pagination)
         setPlaces(data)
       }
-    }
-
-    // 검색결과 목록 하단에 페이지 번호 표시
-    function displayPagination(pagination) {
-      var paginationEl = document.getElementById('pagination'),
-        fragment = document.createDocumentFragment(),
-        i
-
-      // 기존에 추가된 페이지 번호 삭제
-      while (paginationEl.hasChildNodes()) {
-        paginationEl.removeChild(paginationEl.lastChild)
-      }
-
-      for (i = 1; i <= pagination.last; i++) {
-        var el = document.createElement('a')
-        el.href = '#'
-        el.innerHTML = i
-
-        if (i === pagination.current) {
-          el.className = 'on'
-        } else {
-          el.onclick = (function (i) {
-            return function () {
-              pagination.gotoPage(i)
-            }
-          })(i)
-        }
-
-        fragment.appendChild(el)
-      }
-      paginationEl.appendChild(fragment)
     }
 
     function displayMarker(place) {
@@ -89,34 +59,86 @@ const MapNList = () => {
       })
     }
   }, [rcfarm])
+
+    ////////////
+    useEffect(()=>{
+      let slider = document.querySelector(".slider");
+      let innerSlider = document.querySelector(".slider-inner");
+      let pressed = false;
+      let startx;
+      let x;
+    
+      slider.addEventListener("mousedown", e => {
+        pressed = true
+        startx = e.offsetX - innerSlider.offsetLeft
+        slider.style.cursor = "grabbing"
+      })
+    
+      slider.addEventListener("mouseenter", () => {
+        slider.style.cursor = "grab"
+      })
+    
+      slider.addEventListener("mouseup", () => {
+        slider.style.cursor = "grab"
+      })
+    
+      window.addEventListener("mouseup", () => {
+        pressed = false
+      })
+    
+      slider.addEventListener("mousemove", e => {
+        if (!pressed) return
+        e.preventDefault()
+        x = e.offsetX
+    
+        innerSlider.style.left = `${x - startx}px`
+        checkboundary()
+      })
+    
+      function checkboundary() {
+        let outer = slider.getBoundingClientRect()
+        let inner = innerSlider.getBoundingClientRect()
+    
+        if (parseInt(innerSlider.style.left) > 0) {
+          innerSlider.style.left = "0px"
+        } else if (inner.right < outer.right) {
+          innerSlider.style.left = `-${inner.width - outer.width}px`
+        }
+      }
+    })
+    ////////////////////
+
   return (
     <div>
-      <div
-        id="mapNList"
-        style={{
-          width: '100%',
-          height: '50vh',
-        }}
-      ></div>
-      <div id="result-list">
-        {Places.map((item, i) => (
-          <div key={i} style={{ marginTop: '20px' }}>
-            <span>{i + 1}</span>
-            <div>
-              <h5>{item.place_name}</h5>
-              {item.road_address_name ? (
-                <div>
-                  <span>{item.road_address_name}</span>
+      <div>
+        <div
+          id="mapNList"
+          style={{
+            width: '100%',
+            height: '40vh',
+          }}
+        ></div>
+      </div>
+      <div className='slider'>
+        <div className="slider-inner" style={{gridTemplateColumns: `repeat(${resultLength}, 1fr)`}}>
+          {Places.map((item, i) => (
+            <div key={i} style={i===0 ? {marginLeft: '16px'} : i===resultLength-1 ? {marginRigth : '16px'} :null} className='slider-item'>
+              <div>
+                <h5>{item.place_name}</h5>
+                {item.road_address_name ? (
+                  <div>
+                    <span>{item.road_address_name}</span>
+                    <span>{item.address_name}</span>
+                  </div>
+                ) : (
                   <span>{item.address_name}</span>
-                </div>
-              ) : (
-                <span>{item.address_name}</span>
-              )}
-              <span>{item.phone}</span>
+                )}
+                <span>{item.phone}</span>
+              </div>
             </div>
-          </div>
-        ))}
-        <div id="pagination"></div>
+          ))}
+          <div id="pagination"></div>
+        </div>
       </div>
     </div>
   )
