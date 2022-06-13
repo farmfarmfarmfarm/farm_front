@@ -27,7 +27,10 @@ const MapNList = () => {
 
     const ps = new kakao.maps.services.Places()
     for (let s=0; s<rcfarm.length; s++){
-      ps.keywordSearch(rcfarm[s], placesSearchCB)
+      ps.keywordSearch(rcfarm[s], placesSearchCB,{
+        radius : 15000,
+        location: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)),
+      })
     }
 
     function placesSearchCB(data, status, pagination) {
@@ -37,18 +40,19 @@ const MapNList = () => {
         setLength(data.length);
 
         for (let i = 0; i < data.length; i++) {
-          displayMarker(data[i])
-          bounds.extend(new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x))) //중심좌표 바꾸는 기능임. !입력한주소 좌표를 여기 넣어야할듯
+          displayMarker(data[i],i)
+          // bounds.extend(new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x))) //중심좌표 바꾸는 기능임. !입력한주소 좌표를 여기 넣어야할듯
         }
 
-        map.setBounds(bounds)
-        map.setLevel(10); //확대 정도 변경  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ISSUE
+        // map.setBounds(bounds)
+        map.setLevel(8); //확대 정도 변경  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ISSUE
 
         setPlaces(data)
+        console.log(data);
       }
     }
 
-    function displayMarker(place) {
+    function displayMarker(place, i) {
       let marker = new kakao.maps.Marker({
         map: map,
         position: new kakao.maps.LatLng(place.y, place.x),
@@ -57,6 +61,10 @@ const MapNList = () => {
       kakao.maps.event.addListener(marker, 'click', function () {
         infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>')
         infowindow.open(map, marker)
+
+        /// 인포윈도우 클릭시 해당 카드가 중앙으로
+        let sliderinner = document.querySelector(".slider-inner");
+        sliderinner.style.left = `-${i*250 +5*i}px`;
       })
     }
   }, [rcfarm])
