@@ -11,7 +11,6 @@ function Main() {
 
     const [checkedItems, setcheckedItems] = useState([]);
     const [inputText, setInputText] = useState('')
-    // const [place, setPlace] = useState('')
 
     const onChange = (e) => {
         setInputText(e.target.value)
@@ -27,6 +26,7 @@ function Main() {
 
         ps.keywordSearch(place, placesSearchCB)
         function placesSearchCB(data, status, pagination) {
+            console.log("m", data[0]);
             if (data.length===0){
                 setPlace("");
                 alert('해당하는 위치를 찾을 수 없습니다');

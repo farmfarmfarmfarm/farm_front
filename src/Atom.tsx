@@ -3,7 +3,7 @@ import { recoilPersist } from 'recoil-persist';
 
 const { persistAtom } = recoilPersist()
 
-export const selectedPlace = atom({
+export const selectedPlace = atom({ //입력한 검색중심 장소
   key: 'selectedPlace',
   default: '',
   effects_UNSTABLE: [persistAtom],

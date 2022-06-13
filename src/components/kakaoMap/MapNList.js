@@ -11,6 +11,8 @@ const MapNList = () => {
   const [resultLength, setLength] = useState(10);
   const [place, setPlace] = useRecoilState(selectedPlace);
 
+
+
   // 검색결과 배열에 담아줌
   const [Places, setPlaces] = useState([])
   useEffect(() => {
@@ -24,10 +26,13 @@ const MapNList = () => {
       level: 1,
     }
     const map = new kakao.maps.Map(container, options)
-
     const ps = new kakao.maps.services.Places()
+
     for (let s=0; s<rcfarm.length; s++){
-      ps.keywordSearch(rcfarm[s], placesSearchCB)
+      ps.keywordSearch(rcfarm[s], placesSearchCB,{
+        radius : 15000,
+        location: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)),
+      })
     }
 
     function placesSearchCB(data, status, pagination) {
@@ -37,18 +42,17 @@ const MapNList = () => {
         setLength(data.length);
 
         for (let i = 0; i < data.length; i++) {
-          displayMarker(data[i])
-          bounds.extend(new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x))) //중심좌표 바꾸는 기능임. !입력한주소 좌표를 여기 넣어야할듯
+          displayMarker(data[i],i)
+          // bounds.extend(new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x))) //중심좌표 바꾸는 기능임. !입력한주소 좌표를 여기 넣어야할듯
         }
 
-        map.setBounds(bounds)
-        map.setLevel(10); //확대 정도 변경  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ISSUE
-
+        // map.setBounds(bounds)
+        map.setLevel(8); //확대 정도 변경  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ISSUE
         setPlaces(data)
       }
     }
 
-    function displayMarker(place) {
+    function displayMarker(place, i) {
       let marker = new kakao.maps.Marker({
         map: map,
         position: new kakao.maps.LatLng(place.y, place.x),
@@ -57,57 +61,71 @@ const MapNList = () => {
       kakao.maps.event.addListener(marker, 'click', function () {
         infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>')
         infowindow.open(map, marker)
+
+        /// 인포윈도우 클릭시 해당 카드가 중앙으로
+        let sliderinner = document.querySelector(".slider-inner");
+        sliderinner.style.left = `-${i*250 +5*i}px`;
       })
     }
+
+    //지도 움직일때 중심좌표 반환
+    kakao.maps.event.addListener(map, 'dragend', function() {        
+      var latlng = map.getCenter(); 
+      var message = '변경된 지도 중심좌표는 ' + latlng.getLat() + ' 이고, ';
+      message += '경도는 ' + latlng.getLng() + ' 입니다';
+      console.log( message);
+    });
+    //
+
   }, [rcfarm])
 
-    ////////////
-    useEffect(()=>{
-      let slider = document.querySelector(".slider");
-      let innerSlider = document.querySelector(".slider-inner");
-      let pressed = false;
-      let startx;
-      let x;
-    
-      slider.addEventListener("mousedown", e => {
-        pressed = true
-        startx = e.offsetX - innerSlider.offsetLeft
-        slider.style.cursor = "grabbing"
-      })
-    
-      slider.addEventListener("mouseenter", () => {
-        slider.style.cursor = "grab"
-      })
-    
-      slider.addEventListener("mouseup", () => {
-        slider.style.cursor = "grab"
-      })
-    
-      window.addEventListener("mouseup", () => {
-        pressed = false
-      })
-    
-      slider.addEventListener("mousemove", e => {
-        if (!pressed) return
-        e.preventDefault()
-        x = e.offsetX
-    
-        innerSlider.style.left = `${x - startx}px`
-        checkboundary()
-      })
-    
-      function checkboundary() {
-        let outer = slider.getBoundingClientRect()
-        let inner = innerSlider.getBoundingClientRect()
-    
-        if (parseInt(innerSlider.style.left) > 0) {
-          innerSlider.style.left = "0px"
-        } else if (inner.right < outer.right) {
-          innerSlider.style.left = `-${inner.width - outer.width}px`
-        }
-      }
+  ////////////
+  useEffect(()=>{
+    let slider = document.querySelector(".slider");
+    let innerSlider = document.querySelector(".slider-inner");
+    let pressed = false;
+    let startx;
+    let x;
+  
+    slider.addEventListener("mousedown", e => {
+      pressed = true
+      startx = e.offsetX - innerSlider.offsetLeft
+      slider.style.cursor = "grabbing"
     })
-    ////////////////////
+  
+    slider.addEventListener("mouseenter", () => {
+      slider.style.cursor = "grab"
+    })
+  
+    slider.addEventListener("mouseup", () => {
+      slider.style.cursor = "grab"
+    })
+  
+    window.addEventListener("mouseup", () => {
+      pressed = false
+    })
+  
+    slider.addEventListener("mousemove", e => {
+      if (!pressed) return
+      e.preventDefault()
+      x = e.offsetX
+  
+      innerSlider.style.left = `${x - startx}px`
+      checkboundary()
+    })
+  
+    function checkboundary() {
+      let outer = slider.getBoundingClientRect()
+      let inner = innerSlider.getBoundingClientRect()
+  
+      if (parseInt(innerSlider.style.left) > 0) {
+        innerSlider.style.left = "0px"
+      } else if (inner.right < outer.right) {
+        innerSlider.style.left = `-${inner.width - outer.width}px`
+      }
+    }
+  })
+  ////////////////////
 
   return (
     <div>
