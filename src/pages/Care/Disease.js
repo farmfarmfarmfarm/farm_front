@@ -33,15 +33,15 @@ const Disease = () => {
     <div className="contStyle">
       <h3>진단하기</h3>
       {formData.map((item) => (
-        <div>
-        <label key={item.id} className="innerBox">
-          <input
-            type = "checkbox"
-            value={item.name}
-            onChange={(e) => checkHandler(e)}
-          />
-          <span>{item.name}</span>
-        </label>
+        <div key={item.id}>
+          <label className="innerBox">
+            <input
+              type = "checkbox"
+              value={item.name}
+              onChange={(e) => checkHandler(e)}
+            />
+            <span>{item.name}</span>
+          </label>
         </div>
       ))}
     </div>

@@ -1,5 +1,5 @@
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue } from 'recoil';
-import { recoilPersist } from 'recoil-persist'
+import { recoilPersist } from 'recoil-persist';
 
 const { persistAtom } = recoilPersist()
 

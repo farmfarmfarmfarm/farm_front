@@ -9,9 +9,9 @@ const Care =()=>{
         <>
             THIS IS CARE
             <h1>작물로 치유하기</h1>
-            <Disease></Disease>
-            <Crop></Crop>
-            <Recipe></Recipe>
+            <Disease />
+            <Crop />
+            <Recipe />
         </>
     )
 }
