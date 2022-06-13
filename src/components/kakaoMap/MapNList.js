@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {useRecoilState} from 'recoil';
-import {selectedLoc, selectedFarm} from '../../Atom';
 import '../../pages/Home/Home.css';
+import {selectedLoc, selectedFarm, selectedPlace} from '../../Atom';
 
 const { kakao } = window
 
@@ -9,6 +9,7 @@ const MapNList = () => {
   const [rcloc, setRcloc] = useRecoilState(selectedLoc);
   const [rcfarm, setRcfarm] = useRecoilState(selectedFarm);
   const [resultLength, setLength] = useState(10);
+  const [place, setPlace] = useRecoilState(selectedPlace);
 
   // 검색결과 배열에 담아줌
   const [Places, setPlaces] = useState([])
