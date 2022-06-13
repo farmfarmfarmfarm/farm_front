@@ -3,6 +3,7 @@ import Check from "pages/Home/Check";
 import { Link } from 'react-router-dom';
 import {useRecoilState} from 'recoil';
 import {selectedLoc, selectedFarm, selectedPlace} from '../../Atom';
+import axios from 'axios';
 
 function Main() {
     const { kakao } = window;
@@ -22,6 +23,14 @@ function Main() {
     }
 
     useEffect(() => {
+        ///
+        axios.get('/api/crop/findall').then(
+            (res) => {
+                console.log(res);
+            }
+        )
+        .catch()
+        ///
         const ps = new kakao.maps.services.Places()
 
         ps.keywordSearch(place, placesSearchCB)
