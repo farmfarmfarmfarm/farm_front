@@ -11,6 +11,8 @@ const MapNList = () => {
   const [resultLength, setLength] = useState(10);
   const [place, setPlace] = useRecoilState(selectedPlace);
 
+
+
   // 검색결과 배열에 담아줌
   const [Places, setPlaces] = useState([])
   useEffect(() => {
@@ -24,8 +26,8 @@ const MapNList = () => {
       level: 1,
     }
     const map = new kakao.maps.Map(container, options)
-
     const ps = new kakao.maps.services.Places()
+
     for (let s=0; s<rcfarm.length; s++){
       ps.keywordSearch(rcfarm[s], placesSearchCB,{
         radius : 15000,
@@ -46,9 +48,7 @@ const MapNList = () => {
 
         // map.setBounds(bounds)
         map.setLevel(8); //확대 정도 변경  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ISSUE
-
         setPlaces(data)
-        console.log(data);
       }
     }
 
@@ -67,55 +67,65 @@ const MapNList = () => {
         sliderinner.style.left = `-${i*250 +5*i}px`;
       })
     }
+
+    //지도 움직일때 중심좌표 반환
+    kakao.maps.event.addListener(map, 'dragend', function() {        
+      var latlng = map.getCenter(); 
+      var message = '변경된 지도 중심좌표는 ' + latlng.getLat() + ' 이고, ';
+      message += '경도는 ' + latlng.getLng() + ' 입니다';
+      console.log( message);
+    });
+    //
+
   }, [rcfarm])
 
-    ////////////
-    useEffect(()=>{
-      let slider = document.querySelector(".slider");
-      let innerSlider = document.querySelector(".slider-inner");
-      let pressed = false;
-      let startx;
-      let x;
-    
-      slider.addEventListener("mousedown", e => {
-        pressed = true
-        startx = e.offsetX - innerSlider.offsetLeft
-        slider.style.cursor = "grabbing"
-      })
-    
-      slider.addEventListener("mouseenter", () => {
-        slider.style.cursor = "grab"
-      })
-    
-      slider.addEventListener("mouseup", () => {
-        slider.style.cursor = "grab"
-      })
-    
-      window.addEventListener("mouseup", () => {
-        pressed = false
-      })
-    
-      slider.addEventListener("mousemove", e => {
-        if (!pressed) return
-        e.preventDefault()
-        x = e.offsetX
-    
-        innerSlider.style.left = `${x - startx}px`
-        checkboundary()
-      })
-    
-      function checkboundary() {
-        let outer = slider.getBoundingClientRect()
-        let inner = innerSlider.getBoundingClientRect()
-    
-        if (parseInt(innerSlider.style.left) > 0) {
-          innerSlider.style.left = "0px"
-        } else if (inner.right < outer.right) {
-          innerSlider.style.left = `-${inner.width - outer.width}px`
-        }
-      }
+  ////////////
+  useEffect(()=>{
+    let slider = document.querySelector(".slider");
+    let innerSlider = document.querySelector(".slider-inner");
+    let pressed = false;
+    let startx;
+    let x;
+  
+    slider.addEventListener("mousedown", e => {
+      pressed = true
+      startx = e.offsetX - innerSlider.offsetLeft
+      slider.style.cursor = "grabbing"
     })
-    ////////////////////
+  
+    slider.addEventListener("mouseenter", () => {
+      slider.style.cursor = "grab"
+    })
+  
+    slider.addEventListener("mouseup", () => {
+      slider.style.cursor = "grab"
+    })
+  
+    window.addEventListener("mouseup", () => {
+      pressed = false
+    })
+  
+    slider.addEventListener("mousemove", e => {
+      if (!pressed) return
+      e.preventDefault()
+      x = e.offsetX
+  
+      innerSlider.style.left = `${x - startx}px`
+      checkboundary()
+    })
+  
+    function checkboundary() {
+      let outer = slider.getBoundingClientRect()
+      let inner = innerSlider.getBoundingClientRect()
+  
+      if (parseInt(innerSlider.style.left) > 0) {
+        innerSlider.style.left = "0px"
+      } else if (inner.right < outer.right) {
+        innerSlider.style.left = `-${inner.width - outer.width}px`
+      }
+    }
+  })
+  ////////////////////
 
   return (
     <div>
