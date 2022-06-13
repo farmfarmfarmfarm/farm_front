@@ -10,6 +10,7 @@ import {authService} from 'pages/Login/fbase';
 import Care from 'pages/Care/Care';
 import {RecoilRoot} from 'recoil';
 
+
 function App() {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);

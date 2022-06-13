@@ -2,15 +2,16 @@ import React, {useState, useEffect} from 'react';
 import Check from "pages/Home/Check";
 import { Link } from 'react-router-dom';
 import {useRecoilState} from 'recoil';
-import {selectedLoc, selectedFarm} from '../../Atom';
+import {selectedLoc, selectedFarm, selectedPlace} from '../../Atom';
 
 function Main() {
     const { kakao } = window;
     const [rcloc, setRcloc] = useRecoilState(selectedLoc);
+    const [place, setPlace] = useRecoilState(selectedPlace);
 
     const [checkedItems, setcheckedItems] = useState([]);
     const [inputText, setInputText] = useState('')
-    const [place, setPlace] = useState('')
+    // const [place, setPlace] = useState('')
 
     const onChange = (e) => {
         setInputText(e.target.value)
