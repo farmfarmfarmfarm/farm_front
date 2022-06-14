@@ -3,10 +3,12 @@ import axios from 'axios';
 import {StFarmChooseContainer, StFarmDiv, StFarmInput} from 'pages/Home/CheckStyle';
 import {useRecoilState} from 'recoil';
 import {selectedDiease} from '../../Atom';
+import { Link } from 'react-router-dom';
 
 
-const Disease = ({checkedItems, setcheckedItems}) => {
+const Disease = () => {
 
+    const [checkedItems, setcheckedItems] = useState([]);
     const [diseases,setDiseases] = useState(null);   //결과값
     const [loading,setLoading] = useState(false); // 로딩되는지 여부
     const [error,setError] = useState(null); //에러    
@@ -65,8 +67,6 @@ const Disease = ({checkedItems, setcheckedItems}) => {
       return checkedItems;
     };
 
-    console.log(checkedItems)
-
     return (
     <div>
       <h3>자신의 증상에 가까운 것들을 체크해 주세요</h3>
@@ -84,6 +84,7 @@ const Disease = ({checkedItems, setcheckedItems}) => {
             </StFarmDiv>
           ))}
         </StFarmChooseContainer>
+        {(rcdiease !== '' & checkedItems[0]!==undefined) ? <Link to='/crop'>결과보기</Link> : null}
     </div>
     );
     

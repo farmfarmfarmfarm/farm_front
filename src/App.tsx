@@ -8,6 +8,7 @@ import Login from 'pages/Login/Login';
 import Profile from 'pages/Profile/Profile';
 import {authService} from 'pages/Login/fbase';
 import Care from 'pages/Care/Care';
+import Crop from 'pages/Care/Crop';
 import {RecoilRoot} from 'recoil';
 
 
@@ -38,6 +39,7 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="profile" element={<Profile username={username} setUsername={setUsername} />} />
               <Route path="care" element={<Care />} />
+              <Route path="crop" element={<Crop />} />
             </Routes>
           </div>
         </BrowserRouter>

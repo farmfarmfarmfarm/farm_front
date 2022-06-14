@@ -4,38 +4,28 @@ import {StFarmChooseContainer, StFarmDiv, StFarmInput} from 'pages/Home/CheckSty
 import {selectedDiease} from '../../Atom';
 import {useRecoilState} from 'recoil';
 
-const Crop = ({checkedItems, setcheckedItems}) => {
+const Crop = () => {
 
+    const [checkedItems, setcheckedItems] = useState([]);
     const [crops,setCrops] = useState(null);   //결과값
     const [loading,setLoading] = useState(false); // 로딩되는지 여부
     const [error,setError] = useState(null); //에러    
     const [isChecked, setIsChecked] = useState(false);
     const [rcdiease, setRcdiease] = useRecoilState(selectedDiease);
 
-    // for (let i=0;i<10;i++){
-    //     axios.get('/api/farm/EXP').then(
-    //       (res) => {
-    //         setResAddress((prev)=>[...prev,{
-    //           id: 1,
-    //           category: 'EXP',
-    //           name: '머머농장',
-    //           address: res.data.data[i].address
-    //         }]);
-    //       },
-    //     )
-    //     .catch()
-    //   }
-    //   console.log(resAddress);
-
-    console.log(typeof(Number(rcdiease[0])));
+    console.log(rcdiease);
 
     const fetchCrops = async () => {
         try {
             setCrops(null);
             setError(null);
             setLoading(true); //로딩이 시작됨
-            const response = await axios.get('/api/crop/'+2);
-            setCrops(response.data.data);
+            const result = rcdiease;
+            for (let i=0; i<result.length; i++) {
+                const response = await axios.get('/api/crop/'+Number(result[i]));
+                console.log(result[i]);
+                setCrops(response.data.data);
+            }
 
         } catch (e) {
             setError(e);
