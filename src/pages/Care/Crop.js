@@ -34,9 +34,8 @@ const Crop = ({checkedItems, setcheckedItems}) => {
             setCrops(null);
             setError(null);
             setLoading(true); //로딩이 시작됨
-            const response = await axios.get('/api/crop/'+2);
-            setCrops(response.data.data);
-
+            const response = await axios.get('/api/crop/findall');
+            setUsers(response.data.data);
         } catch (e) {
             setError(e);
         }
