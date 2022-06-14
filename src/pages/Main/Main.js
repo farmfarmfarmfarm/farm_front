@@ -24,15 +24,10 @@ function Main() {
 
     useEffect(() => {
         ///
-        axios.get('/api/crop/findall').then(
-            (res) => {
-                console.log('ssssssssssssss',res);
-            }
-        )
-        .catch()
         axios.get('/api/farm/findall').then(
             (res) => {
                 console.log(res);
+                console.log(res.data.data);
             }
         )
         .catch()

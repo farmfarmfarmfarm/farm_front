@@ -26,7 +26,6 @@ const Crop = () => {
                 console.log(result[i]);
                 setCrops(response.data.data);
             }
-
         } catch (e) {
             setError(e);
         }
