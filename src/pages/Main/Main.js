@@ -24,8 +24,9 @@ function Main() {
 
     useEffect(() => {
         ///
-        axios.get('/api/crop/findall').then(
+        axios.get('/api/farm/findall').then(
             (res) => {
+                console.log(res);
                 console.log(res.data.data);
             }
         )
