@@ -26,13 +26,7 @@ function Main() {
         ///
         axios.get('/api/crop/findall').then(
             (res) => {
-                console.log(res);
-            }
-        )
-        .catch()
-        axios.get('/api/farm/findall').then(
-            (res) => {
-                console.log(res);
+                console.log(res.data.data);
             }
         )
         .catch()

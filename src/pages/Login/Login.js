@@ -16,11 +16,17 @@ const Login = ()=>{
         localStorage.setItem('nickname', data.user.displayName);
         navigate("/");
     }
+    const headers = {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    };
     async function postData({nickname, email}) {
         try {
           //응답 성공 
-          const response = await axios.post('/api/member/add',
-            JSON.stringify({nickname, email}));
+          const response = await axios.post('api/member/add',
+            JSON.stringify({nickname, email}),
+            { headers }// 500에러
+          );
           console.log('로그인POST', response);
           console.log('회원번호리턴', response.memberid);
         } catch (error) {
