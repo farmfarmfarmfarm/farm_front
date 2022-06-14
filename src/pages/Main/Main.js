@@ -30,6 +30,12 @@ function Main() {
             }
         )
         .catch()
+        axios.get('/api/farm/findall').then(
+            (res) => {
+                console.log(res);
+            }
+        )
+        .catch()
         ///
         const ps = new kakao.maps.services.Places()
 
