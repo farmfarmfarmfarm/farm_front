@@ -1,0 +1,1189 @@
+{
+    "data": [
+      {
+        "id": 1,
+        "category": "EXP",
+        "name": "가나안농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "041-334-5447",
+        "address": "충청남도 예산군 오가면 오촌리 318",
+        "placeUrl": "http://www.cnafarm.com",
+        "location_x": 126.8002577,
+        "location_y": 36.7107201,
+        "contents": "none"
+      },
+      {
+        "id": 3,
+        "category": "EXP",
+        "name": "가을빛농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-8008-4204",
+        "address": "경상북도 포항시 북구 신광면 비학로519번길 137-42",
+        "placeUrl": "http://www.appleme.co.kr",
+        "location_x": 129.2432062,
+        "location_y": 36.10190348,
+        "contents": "none"
+      },
+      {
+        "id": 4,
+        "category": "EXP",
+        "name": "감귤체험농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "none",
+        "address": "제주특별자치도 제주시 봉개동 1405",
+        "placeUrl": "http://www.ejejufarm.com",
+        "location_x": 126.6019988,
+        "location_y": 33.48737372,
+        "contents": "none"
+      },
+      {
+        "id": 9,
+        "category": "EXP",
+        "name": "강화도자연체험농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-5378-2279",
+        "address": "인천 강화군 길상면 해안남로 331",
+        "placeUrl": "https://blog.naver.com/gnfarm",
+        "location_x": 126.5181399,
+        "location_y": 37.60773149,
+        "contents": "none"
+      },
+      {
+        "id": 11,
+        "category": "EXP",
+        "name": "곡천마을푸른체험농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "063-211-9954",
+        "address": "전라북도 전주시 덕진구 화전동 1158",
+        "placeUrl": "http://www.junjumall.com",
+        "location_x": 127.0336536,
+        "location_y": 35.88703749,
+        "contents": "none"
+      },
+      {
+        "id": 21,
+        "category": "EXP",
+        "name": "금곡팜스테이",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "none",
+        "address": "광주 북구 금곡동 235",
+        "placeUrl": "http://gumgok.cafe24.com",
+        "location_x": 126.9967223,
+        "location_y": 35.17040366,
+        "contents": "none"
+      },
+      {
+        "id": 23,
+        "category": "EXP",
+        "name": "금정알밤농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "041-852-6763",
+        "address": "충청남도 공주시 정안면 전평리 64",
+        "placeUrl": "http://kumjung.puruemi.com",
+        "location_x": 127.1106344,
+        "location_y": 36.5618476,
+        "contents": "none"
+      },
+      {
+        "id": 25,
+        "category": "EXP",
+        "name": "길동자연생태공원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "02-472-2770",
+        "address": "서울특별시 강동구 길동 476",
+        "placeUrl": "http://parks.seoul.go.kr/gildong",
+        "location_x": 127.1550557,
+        "location_y": 37.54051971,
+        "contents": "none"
+      },
+      {
+        "id": 27,
+        "category": "EXP",
+        "name": "꼭지농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "0507-1347-0924",
+        "address": "경상북도 영주시 대학로 148-1",
+        "placeUrl": "http://www.appleking.co.kr",
+        "location_x": 128.6093442,
+        "location_y": 36.80982878,
+        "contents": "none"
+      },
+      {
+        "id": 30,
+        "category": "EXP",
+        "name": "꿈팜",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-4593-3207",
+        "address": "경기도 고양시 덕양구 선유동 166",
+        "placeUrl": "http://timeinn.blog.me/",
+        "location_x": 126.9136007,
+        "location_y": 37.69884424,
+        "contents": "none"
+      },
+      {
+        "id": 31,
+        "category": "EXP",
+        "name": "나룻배마을",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "031-833-5005",
+        "address": "경기도 연천군 왕징면 북삼리 160-4",
+        "placeUrl": "http://www.narubea.kr",
+        "location_x": 127.0044267,
+        "location_y": 38.09539055,
+        "contents": "none"
+      },
+      {
+        "id": 32,
+        "category": "EXP",
+        "name": "낙산배농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-4283-2264",
+        "address": "강원도 양양군 양양읍 안산1길 41",
+        "placeUrl": "http://www.naksanbe.pe.kr",
+        "location_x": 128.6308603,
+        "location_y": 38.07286502,
+        "contents": "none"
+      },
+      {
+        "id": 35,
+        "category": "EXP",
+        "name": "다감농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "0507-1320-4829",
+        "address": "경상남도 창원시 의창구 대산면 진산대로505번길 51-17",
+        "placeUrl": "ttp://www.idangam.co.kr",
+        "location_x": 128.704436,
+        "location_y": 35.34475674,
+        "contents": "none"
+      },
+      {
+        "id": 40,
+        "category": "EXP",
+        "name": "달하산농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-3433-5724",
+        "address": "충청남도 부여군 외산면 조령서로 110-55",
+        "placeUrl": "http://dalhasan.puruemi.com",
+        "location_x": 126.7355902,
+        "location_y": 36.32194573,
+        "contents": "none"
+      },
+      {
+        "id": 41,
+        "category": "EXP",
+        "name": "대가농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-2225-6641",
+        "address": "경기도 남양주시 조안면 다산로761번길 15",
+        "placeUrl": "http://www.daega620.co.kr",
+        "location_x": 127.2995166,
+        "location_y": 37.51533387,
+        "contents": "none"
+      },
+      {
+        "id": 46,
+        "category": "EXP",
+        "name": "덕천강자연딸기작목반",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "055-754-4737",
+        "address": "경상남도 진주시 수곡면 원창길 246-3",
+        "placeUrl": "http://www.덕천강.kr/",
+        "location_x": 127.9343481,
+        "location_y": 35.1745659,
+        "contents": "none"
+      },
+      {
+        "id": 47,
+        "category": "EXP",
+        "name": "도덕봉농원 한방이",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "043-732-2178",
+        "address": "충북 옥천군 이원면 건진3길 72-5",
+        "placeUrl": "http://www.peachland.co.kr",
+        "location_x": 127.6094241,
+        "location_y": 36.24932412,
+        "contents": "none"
+      },
+      {
+        "id": 52,
+        "category": "EXP",
+        "name": "들산에체험장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "031-701-7175",
+        "address": "경기도 성남시 분당구 하산운동 301",
+        "placeUrl": "http://www.dsj.co.kr",
+        "location_x": 127.0795061,
+        "location_y": 37.38834777,
+        "contents": "none"
+      },
+      {
+        "id": 53,
+        "category": "EXP",
+        "name": "딸기따따따",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "0507-1496-4993",
+        "address": "경상남도 밀양시 상남면 평촌리 1501",
+        "placeUrl": "http://www.ddalkidda.com",
+        "location_x": 128.7802507,
+        "location_y": 35.43167657,
+        "contents": "none"
+      },
+      {
+        "id": 54,
+        "category": "EXP",
+        "name": "리을농산",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "043-853-6999",
+        "address": "충청북도 충주시 노은면 법동리 47",
+        "placeUrl": "http://www.mushrae.com",
+        "location_x": 127.6993499,
+        "location_y": 37.04249927,
+        "contents": "none"
+      },
+      {
+        "id": 60,
+        "category": "EXP",
+        "name": "발방농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "063-351-7001",
+        "address": "전라북도 장수군 장수읍 두산리 산69-4",
+        "placeUrl": "http://www.bbfarm.co.kr/",
+        "location_x": 127.5244812,
+        "location_y": 35.62287391,
+        "contents": "none"
+      },
+      {
+        "id": 61,
+        "category": "EXP",
+        "name": "배랑농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "none",
+        "address": "충청남도 공주시 사곡면 신영리 7-12",
+        "placeUrl": "http://www.verang.co.kr",
+        "location_x": 127.0474963,
+        "location_y": 36.4803696,
+        "contents": "none"
+      },
+      {
+        "id": 62,
+        "category": "EXP",
+        "name": "별빛농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "055-931-7279",
+        "address": "경상남도 합천군 야로면 나대리 655-5",
+        "placeUrl": "http://www.star-farm.com",
+        "location_x": 128.1703127,
+        "location_y": 35.74467147,
+        "contents": "none"
+      },
+      {
+        "id": 64,
+        "category": "EXP",
+        "name": "보람이농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "none",
+        "address": "경북 김천시 금감로 720-14",
+        "placeUrl": "http://www.boramfarm.net",
+        "location_x": 128.1358604,
+        "location_y": 35.9950933,
+        "contents": "none"
+      },
+      {
+        "id": 65,
+        "category": "EXP",
+        "name": "보리나라학원농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "063-564-9897",
+        "address": "전라북도 고창군 공음면 학원농장길 154",
+        "placeUrl": "http://www.borinara.co.kr",
+        "location_x": 126.5428999,
+        "location_y": 35.37533761,
+        "contents": "none"
+      },
+      {
+        "id": 69,
+        "category": "EXP",
+        "name": "산뜰농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-8922-6565",
+        "address": "경기도 남양주시 수동면 외방리 304-16",
+        "placeUrl": "http://www.sanddl.com",
+        "location_x": 127.3087433,
+        "location_y": 37.75705272,
+        "contents": "none"
+      },
+      {
+        "id": 70,
+        "category": "EXP",
+        "name": "산촌농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "031-886-9763",
+        "address": "경기도 여주군 금사면 상호리 142",
+        "placeUrl": "http://sanghori.puruemi.com",
+        "location_x": 127.4752377,
+        "location_y": 37.40946787,
+        "contents": "none"
+      },
+      {
+        "id": 72,
+        "category": "EXP",
+        "name": "삼훈포도농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "031-876-7764",
+        "address": "경기 양주시 장흥면 삼하리 384-12",
+        "placeUrl": "http://cafe.naver.com/3hoon",
+        "location_x": 126.9205452,
+        "location_y": 37.68669045,
+        "contents": "none"
+      },
+      {
+        "id": 74,
+        "category": "EXP",
+        "name": "상수허브랜드",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "043-277-6633",
+        "address": "충북 청주시 서원구 남이면 부용외천길 18",
+        "placeUrl": "http://www.herbland.co.kr",
+        "location_x": 127.4262797,
+        "location_y": 36.52995767,
+        "contents": "none"
+      },
+      {
+        "id": 77,
+        "category": "EXP",
+        "name": "새만골농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "041-833-5687",
+        "address": "충청남도 부여군 외산면 만수로주암길 20-6",
+        "placeUrl": "http://www.saemangol.com",
+        "location_x": 126.7269481,
+        "location_y": 36.343708,
+        "contents": "none"
+      },
+      {
+        "id": 79,
+        "category": "EXP",
+        "name": "샛터농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "061-362-5907",
+        "address": "전남 곡성군 옥과면 소룡길 256-50",
+        "placeUrl": "http://www.ybapple.com/",
+        "location_x": 127.1655886,
+        "location_y": 35.29610693,
+        "contents": "none"
+      },
+      {
+        "id": 81,
+        "category": "EXP",
+        "name": "서전농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-7594-5579",
+        "address": "경기도 용인시 처인구 원삼면 좌항리 산 34-20",
+        "placeUrl": "http://cafe.daum.net/kyj7004",
+        "location_x": 127.319496,
+        "location_y": 37.20664033,
+        "contents": "none"
+      },
+      {
+        "id": 87,
+        "category": "EXP",
+        "name": "소뿔농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-4045-9628",
+        "address": "경기 양평군 양서면 양수리 733-4",
+        "placeUrl": "http://www.sobbul.com",
+        "location_x": 127.3123012,
+        "location_y": 37.53329796,
+        "contents": "none"
+      },
+      {
+        "id": 88,
+        "category": "EXP",
+        "name": "소석마을팜스테이",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "055-374-1112",
+        "address": "경남 양산시 상북면 공원로1길 35",
+        "placeUrl": "http://www.sosukfarm.com",
+        "location_x": 129.0493926,
+        "location_y": 35.41825194,
+        "contents": "none"
+      },
+      {
+        "id": 91,
+        "category": "EXP",
+        "name": "수수농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "none",
+        "address": "경상북도 의성군 금성면 금학산길 99",
+        "placeUrl": "http://www.osusu.co.kr",
+        "location_x": 128.6974508,
+        "location_y": 36.26411645,
+        "contents": "none"
+      },
+      {
+        "id": 92,
+        "category": "EXP",
+        "name": "수안산생태원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "031-989-4547",
+        "address": "경기도 김포시 대곶면 율생리 220-2",
+        "placeUrl": "http://www.suansan.com",
+        "location_x": 126.5945926,
+        "location_y": 37.64094564,
+        "contents": "none"
+      },
+      {
+        "id": 94,
+        "category": "EXP",
+        "name": "시골농원 진영단감",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-2523-4940",
+        "address": "경상남도 김해시 진례면 서부로 978-92",
+        "placeUrl": "http://www.ckdangam.co.kr",
+        "location_x": 128.7728333,
+        "location_y": 35.21982505,
+        "contents": "none"
+      },
+      {
+        "id": 95,
+        "category": "EXP",
+        "name": "신영이네 달팽이농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "031-333-3464",
+        "address": "경기도 용인시 처인구 모현면 일산리 245-2",
+        "placeUrl": "http://www.snailery.com",
+        "location_x": 127.2361647,
+        "location_y": 37.34033939,
+        "contents": "none"
+      },
+      {
+        "id": 96,
+        "category": "EXP",
+        "name": "신율농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "041-858-6242",
+        "address": "충청남도 공주시 정안면 고잿골길 102",
+        "placeUrl": "http://www.albam.co.kr",
+        "location_x": 127.1088183,
+        "location_y": 36.59830286,
+        "contents": "none"
+      },
+      {
+        "id": 103,
+        "category": "EXP",
+        "name": "아로마허브동산",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "033-433-9685",
+        "address": "강원도 홍천군 화촌면 장평리 923",
+        "placeUrl": "http://www.aromaherb.co.kr",
+        "location_x": 128.0573279,
+        "location_y": 37.75880159,
+        "contents": "none"
+      },
+      {
+        "id": 104,
+        "category": "EXP",
+        "name": "아산종합농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "041-542-6029",
+        "address": "충청남도 아산시 영인면 아산리 355-1",
+        "placeUrl": "http://www.silkfarm.co.kr",
+        "location_x": 126.949315,
+        "location_y": 36.85746031,
+        "contents": "none"
+      },
+      {
+        "id": 110,
+        "category": "EXP",
+        "name": "알밤농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-5147-4220",
+        "address": "경기도 양평군 강하면 동오리 166-2",
+        "placeUrl": "http://abfarm.cafe24.com",
+        "location_x": 127.3985933,
+        "location_y": 37.46213572,
+        "contents": "none"
+      },
+      {
+        "id": 118,
+        "category": "EXP",
+        "name": "양평들꽃수목원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "031-772-1800",
+        "address": "경기도 양평군 양평읍 오빈리 210-37",
+        "placeUrl": "http://www.nemunimo.co.kr",
+        "location_x": 127.4713337,
+        "location_y": 37.50162026,
+        "contents": "none"
+      },
+      {
+        "id": 119,
+        "category": "EXP",
+        "name": "어린농부딸기체험농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "031-771-1653",
+        "address": "경기도 양평군 양서면 양수리 740-6",
+        "placeUrl": "http://www.kidfarmer.kr",
+        "location_x": 127.314022,
+        "location_y": 37.5355467,
+        "contents": "none"
+      },
+      {
+        "id": 120,
+        "category": "EXP",
+        "name": "얼음골 꿀사과농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "055-352-6148",
+        "address": "경상남도 밀양시 산내면 임고정1길 10-3",
+        "placeUrl": "http://www.hanahome.net/apple",
+        "location_x": 128.8783187,
+        "location_y": 35.56975908,
+        "contents": "none"
+      },
+      {
+        "id": 127,
+        "category": "EXP",
+        "name": "오색허브농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "033-672-0462",
+        "address": "강원도 양양군 서면 가라피리 9-1",
+        "placeUrl": "http://www.osaekherb.co.kr",
+        "location_x": 128.5382434,
+        "location_y": 38.07048812,
+        "contents": "none"
+      },
+      {
+        "id": 129,
+        "category": "EXP",
+        "name": "오체향마을",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "055-255-9380",
+        "address": "경남 창원시 의창구 북면 지개리 554-7",
+        "placeUrl": "http://www.ochehyang.com",
+        "location_x": 128.6183591,
+        "location_y": 35.28840035,
+        "contents": "none"
+      },
+      {
+        "id": 131,
+        "category": "EXP",
+        "name": "용이네농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-6397-7599",
+        "address": "경상북도 구미시 무을면 무수리 355",
+        "placeUrl": "http://www.song2e.com",
+        "location_x": 128.1935548,
+        "location_y": 36.28414858,
+        "contents": "none"
+      },
+      {
+        "id": 134,
+        "category": "EXP",
+        "name": "우리토마토농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "051-941-6956",
+        "address": "부산 강서구 대저2동 4144",
+        "placeUrl": "http://www.tomoto.co.kr",
+        "location_x": 128.9410065,
+        "location_y": 35.15509617,
+        "contents": "none"
+      },
+      {
+        "id": 135,
+        "category": "EXP",
+        "name": "원평허브농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "031-294-0088",
+        "address": "경기 화성시 매송면 매봉로 40-16",
+        "placeUrl": "https://www.instagram.com/wonpyeong_herbsfarm/",
+        "location_x": 126.922557,
+        "location_y": 37.2459667,
+        "contents": "none"
+      },
+      {
+        "id": 137,
+        "category": "EXP",
+        "name": "월드컵공원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "02-300-5500",
+        "address": "서울특별시 마포구 상암동 481-6",
+        "placeUrl": "http://worldcuppark.seoul.go.kr",
+        "location_x": 126.878425,
+        "location_y": 37.57089692,
+        "contents": "none"
+      },
+      {
+        "id": 139,
+        "category": "EXP",
+        "name": "유성농장체험",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "041-553-3120",
+        "address": "충청남도 천안시 동남구 북면 납안리 278-1",
+        "placeUrl": "http://cafe.daum.net/ysfarm",
+        "location_x": 127.2525306,
+        "location_y": 36.85748466,
+        "contents": "none"
+      },
+      {
+        "id": 141,
+        "category": "EXP",
+        "name": "율봄농업예술원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "031-798-3119",
+        "address": "경기도 광주시 퇴촌면 도마리 102-3",
+        "placeUrl": "http://www.yulbom.co.kr",
+        "location_x": 127.2704036,
+        "location_y": 37.47002106,
+        "contents": "none"
+      },
+      {
+        "id": 149,
+        "category": "EXP",
+        "name": "장승배기농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "0507-1400-5279",
+        "address": "충청남도 천안시 동남구 성남면 신덕리 359",
+        "placeUrl": "http://www.jsfarm.kr",
+        "location_x": 127.2405292,
+        "location_y": 36.71763327,
+        "contents": "none"
+      },
+      {
+        "id": 150,
+        "category": "EXP",
+        "name": "장연사과농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "043-832-7097",
+        "address": "충청북도 괴산군 장연면 추점리 377-1",
+        "placeUrl": "http://www.4gwa.net",
+        "location_x": 127.9502034,
+        "location_y": 36.85365924,
+        "contents": "none"
+      },
+      {
+        "id": 153,
+        "category": "EXP",
+        "name": "제비원농산",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "054-855-4733",
+        "address": "경상북도 안동시 이천동 151-1",
+        "placeUrl": "http://www.jbwon.com",
+        "location_x": 128.7203501,
+        "location_y": 36.59610184,
+        "contents": "none"
+      },
+      {
+        "id": 154,
+        "category": "EXP",
+        "name": "제주허브동산",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "064-787-7362",
+        "address": "제주특별자치도 서귀포시 표선면 돈오름로 170",
+        "placeUrl": "http://www.herbdongsan.com",
+        "location_x": 126.8143371,
+        "location_y": 33.32931081,
+        "contents": "none"
+      },
+      {
+        "id": 163,
+        "category": "EXP",
+        "name": "착한농부들",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "0507-1406-8941",
+        "address": "충북 음성군 금왕읍 백야로 347",
+        "placeUrl": "http://www.goodnongbu.com",
+        "location_x": 127.6038907,
+        "location_y": 36.96521418,
+        "contents": "none"
+      },
+      {
+        "id": 171,
+        "category": "EXP",
+        "name": "초랑농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "0507-1412-6433",
+        "address": "경상남도 사천시 곤명면 초량리 산88",
+        "placeUrl": "http://www.chorangfarm.com",
+        "location_x": 127.9162185,
+        "location_y": 35.1015823,
+        "contents": "none"
+      },
+      {
+        "id": 174,
+        "category": "EXP",
+        "name": "최남단 체험감귤농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "064-764-7759",
+        "address": "제주특별자치도 서귀포시 남원읍 남원리 2019",
+        "placeUrl": "http://www.orangefarm.co.kr/",
+        "location_x": 126.6938072,
+        "location_y": 33.29061983,
+        "contents": "none"
+      },
+      {
+        "id": 175,
+        "category": "EXP",
+        "name": "축석자연농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "none",
+        "address": "경기도 포천시 소흘읍 이동교리",
+        "placeUrl": "http://www.eventfarm.co.kr",
+        "location_x": 127.1241374,
+        "location_y": 37.79912474,
+        "contents": "none"
+      },
+      {
+        "id": 178,
+        "category": "EXP",
+        "name": "큰솔농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "0507-1409-3221",
+        "address": "울산 울주군 온양읍 마근길 114-28",
+        "placeUrl": "http://www.pearmall.co.kr",
+        "location_x": 129.279554,
+        "location_y": 35.38392634,
+        "contents": "none"
+      },
+      {
+        "id": 182,
+        "category": "EXP",
+        "name": "팜카밀레",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "041-675-3636",
+        "address": "충청남도 태안군 남면 우운길 56-19",
+        "placeUrl": "http://www.kamille.co.kr",
+        "location_x": 126.2824392,
+        "location_y": 36.6868288,
+        "contents": "none"
+      },
+      {
+        "id": 183,
+        "category": "EXP",
+        "name": "풍국농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "055-331-6689",
+        "address": "경상남도 김해시 대동면 대동로269번안길 87-350 키위농장",
+        "placeUrl": "http://www.darae4c5.com",
+        "location_x": 128.9317667,
+        "location_y": 35.25400347,
+        "contents": "none"
+      },
+      {
+        "id": 185,
+        "category": "EXP",
+        "name": "한국구아바경원농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "043-883-5700",
+        "address": "충청북도 음성군 삼성면 양덕리 755-3",
+        "placeUrl": "http://www.guava.co.kr",
+        "location_x": 127.4801548,
+        "location_y": 37.03113816,
+        "contents": "none"
+      },
+      {
+        "id": 187,
+        "category": "EXP",
+        "name": "한라감귤체험농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "064-782-2479",
+        "address": "제주특별자치도 서귀포시 성산읍 수산리 1037",
+        "placeUrl": "http://www.hallapark.co.kr",
+        "location_x": 126.8815427,
+        "location_y": 33.44179953,
+        "contents": "none"
+      },
+      {
+        "id": 189,
+        "category": "EXP",
+        "name": "한울농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "053-984-7703",
+        "address": "대구 동구 미대동 561",
+        "placeUrl": "http://www.loveherb.co.kr",
+        "location_x": 128.6744879,
+        "location_y": 35.9530269,
+        "contents": "none"
+      },
+      {
+        "id": 190,
+        "category": "EXP",
+        "name": "해바라기농장",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-9396-2459",
+        "address": "경상북도 봉화군 물야면 오록3길 68-3",
+        "placeUrl": "http://www.applesa.kr/",
+        "location_x": 128.7366229,
+        "location_y": 36.98461991,
+        "contents": "none"
+      },
+      {
+        "id": 193,
+        "category": "EXP",
+        "name": "향매농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "050-5599-0123",
+        "address": "전라남도 장흥군 용산면 상금리 169-4",
+        "placeUrl": "http://www.namgomaesil.com",
+        "location_x": 126.9509207,
+        "location_y": 34.59864075,
+        "contents": "none"
+      },
+      {
+        "id": 194,
+        "category": "EXP",
+        "name": "허브나라농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "033-335-2902",
+        "address": "강원도 평창군 봉평면 흥정계곡길 225",
+        "placeUrl": "http://www.herbnara.com",
+        "location_x": 128.3426502,
+        "location_y": 37.63580914,
+        "contents": "none"
+      },
+      {
+        "id": 195,
+        "category": "EXP",
+        "name": "허브뱅크",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "061-353-5787",
+        "address": "전라남도 영광군 영광읍 와룡로5길 67-49",
+        "placeUrl": "http://www.herb-bank.co.kr/",
+        "location_x": 126.5144989,
+        "location_y": 35.32296025,
+        "contents": "none"
+      },
+      {
+        "id": 196,
+        "category": "EXP",
+        "name": "허브아일랜드",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "031-535-6494",
+        "address": "경기도 포천시 신북면 청신로947번길 35",
+        "placeUrl": "http://www.herbisland.co.kr",
+        "location_x": 127.1316063,
+        "location_y": 37.96649446,
+        "contents": "none"
+      },
+      {
+        "id": 197,
+        "category": "EXP",
+        "name": "홍삼팜",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "033-342-0286",
+        "address": "강원도 횡성군 청일면 유동리 1172-1 청일면 유동리 1172-1",
+        "placeUrl": "http://www.6hongsam.com",
+        "location_x": 128.1414472,
+        "location_y": 37.57606409,
+        "contents": "none"
+      },
+      {
+        "id": 199,
+        "category": "EXP",
+        "name": "홍화농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "031-855-5556",
+        "address": "경기 양주시 장흥면 일영로 545-38",
+        "placeUrl": "http://www.honghwanongwon.co.kr",
+        "location_x": 126.924942,
+        "location_y": 37.69330837,
+        "contents": "none"
+      },
+      {
+        "id": 200,
+        "category": "EXP",
+        "name": "화가의농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "054-433-9158",
+        "address": "경북 김천시 봉산면 신암리 391",
+        "placeUrl": "http://www.artpodo.com",
+        "location_x": 128.0138296,
+        "location_y": 36.17596517,
+        "contents": "none"
+      },
+      {
+        "id": 202,
+        "category": "EXP",
+        "name": "황소농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "055-356-2804",
+        "address": "경상남도 밀양시 산내면 얼음골옛길 92-16",
+        "placeUrl": "http://www.hosujung.com",
+        "location_x": 128.9598521,
+        "location_y": 35.57841431,
+        "contents": "none"
+      },
+      {
+        "id": 203,
+        "category": "EXP",
+        "name": "흙사랑엄마포도농원",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "010-2307-3300",
+        "address": "충남 천안시 서북구 입장면 하장리 364-1",
+        "placeUrl": "http://www.amhspodo.co.kr",
+        "location_x": 127.2274812,
+        "location_y": 36.90903198,
+        "contents": "none"
+      },
+      {
+        "id": 234,
+        "category": "EXP",
+        "name": "딸기이야기",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "031-666-6221",
+        "address": "경기도 평택시 장당동 산21-1",
+        "placeUrl": "http://blog.naver.com/chonh0330",
+        "location_x": 37.05019,
+        "location_y": 127.0631,
+        "contents": "none"
+      },
+      {
+        "id": 295,
+        "category": "EXP",
+        "name": "행복텃밭",
+        "reviews": [
+          
+        ],
+        "reviewRating": 0.0,
+        "phone": "0507-1403-2798",
+        "address": "경기도 화성시 매송면 어천리 606-2",
+        "placeUrl": "http://instagram.com/farm_happygarden",
+        "location_x": 37.2471,
+        "location_y": 126.904,
+        "contents": "none"
+      }
+    ]
+  }

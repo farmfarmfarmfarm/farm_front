@@ -2,84 +2,101 @@ import React, { useEffect, useState } from 'react'
 import {useRecoilState} from 'recoil';
 import '../../pages/Home/Home.css';
 import {selectedLoc, selectedFarm, selectedPlace} from '../../Atom';
-
+import axios from 'axios';
+import dummy from './dummy.json';
 const { kakao } = window
 
 const MapNList = () => {
-  const [rcloc, setRcloc] = useRecoilState(selectedLoc);
-  const [rcfarm, setRcfarm] = useRecoilState(selectedFarm);
-  const [resultLength, setLength] = useState(10);
-  const [place, setPlace] = useRecoilState(selectedPlace);
+  const [rcloc, setRcloc] = useRecoilState(selectedLoc); //설정한 중심위치 좌표
+  const [rcfarm, setRcfarm] = useRecoilState(selectedFarm); //선택한 농장종류 ['주말농장', '치유농장', '체험농장']
+  const [resultLength, setLength] = useState(10); //결과값 길이
+  const [Places, setPlaces] = useState([])  // 검색결과 배열에 담아줌
 
+  //api
 
-
-  // 검색결과 배열에 담아줌
-  const [Places, setPlaces] = useState([])
+  const [resAddress, setResAddress] = useState([]);
   useEffect(() => {
     console.log("RECOIL","중심좌표:", rcloc, "선택한농장",rcfarm);
+   
+    /// api
+    // for (let i=0;i<10;i++){
+    //   axios.get('/api/farm/EXP').then(
+    //     (res) => {
+    //       console.log(res);
+    //       setResAddress((prev)=>[...prev,{
+    //         id: 1,
+    //         category: 'EXP',
+    //         name: '머머농장',
+    //         address: res.data.data[i].address
+    //       }]);
+    //     },
+    //   )
+    //   .catch((err)=>{
+    //     console.log(err);
+    //   })
+    // }
 
+    //dummy
+    // for (let i=0;i<10;i++){
+    //   setResAddress((prev)=>[...prev,{
+    //   id: dummy.data[i].id,
+    //   category: dummy.data[i].category,
+    //   name: dummy.data[i].name,
+    //   address: dummy.data[i].address,
+    //   }]);
+    // }
+    // console.log(resAddress);
+
+    // //지도 움직일때 중심좌표 반환
+    // kakao.maps.event.addListener(map, 'dragend', function() {        
+    //   var latlng = map.getCenter(); 
+    //   var message = '변경된 지도 중심좌표는 ' + latlng.getLat() + ' 이고, ';
+    //   message += '경도는 ' + latlng.getLng() + ' 입니다';
+    //   console.log( message);
+    // });
+    //
+
+  }, [rcfarm])
+  ////////////
+  useEffect(()=>{
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
     var markers = []
     const container = document.getElementById('mapNList')
     const options = {
       center: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)),
-      level: 1,
+      level: 10,
     }
     const map = new kakao.maps.Map(container, options)
-    const ps = new kakao.maps.services.Places()
+    const geocoder = new kakao.maps.services.Geocoder();
 
-    for (let s=0; s<rcfarm.length; s++){
-      ps.keywordSearch(rcfarm[s], placesSearchCB,{
-        radius : 15000,
-        location: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)),
-      })
-    }
+    for (let i=0;i<10;i++){
+      // console.log('useEffect안에선',resAddress);
+      // console.log(resAddress[i].name);
+      geocoder.addressSearch(dummy.data[i].address, function(result, status) {
+      // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
 
-    function placesSearchCB(data, status, pagination) {
-      if (status === kakao.maps.services.Status.OK) {
+      var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-        let bounds = new kakao.maps.LatLngBounds()
-        setLength(data.length);
+      // 결과값으로 받은 위치를 마커로 표시합니다
+      var marker = new kakao.maps.Marker({
+          map: map,
+          position: coords
+      });
 
-        for (let i = 0; i < data.length; i++) {
-          displayMarker(data[i],i)
-          // bounds.extend(new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x))) //중심좌표 바꾸는 기능임. !입력한주소 좌표를 여기 넣어야할듯
-        }
+      // 인포윈도우로 장소에 대한 설명을 표시합니다
+      var infowindow = new kakao.maps.InfoWindow({
+          content: `<div style="width:150px;text-align:center;padding:6px 0;">${dummy.data[i].name}</div>`
+      });
+      infowindow.open(map, marker);
 
-        // map.setBounds(bounds)
-        map.setLevel(8); //확대 정도 변경  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ISSUE
-        setPlaces(data)
+      // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+      map.setCenter(coords);
       }
+      });
     }
+  }, [resAddress])
 
-    function displayMarker(place, i) {
-      let marker = new kakao.maps.Marker({
-        map: map,
-        position: new kakao.maps.LatLng(place.y, place.x),
-      })
-
-      kakao.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>')
-        infowindow.open(map, marker)
-
-        /// 인포윈도우 클릭시 해당 카드가 중앙으로
-        let sliderinner = document.querySelector(".slider-inner");
-        sliderinner.style.left = `-${i*250 +5*i}px`;
-      })
-    }
-
-    //지도 움직일때 중심좌표 반환
-    kakao.maps.event.addListener(map, 'dragend', function() {        
-      var latlng = map.getCenter(); 
-      var message = '변경된 지도 중심좌표는 ' + latlng.getLat() + ' 이고, ';
-      message += '경도는 ' + latlng.getLng() + ' 입니다';
-      console.log( message);
-    });
-    //
-
-  }, [rcfarm])
-
-  ////////////
   useEffect(()=>{
     let slider = document.querySelector(".slider");
     let innerSlider = document.querySelector(".slider-inner");

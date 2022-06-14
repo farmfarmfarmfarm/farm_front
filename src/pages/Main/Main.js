@@ -23,14 +23,6 @@ function Main() {
     }
 
     useEffect(() => {
-        ///
-        axios.get('/api/crop/findall').then(
-            (res) => {
-                console.log(res.data.data);
-            }
-        )
-        .catch()
-        ///
         const ps = new kakao.maps.services.Places()
 
         ps.keywordSearch(place, placesSearchCB)
@@ -59,7 +51,6 @@ function Main() {
             <p>{place}</p>
             <div>어떤 농장을 가볼까요?</div>
             <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check>
-            {/* <Navermap /> */}
             {(place !== '' & checkedItems[0]!==undefined) ? <Link to='/home'>농장찾으러가기</Link> : null}
         </div>
         
