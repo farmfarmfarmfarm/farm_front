@@ -20,3 +20,9 @@ export const selectedFarm = atom({
     default: [],
     effects_UNSTABLE: [persistAtom],
   }); 
+
+export const selectedDiease = atom({
+    key: 'selectedDiease',
+    default: [],
+    effects_UNSTABLE: [persistAtom],
+  }); 
