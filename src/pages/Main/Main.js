@@ -26,7 +26,7 @@ function Main() {
         ///
         axios.get('/api/crop/findall').then(
             (res) => {
-                console.log(res);
+                console.log('ssssssssssssss',res);
             }
         )
         .catch()
