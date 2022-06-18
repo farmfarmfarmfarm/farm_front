@@ -11,8 +11,6 @@ const MapNList = () => {
   const [resultLength, setLength] = useState(10);
   const [place, setPlace] = useRecoilState(selectedPlace);
 
-
-
   // 검색결과 배열에 담아줌
   const [Places, setPlaces] = useState([])
   useEffect(() => {
@@ -34,6 +32,24 @@ const MapNList = () => {
         location: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)),
       })
     }
+
+    //
+    // 커스텀 오버레이에 표시할 내용입니다     
+    // HTML 문자열 또는 Dom Element 입니다 
+    var content = '<div class ="label">카카오!</div>';
+
+    // 커스텀 오버레이가 표시될 위치입니다 
+    var position = new kakao.maps.LatLng(33.450701, 126.570667);  
+
+    // 커스텀 오버레이를 생성합니다
+    var customOverlay = new kakao.maps.CustomOverlay({
+      position: position,
+      content: content   
+    });
+
+    // 커스텀 오버레이를 지도에 표시합니다
+    customOverlay.setMap(map);
+    //
 
     function placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
@@ -57,9 +73,26 @@ const MapNList = () => {
         map: map,
         position: new kakao.maps.LatLng(place.y, place.x),
       })
+      
+      // 커스텀 오버레이에 표시할 내용입니다     
+      // HTML 문자열 또는 Dom Element 입니다 
+      var content = '<div class="iwDiv">카카오!</div>';
+
+      // 커스텀 오버레이가 표시될 위치입니다 
+      var position = new kakao.maps.LatLng(place.y, place.x);  
+
+      // 커스텀 오버레이를 생성합니다
+      var customOverlay = new kakao.maps.InfoWindow({
+          position: position,
+          content: content   
+      });
+
+      // 커스텀 오버레이를 지도에 표시합니다
+      customOverlay.setMap(map);
+      //
 
       kakao.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>')
+        infowindow.setContent('<div style="padding:5px;font-size:8px;">' + place.place_name + '</div>')
         infowindow.open(map, marker)
 
         /// 인포윈도우 클릭시 해당 카드가 중앙으로
@@ -77,7 +110,33 @@ const MapNList = () => {
     });
     //
 
-  }, [rcfarm])
+    var infoTitle = document.querySelectorAll('.iwDiv');
+    console.log(infoTitle);
+    infoTitle.forEach(function(e) {
+      console.log(e);
+      var w = e.offsetWidth + 10;
+      var ml = w/2;
+      e.parentElement.style.width = w;  
+      // e.parentElement.style.top = "82px";
+      e.parentElement.style.position = "relative";
+      // e.parentElement.style.left = "50%";
+      // e.parentElement.style.marginLeft = -ml+"px";
+      // e.parentElement.style.width = w+"px";
+      // e.parentElement.previousSibling.style.display = "none"; //꼭지
+      if (e.className.includes('unactive')){
+        e.parentElement.previousSibling.style.backgroundImage = "url('https://user-images.githubusercontent.com/81412212/174342201-0ec0c927-97f1-49dd-8c23-d6a872d9dfad.png')"; //꼭지
+      } else {
+        e.parentElement.previousSibling.style.backgroundImage = "url('https://user-images.githubusercontent.com/81412212/174341207-bbaa6a46-2d67-4731-8a51-9a429488affa.png')"; //꼭지
+      }
+      // e.parentElement.parentElement.style.width = 105; //부모(기본인포윈도우영역)
+      e.parentElement.parentElement.style.display = "flex"; //부모(기본인포윈도우영역)
+      e.parentElement.parentElement.style.background = "none"; //부모(기본인포윈도우영역)
+      e.parentElement.parentElement.style.border = "none"; //부모(기본인포윈도우영역)
+      e.parentElement.parentElement.style.justifyContent = "center"; //부모(기본인포윈도우영역)
+      // e.parentElement.parentElement.style.border = "0px";
+      // e.parentElement.parentElement.style.background = "unset";
+    });
+  }, [])
 
   ////////////
   useEffect(()=>{
