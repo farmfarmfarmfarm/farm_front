@@ -25,13 +25,13 @@ function Main() {
 
     useEffect(() => {
         ///
-        axios.get('/api/farm/findall').then(
-            (res) => {
-                console.log(res);
-                console.log(res.data.data);
-            }
-        )
-        .catch()
+        // axios.get('/api/farm/findall').then(
+        //     (res) => {
+        //         console.log(res);
+        //         console.log(res.data.data);
+        //     }
+        // )
+        // .catch()
         ///
         const ps = new kakao.maps.services.Places()
 
@@ -62,7 +62,6 @@ function Main() {
             {/* <p>{place}</p> */}
             <h3 style={{marginTop: '20px', marginBottom: '5px'}}>어떤 농장을 가볼까요?</h3>
             <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check>
-            {/* <Navermap /> */}
             {(place !== '' & checkedItems[0]!==undefined) ? <Link to='/home'>농장찾으러가기</Link> : null}
         </div>
         

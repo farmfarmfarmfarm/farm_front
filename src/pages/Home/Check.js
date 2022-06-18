@@ -15,17 +15,18 @@ const Check = ({checkedItems, setcheckedItems}) => {
     setcheckedItems(checkedItems.filter(each => each !== id));
   };
   const [isChecked, setIsChecked] = useState(false);
+
   const checkHandler = ({ target }) => {
     setIsChecked(!isChecked);
     checkedItemHandler(target.parentNode.lastChild, target.value, target.checked);
   };
 
-  const checkedItemHandler = (text, id, isChecked) => {
+  const checkedItemHandler = (text, category, isChecked) => {
     if(isChecked) {
-      setcheckedItems([...checkedItems, id]);
+      setcheckedItems([...checkedItems, category]);
       text.style.color = 'black';
     } else if (!isChecked ) {
-      onRemove(id);
+      onRemove(category);
       text.style.color = '#aeaeae';
     }
     return checkedItems;
