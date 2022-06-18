@@ -2,7 +2,7 @@
     position: relative;
     /* left: 10%;
     top: 30%; */
-    width: 414px;
+    width: 380px;
     height: 200px;
     overflow: hidden;
   }
@@ -24,4 +24,8 @@
     border: 1px solid #156e1c;
     border-radius: 20px;
 
+}
+
+.iwDiv {
+    background-color: green;
 }

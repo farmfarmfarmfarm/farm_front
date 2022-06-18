@@ -39,13 +39,13 @@ const Check = ({checkedItems, setcheckedItems}) => {
     <StFarmChooseContainer className="contStyle">
       {formData.map((item) => (
         <StFarmDiv key={item.id} >
-          <label className="innerBox">
+          <label className="innerBox" style={{cursor: 'pointer'}}>
             <StFarmInput
               type = "checkbox"
               value={item.name}
               onChange={(e) => checkHandler(e)}
             />
-            <span>{item.name}</span>
+            <span style={{fontSize: '23px'}}>{item.name}</span>
           </label>
         </StFarmDiv>
       ))}

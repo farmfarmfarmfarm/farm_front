@@ -200,4 +200,4 @@ const MapNList = () => {
   )
 }
 
-export default MapNList
+export default MapNListl
