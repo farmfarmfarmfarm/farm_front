@@ -31,7 +31,7 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Header isLoggedIn={isLoggedIn} />
-          <div className='main'>
+          <div className='main' style={{margin:'0px 16px 0px 16px'}}>
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="home" element={<Home />} />
