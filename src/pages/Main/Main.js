@@ -25,13 +25,13 @@ function Main() {
 
     useEffect(() => {
         ///
-        axios.get('/api/farm/findall').then(
-            (res) => {
-                console.log(res);
-                console.log(res.data.data);
-            }
-        )
-        .catch()
+        // axios.get('/api/farm/findall').then(
+        //     (res) => {
+        //         console.log(res);
+        //         console.log(res.data.data);
+        //     }
+        // )
+        // .catch()
         ///
         const ps = new kakao.maps.services.Places()
 
