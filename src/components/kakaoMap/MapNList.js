@@ -15,7 +15,7 @@ const MapNList = () => {
   const [done, setDone] = useState(false);
 
   async function getData() {
-    await axios.get(`/api/farm/${category}`).then(
+    await axios.get(process.env.REACT_APP_DB_HOST + `/api/farm/${category}`).then(
       (res) => {
         res.data.data.forEach((e) =>{
           // console.log(e) //{id: 1, category: 'EXP', name: '가나안농장', reviews: Array(0), reviewRating: 0, …}
