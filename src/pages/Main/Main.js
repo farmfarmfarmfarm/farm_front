@@ -5,6 +5,7 @@ import {useRecoilState} from 'recoil';
 import {selectedLoc, selectedFarm, selectedPlace} from '../../Atom';
 import axios from 'axios';
 import './styleMain.css';
+import { useNavigate } from "react-router-dom";
 
 function Main() {
     const { kakao } = window;
@@ -51,7 +52,10 @@ function Main() {
         }
 
     }, [place]);
-
+    let navigate = useNavigate();
+    if (place !== '' & checkedItems[0]!== undefined){
+        navigate("/home");
+    }
     return (
         <div>
             <h2>나에게 맞는 농장 찾기</h2>
