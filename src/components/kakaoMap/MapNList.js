@@ -28,7 +28,7 @@ const MapNList = () => {
             location_y: e.location_y,
           }]);
         });
-        console.log(Places.length);
+        setDone(true);
       }
     )
     .catch((err)=>{
@@ -47,50 +47,65 @@ const MapNList = () => {
   }, [rcfarm])
 
   useEffect(() => {
-    console.log(Places);
+    if (done){
+      console.log(Places);
+      const container = document.getElementById('mapNList')
+      const options = {
+        center: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)), //검색좌표
+        level: 10,
+      }
+      const map = new kakao.maps.Map(container, options);
 
-    const container = document.getElementById('mapNList')
-    const options = {
-      center: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)), //검색좌표
-      level: 10,
+      for(let i=0; i<Places.length; i++){
+        // 마커 위치
+        let markerPosition = new kakao.maps.LatLng(Places[i].location_y,Places[i].location_x);
+
+        // 마커를 생성합니다 (핀 모양!)
+        let marker = new window.kakao.maps.Marker({
+          position: markerPosition,
+          // map: map, // 마커가 지도 위에 표시되도록 설정합니다
+        });
+
+        // //인포윈도우
+        // var infowindow = new window.kakao.maps.InfoWindow({
+        //   content: activeInfoWindow,
+        // });
+        // infowindow.open(map,marker); //(map,marker)하면 마커(핀)도 나타납니다.
+
+        // kakao.maps.event.addListener(marker, 'click', function () {
+
+          /// 인포윈도우 클릭시 해당 카드가 중앙으로
+          // let sliderinner = document.querySelector(".slider-inner");
+          // sliderinner.style.left = `-${dummy.data[i].id*250 +5*dummy.data[i].id}px`;
+        // })
+        
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: `<div class="iwTextDiv" style="
+              display: block;
+              background: #e0e0df;
+              color: black;
+              border: 1px solid #86a889;
+              text-align: center;
+              height: 28px;
+              line-height: 22px;
+              border-radius: 4px;
+              padding: 0px 10px;
+              font-size: 11px;
+            ">${Places[i].name}</div>`,
+            position: markerPosition,
+            map: map
+        });
+        var position = new window.kakao.maps.LatLng(37.586272, 127.029005);
+        map.setCenter(position); //중심좌표 재설정
+        // infowindow.open(map);
+        var infoTitle = document.querySelectorAll('.iwTextDiv');
+        infoTitle[i].parentElement.parentElement.style.border = '0px';
+        infoTitle[i].parentElement.parentElement.style.background = 'unset';
+        infoTitle[i].parentElement.style.left = '35px';
+      }
     }
-    const map = new kakao.maps.Map(container, options);
-
-    for(let i=0; i<Places.length; i++){
-      // 마커 위치
-      let markerPosition = new kakao.maps.LatLng(Places[i].location_y,Places[i].location_x);
-
-      // // 마커를 생성합니다 (핀 모양!)
-      // let marker = new window.kakao.maps.Marker({
-      //   position: markerPosition,
-      //   map: map, // 마커가 지도 위에 표시되도록 설정합니다
-      // });
-
-      // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-      var activeInfoWindow = '<div style="padding:5px;">Hello World!</div>';
-      var unactiveInfoWindow = '<div style="padding:5px;">nooo!</div>';
-
-      // //인포윈도우
-      // var infowindow = new window.kakao.maps.InfoWindow({
-      //   content: activeInfoWindow,
-      // });
-      // infowindow.open(map,marker); //(map,marker)하면 마커(핀)도 나타납니다.
-
-      // kakao.maps.event.addListener(marker, 'click', function () {
-
-        /// 인포윈도우 클릭시 해당 카드가 중앙으로
-        // let sliderinner = document.querySelector(".slider-inner");
-        // sliderinner.style.left = `-${dummy.data[i].id*250 +5*dummy.data[i].id}px`;
-      // })
-      
-      // 인포윈도우로 장소에 대한 설명을 표시합니다
-      var infowindow = new kakao.maps.InfoWindow({
-          content: `<div style="width:150px;text-align:center;padding:6px 0;">${Places[i].name}</div>`,
-          position: markerPosition
-      });
-      infowindow.open(map);
-    }
-  }, [Places]);
+  }, [done]);
 
   useEffect(()=>{
     let slider = document.querySelector(".slider");
