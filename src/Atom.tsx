@@ -26,3 +26,9 @@ export const selectedDiease = atom({
     default: [],
     effects_UNSTABLE: [persistAtom],
   }); 
+
+export const selectedCrop = atom({
+    key: 'selectedCrop',
+    default: [],
+    effects_UNSTABLE: [persistAtom],
+  }); 

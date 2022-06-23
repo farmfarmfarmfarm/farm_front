@@ -1,59 +1,38 @@
 import React ,{useState,useEffect}from 'react';
 import axios from 'axios';
 import {StFarmChooseContainer, StFarmDiv, StFarmInput} from 'pages/Home/CheckStyle';
-import {selectedDiease} from '../../Atom';
+import {selectedDiease, selectedCrop} from '../../Atom';
 import {useRecoilState} from 'recoil';
 
-const Crop = ({checkedItems, setcheckedItems}) => {
+const Crop = () => {
 
+    const [checkedItems, setcheckedItems] = useState([]);
     const [crops,setCrops] = useState(null);   //결과값
+    const [nocrops,setNoCrops] = useState(null);   //결과값
     const [loading,setLoading] = useState(false); // 로딩되는지 여부
     const [error,setError] = useState(null); //에러    
     const [isChecked, setIsChecked] = useState(false);
     const [rcdiease, setRcdiease] = useRecoilState(selectedDiease);
+    const [rccrop, setRccrop] = useRecoilState(selectedCrop);
 
-    // for (let i=0;i<10;i++){
-    //     axios.get('/api/farm/EXP').then(
-    //       (res) => {
-    //         setResAddress((prev)=>[...prev,{
-    //           id: 1,
-    //           category: 'EXP',
-    //           name: '머머농장',
-    //           address: res.data.data[i].address
-    //         }]);
-    //       },
-    //     )
-    //     .catch()
-    //   }
-    //   console.log(resAddress);
+    const dieaselist = rcdiease;   
+    console.log(dieaselist)
+    const requests = dieaselist&&dieaselist.map(num => fetch(`http://52.78.15.203:8080/api/crop/${num}`));
 
-    console.log(typeof(Number(rcdiease[0])));
+    Promise.all(requests)
+      .then(responses => Promise.all(responses.map(r => r.json())))
+      // .then(users => users.forEach(user => console.log(user.data)))
+      .then(result => result.map(crop => croplist(crop)))
+      .catch(error => console.log(error))
 
-    const fetchCrops = async () => {
-        try {
-            setCrops(null);
-            setError(null);
-            setLoading(true); //로딩이 시작됨
-            const response = await axios.get('/api/crop/findall');
-        } catch (e) {
-            setError(e);
-        }
-        setLoading(false);
-    };
+    function croplist (data) {
+      console.log(data.data)
+    }
 
+    useEffect(() => {
+      setRccrop(checkedItems);
+    },[checkedItems]);
 
-
-    useEffect( () =>{
-        
-        fetchCrops();
-    },[] )
-
-
-    if ( loading ) return <div>로딩중..</div>
-    if (error) return <div>에러 발생!!</div>
-    if (!crops) return null; 
-
-    const formData = crops;
 
     const onRemove = id => {
         setcheckedItems(checkedItems.filter(each => each !== id));
@@ -76,21 +55,24 @@ const Crop = ({checkedItems, setcheckedItems}) => {
     };
 
     return (
-    <StFarmChooseContainer className="contStyle">
-      {formData.map((item) => (
-        <StFarmDiv key={item.id} >
-          <label className="innerBox">
-            <StFarmInput
-              type = "checkbox"
-              value={item.name}
-              onChange={(e) => checkHandler(e)}
-            />
-            <span>{item.name}</span>
-          </label>
-        </StFarmDiv>
-      ))}
-    </StFarmChooseContainer>
+    <div>
+      <h3>효능 작물</h3>
 
+      {/* <StFarmChooseContainer className="contStyle">
+        {formData.map((item) => (
+          <StFarmDiv key={item.id} >
+            <label className="innerBox">
+              <StFarmInput
+                type = "checkbox"
+                value={item.name}
+                onChange={(e) => checkHandler(e)}
+              />
+              <span>{item.name}</span>
+            </label>
+          </StFarmDiv>
+        ))}
+      </StFarmChooseContainer> */}
+    </div>
     );
     
 }
