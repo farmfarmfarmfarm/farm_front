@@ -2,84 +2,111 @@ import React, { useEffect, useState } from 'react'
 import {useRecoilState} from 'recoil';
 import '../../pages/Home/Home.css';
 import {selectedLoc, selectedFarm, selectedPlace} from '../../Atom';
-
+import axios from 'axios';
+import dummy from './dummy.json';
 const { kakao } = window
 
 const MapNList = () => {
-  const [rcloc, setRcloc] = useRecoilState(selectedLoc);
-  const [rcfarm, setRcfarm] = useRecoilState(selectedFarm);
-  const [resultLength, setLength] = useState(10);
-  const [place, setPlace] = useRecoilState(selectedPlace);
+  const [rcloc, setRcloc] = useRecoilState(selectedLoc); //설정한 중심위치 좌표
+  const [rcfarm, setRcfarm] = useRecoilState(selectedFarm); //선택한 농장종류 ['주말농장', '치유농장', '체험농장']
+  const [resultLength, setLength] = useState(10); //결과값 길이
+  const [Places, setPlaces] = useState([])  // 검색결과 배열에 담아줌
+  let category, markerPosition;
+  const [done, setDone] = useState(false);
 
-
-
-  // 검색결과 배열에 담아줌
-  const [Places, setPlaces] = useState([])
-  useEffect(() => {
-    console.log("RECOIL","중심좌표:", rcloc, "선택한농장",rcfarm);
-
-    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
-    var markers = []
-    const container = document.getElementById('mapNList')
-    const options = {
-      center: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)),
-      level: 1,
-    }
-    const map = new kakao.maps.Map(container, options)
-    const ps = new kakao.maps.services.Places()
-
-    for (let s=0; s<rcfarm.length; s++){
-      ps.keywordSearch(rcfarm[s], placesSearchCB,{
-        radius : 15000,
-        location: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)),
-      })
-    }
-
-    function placesSearchCB(data, status, pagination) {
-      if (status === kakao.maps.services.Status.OK) {
-
-        let bounds = new kakao.maps.LatLngBounds()
-        setLength(data.length);
-
-        for (let i = 0; i < data.length; i++) {
-          displayMarker(data[i],i)
-          // bounds.extend(new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x))) //중심좌표 바꾸는 기능임. !입력한주소 좌표를 여기 넣어야할듯
-        }
-
-        // map.setBounds(bounds)
-        map.setLevel(8); //확대 정도 변경  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ISSUE
-        setPlaces(data)
+  async function getData() {
+    await axios.get(process.env.REACT_APP_DB_HOST + `/api/farm/${category}`).then(
+      (res) => {
+        res.data.data.forEach((e) =>{
+          // console.log(e) //{id: 1, category: 'EXP', name: '가나안농장', reviews: Array(0), reviewRating: 0, …}
+          setPlaces((prev)=>[...prev,{
+            id: e.id,
+            category: e.category,
+            name: e.name,
+            address: e.address,
+            location_x: e.location_x,
+            location_y: e.location_y,
+          }]);
+        });
+        setDone(true);
       }
-    }
+    )
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
 
-    function displayMarker(place, i) {
-      let marker = new kakao.maps.Marker({
-        map: map,
-        position: new kakao.maps.LatLng(place.y, place.x),
-      })
-
-      kakao.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>')
-        infowindow.open(map, marker)
-
-        /// 인포윈도우 클릭시 해당 카드가 중앙으로
-        let sliderinner = document.querySelector(".slider-inner");
-        sliderinner.style.left = `-${i*250 +5*i}px`;
-      })
-    }
-
-    //지도 움직일때 중심좌표 반환
-    kakao.maps.event.addListener(map, 'dragend', function() {        
-      var latlng = map.getCenter(); 
-      var message = '변경된 지도 중심좌표는 ' + latlng.getLat() + ' 이고, ';
-      message += '경도는 ' + latlng.getLng() + ' 입니다';
-      console.log( message);
-    });
-    //
-
+  useEffect(() => {
+    if (rcfarm[0]==='주말농장') {category='EXP'}
+    else if (rcfarm[0]==='치유농장') {category='HEAL'}
+    else if (rcfarm[0]==='체험농장') {category='WKND'}
+    console.log("RECOIL","중심좌표:", rcloc, "선택한농장",rcfarm);
+    
+    getData();
+    
   }, [rcfarm])
 
-  ////////////
+  useEffect(() => {
+    if (done){
+      console.log(Places);
+      const container = document.getElementById('mapNList')
+      const options = {
+        center: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)), //검색좌표
+        level: 10,
+      }
+      const map = new kakao.maps.Map(container, options);
+
+      for(let i=0; i<Places.length; i++){
+        // 마커 위치
+        let markerPosition = new kakao.maps.LatLng(Places[i].location_y,Places[i].location_x);
+
+        // 마커를 생성합니다 (핀 모양!)
+        let marker = new window.kakao.maps.Marker({
+          position: markerPosition,
+          // map: map, // 마커가 지도 위에 표시되도록 설정합니다
+        });
+
+        // //인포윈도우
+        // var infowindow = new window.kakao.maps.InfoWindow({
+        //   content: activeInfoWindow,
+        // });
+        // infowindow.open(map,marker); //(map,marker)하면 마커(핀)도 나타납니다.
+
+        // kakao.maps.event.addListener(marker, 'click', function () {
+
+          /// 인포윈도우 클릭시 해당 카드가 중앙으로
+          // let sliderinner = document.querySelector(".slider-inner");
+          // sliderinner.style.left = `-${dummy.data[i].id*250 +5*dummy.data[i].id}px`;
+        // })
+        
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: `<div class="iwTextDiv" style="
+              display: block;
+              background: #e0e0df;
+              color: black;
+              border: 1px solid #86a889;
+              text-align: center;
+              height: 28px;
+              line-height: 22px;
+              border-radius: 4px;
+              padding: 0px 10px;
+              font-size: 11px;
+            ">${Places[i].name}</div>`,
+            position: markerPosition,
+            map: map
+        });
+        var position = new window.kakao.maps.LatLng(37.586272, 127.029005);
+        map.setCenter(position); //중심좌표 재설정
+        // infowindow.open(map);
+        var infoTitle = document.querySelectorAll('.iwTextDiv');
+        infoTitle[i].parentElement.parentElement.style.border = '0px';
+        infoTitle[i].parentElement.parentElement.style.background = 'unset';
+        infoTitle[i].parentElement.style.left = '35px';
+      }
+    }
+  }, [done]);
+
   useEffect(()=>{
     let slider = document.querySelector(".slider");
     let innerSlider = document.querySelector(".slider-inner");
@@ -126,7 +153,6 @@ const MapNList = () => {
     }
   })
   ////////////////////
-
   return (
     <div>
       <div>
@@ -143,15 +169,8 @@ const MapNList = () => {
           {Places.map((item, i) => (
             <div key={i} style={i===0 ? {marginLeft: '16px'} : i===resultLength-1 ? {marginRigth : '16px'} :null} className='slider-item'>
               <div>
-                <h5>{item.place_name}</h5>
-                {item.road_address_name ? (
-                  <div>
-                    <span>{item.road_address_name}</span>
-                    <span>{item.address_name}</span>
-                  </div>
-                ) : (
-                  <span>{item.address_name}</span>
-                )}
+                <h5>{item.name}</h5>
+                <span>{item.address}</span>
                 <span>{item.phone}</span>
               </div>
             </div>

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import {useRecoilState} from 'recoil';
 import {selectedLoc, selectedFarm, selectedPlace} from '../../Atom';
 import axios from 'axios';
+import './styleMain.css';
+import { useNavigate } from "react-router-dom";
 
 function Main() {
     const { kakao } = window;
@@ -50,17 +52,20 @@ function Main() {
         }
 
     }, [place]);
-
+    let navigate = useNavigate();
+    if (place !== '' & checkedItems[0]!== undefined){
+        navigate("/home");
+    }
     return (
         <div>
-            <form className="inputForm" onSubmit={handleSubmit}>
-                <input placeholder="가고싶은 지역을 선택하세요" onChange={onChange} value={inputText} />
+            <h2>나에게 맞는 농장 찾기</h2>
+            <form className="inputForm" onSubmit={handleSubmit} style={{display:'flex', justifyContent: 'space-between'}}>
+                <input placeholder={place==="" ? "가고싶은 지역을 선택하세요" : place } onChange={onChange} value={inputText} />
                 <button type="submit">검색</button>
             </form>
-            <p>{place}</p>
-            <div>어떤 농장을 가볼까요?</div>
+            {/* <p>{place}</p> */}
+            <h3 style={{marginTop: '20px', marginBottom: '5px'}}>어떤 농장을 가볼까요?</h3>
             <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check>
-            {/* <Navermap /> */}
             {(place !== '' & checkedItems[0]!==undefined) ? <Link to='/home'>농장찾으러가기</Link> : null}
         </div>
         
