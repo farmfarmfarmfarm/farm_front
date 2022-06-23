@@ -23,7 +23,7 @@ function Main() {
     }
 
     useEffect(() => {
-        ///
+        
         axios.get('/api/farm/findall').then(
             (res) => {
                 console.log(res);
@@ -31,7 +31,7 @@ function Main() {
             }
         )
         .catch()
-        ///
+        
         const ps = new kakao.maps.services.Places()
 
         ps.keywordSearch(place, placesSearchCB)
