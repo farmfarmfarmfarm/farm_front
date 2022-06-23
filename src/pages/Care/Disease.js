@@ -3,10 +3,13 @@ import axios from 'axios';
 import {StFarmChooseContainer, StFarmDiv, StFarmInput} from 'pages/Home/CheckStyle';
 import {useRecoilState} from 'recoil';
 import {selectedDiease} from '../../Atom';
+import { Link } from 'react-router-dom';
+import Crop from "./Crop";
 
 
-const Disease = ({checkedItems, setcheckedItems}) => {
+const Disease = () => {
 
+    const [checkedItems, setcheckedItems] = useState([]);
     const [diseases,setDiseases] = useState(null);   //결과값
     const [loading,setLoading] = useState(false); // 로딩되는지 여부
     const [error,setError] = useState(null); //에러    
@@ -14,12 +17,12 @@ const Disease = ({checkedItems, setcheckedItems}) => {
     const [rcdiease, setRcdiease] = useRecoilState(selectedDiease);
 
 
-    const fetchDisease = async () => {
+    const fetchDisease = async () => { 
         try {
             setDiseases(null);
             setError(null);
             setLoading(true); //로딩이 시작됨
-            const response = await axios.get('/api/effect/findall');
+            const response = await axios.get('api/effect/findall');
             setDiseases(response.data.data);
         } catch (e) {
             setError(e);
@@ -65,7 +68,9 @@ const Disease = ({checkedItems, setcheckedItems}) => {
       return checkedItems;
     };
 
-    console.log(checkedItems)
+    // const handleNow = ()=>{
+    //   setIsNow(true);
+    // }
 
     return (
     <div>
@@ -79,11 +84,14 @@ const Disease = ({checkedItems, setcheckedItems}) => {
                   value={item.id}
                   onChange={(e) => checkHandler(e)}
                 />
-                <span>{item.effect}</span>
+                <span>{item.symptom}</span>
               </label>
             </StFarmDiv>
           ))}
         </StFarmChooseContainer>
+        {/* <button onClick={()=> handleNow()}> 작물로 진단받기 </button>
+        {isNow ? <Crop></Crop> : null}  */}
+        {(rcdiease !== '' & checkedItems[0]!==undefined) ? <Link to='/crop'>결과보기</Link> : null}
     </div>
     );
     
