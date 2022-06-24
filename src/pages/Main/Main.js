@@ -54,9 +54,12 @@ function Main() {
 
     }, [place]);
     let navigate = useNavigate();
-    if (place !== '' & checkedItems[0]!== undefined){
-        navigate("/home");
-    }
+    useEffect(() => {
+        if (place !== '' & checkedItems[0]!== undefined){
+            navigate("/home");
+        }    
+    }, [checkedItems])
+    
     return (
         <div>
             <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check>
