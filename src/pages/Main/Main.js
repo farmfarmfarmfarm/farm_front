@@ -6,6 +6,7 @@ import {selectedLoc, selectedFarm, selectedPlace} from '../../Atom';
 import axios from 'axios';
 import './styleMain.css';
 import { useNavigate } from "react-router-dom";
+import search from 'assets/icons/search.png'
 
 function Main() {
     const { kakao } = window;
@@ -58,15 +59,16 @@ function Main() {
     }
     return (
         <div>
-            <h2>나에게 맞는 농장 찾기</h2>
-            <form className="inputForm" onSubmit={handleSubmit} style={{display:'flex', justifyContent: 'space-between'}}>
-                <input placeholder={place==="" ? "가고싶은 지역을 선택하세요" : place } onChange={onChange} value={inputText} />
-                <button type="submit">검색</button>
-            </form>
-            {/* <p>{place}</p> */}
-            <h3 style={{marginTop: '20px', marginBottom: '5px'}}>어떤 농장을 가볼까요?</h3>
             <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check>
-            {(place !== '' & checkedItems[0]!==undefined) ? <Link to='/home'>농장찾으러가기</Link> : null}
+            <div className='warp'>
+                <h2 className='farmQ'>어느 농장을 찾고 싶나요?</h2>
+                <form className="inputForm" onSubmit={handleSubmit} style={{display:'flex', justifyContent: 'space-between'}}>
+                    <input placeholder={place==="" ? "검색어를 입력해주세요." : place } onChange={onChange} value={inputText} />
+                    {/* <button type="submit"><img style={{width: '27px', height:'27px'}} src={search} alt="검색"></img></button> */}
+                </form>
+                
+                {(place !== '' & checkedItems[0]!==undefined) ? <Link to='/home'>농장찾으러가기</Link> : null}
+            </div>
         </div>
         
     );

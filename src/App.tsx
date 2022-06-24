@@ -32,7 +32,7 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Header isLoggedIn={isLoggedIn} />
-          <div className='main' style={{margin:'0px 16px 0px 16px'}}>
+          <div className='main'>
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="home" element={<Home />} />

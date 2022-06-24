@@ -25,3 +25,28 @@
     border-radius: 20px;
 
 }
+
+
+/*Check.js */
+.contStyle{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0 18px;
+    text-align: center;
+    font-size: 26px;
+}
+.StFarmDiv{
+    cursor: pointer;
+    height: 35px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: solid 1px;
+    border-radius: 10px;
+}
+.StFarmInput{
+    display: none;
+}
