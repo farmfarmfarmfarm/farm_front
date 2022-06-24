@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import {StFarmChooseContainer, StFarmDiv, StFarmInput} from './CheckStyle';
 import {useRecoilState} from 'recoil';
 import {selectedFarm} from '../../Atom';
 
@@ -24,7 +23,7 @@ const Check = ({checkedItems, setcheckedItems}) => {
   const checkedItemHandler = (text, category, isChecked) => {
     if(isChecked) {
       setcheckedItems([...checkedItems, category]);
-      text.style.color = 'black';
+      text.style.color = 'gray';
     } else if (!isChecked ) {
       onRemove(category);
       text.style.color = '#aeaeae';
@@ -36,20 +35,20 @@ const Check = ({checkedItems, setcheckedItems}) => {
   },[checkedItems]);
 
   return (
-    <StFarmChooseContainer className="contStyle">
+    <div className="contStyle">
       {formData.map((item) => (
-        <StFarmDiv key={item.id} >
+        <div className="StFarmDiv" key={item.id} >
           <label className="innerBox" style={{cursor: 'pointer'}}>
-            <StFarmInput
+            <input className="StFarmInput"
               type = "checkbox"
               value={item.name}
               onChange={(e) => checkHandler(e)}
             />
-            <span style={{fontSize: '23px'}}>{item.name}</span>
+            <span style={{fontSize: '16px'}}>{item.name}</span>
           </label>
-        </StFarmDiv>
+        </div>
       ))}
-    </StFarmChooseContainer>
+    </div>
   );
 };
 

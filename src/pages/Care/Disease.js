@@ -1,10 +1,10 @@
 import React ,{useState,useEffect}from 'react';
 import axios from 'axios';
-import {StFarmChooseContainer, StFarmDiv, StFarmInput} from 'pages/Home/CheckStyle';
 import {useRecoilState} from 'recoil';
 import {selectedDiease} from '../../Atom';
 import { Link } from 'react-router-dom';
-import Crop from "./Crop";
+import './Care.css';
+
 
 
 const Disease = () => {
@@ -60,10 +60,8 @@ const Disease = () => {
     const checkedItemHandler = (text, id, isChecked) => {
       if(isChecked) {
         setcheckedItems([...checkedItems, id]);
-        text.style.color = 'black';
       } else if (!isChecked ) {
         onRemove(id);
-        text.style.color = '#aeaeae';
       }
       return checkedItems;
     };
@@ -74,24 +72,24 @@ const Disease = () => {
 
     return (
     <div>
-      <h3>자신의 증상에 가까운 것들을 체크해 주세요</h3>
-        <StFarmChooseContainer className="contStyle">
+      <p className='select'>증상을 선택하세요</p>
+      <p className='check'>자신의 증상에 가까운 것들을 체크해 주세요</p>
+        <div className="checkStyle">
           {formData.map((item) => (
-            <StFarmDiv key={item.id} >
-              <label className="innerBox">
-                <StFarmInput
-                  type = "checkbox"
-                  value={item.id}
-                  onChange={(e) => checkHandler(e)}
-                />
-                <span>{item.symptom}</span>
-              </label>
-            </StFarmDiv>
+            <div className="StDiseDiv" key={item.id} >
+              <input className="StDiseInput"
+                type = "checkbox"
+                value={item.id}
+                onChange={(e) => checkHandler(e)}
+              />
+              <label className="innerbox" style={{cursor: 'pointer'}}></label>
+              <span>{item.symptom}</span>
+            </div>
           ))}
-        </StFarmChooseContainer>
+        </div>
         {/* <button onClick={()=> handleNow()}> 작물로 진단받기 </button>
         {isNow ? <Crop></Crop> : null}  */}
-        {(rcdiease !== '' & checkedItems[0]!==undefined) ? <Link to='/crop'>결과보기</Link> : null}
+        {(rcdiease !== '' & checkedItems[0]!==undefined) ? <button><Link to='/crop'>결과보기</Link></button> : <button>결과보기</button>}
     </div>
     );
     

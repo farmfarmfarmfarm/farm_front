@@ -1,0 +1,30 @@
+h1 {
+  text-align: center;
+}
+.select {
+  text-align: center;
+  color : #166d1e;
+}
+.check {
+  text-align: center;
+  font-size: 14px;
+  color: #7c7c7c;
+}
+.StDiseInput{
+  display: none
+}
+.StDiseDiv {
+  width: 80px;
+  height: 80px;
+  border: 1.5px solid #666666;
+  border-radius: 100%;
+}
+.StDiseInput:checked .StDiseDiv {
+  width: 80px;
+  height: 80px;
+  border: 1.5px solid #037F00;
+  border-radius: 100%;
+}
+.innerbox{
+  text-align: center;
+}
