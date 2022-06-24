@@ -4,6 +4,7 @@ import {signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import './Login.css';
 
 const Login = ()=>{
     const navigate = useNavigate();
@@ -41,7 +42,7 @@ const Login = ()=>{
             <div>
             <button onClick={postData}>크을릭</button>    
             <div>
-                <button name="google" onClick={onSocialClick}>Continue with Google</button>
+                <button className='login-btn' name="google" onClick={onSocialClick}>Continue with Google</button>
             </div>
         </div>
         </>

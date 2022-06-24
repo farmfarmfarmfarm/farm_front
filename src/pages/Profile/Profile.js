@@ -27,12 +27,13 @@ const Profile =({username,setUsername})=>{
     return(
         <>
             <p>THIS IS Profile</p>
-            <div>로그인한거 확인 완료-! </div>
-            <h2>안녕하세요  {nickname} 님</h2>
+            <h2>안녕하세요.</h2>
+            <h1>{nickname} 님</h1>
+            <p>오늘도 나의 농장에서 힐링하세요!</p>
             <form onSubmit={onSubmit}>
                 <input onChange={onChange} type="text" value={newNickname} placeholder="You can change your nickname" />
             </form>
-            <button onClick={onLogOutClick}><Link to ="/">Log Out</Link></button>
+            <button className='login-btn' onClick={onLogOutClick}><Link to ="/">Log Out</Link></button>
             
         </>
     )

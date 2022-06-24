@@ -1,6 +1,5 @@
 import React ,{useState,useEffect}from 'react';
 import axios from 'axios';
-import {StFarmChooseContainer, StFarmDiv, StFarmInput} from 'pages/Home/CheckStyle';
 import {selectedDiease, selectedCrop} from '../../Atom';
 import {useRecoilState} from 'recoil';
 
