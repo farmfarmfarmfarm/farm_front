@@ -13,7 +13,7 @@ function Main() {
     const [rcloc, setRcloc] = useRecoilState(selectedLoc);
     const [place, setPlace] = useRecoilState(selectedPlace);
 
-    const [checkedItems, setcheckedItems] = useState([]);
+    const [checkedItems, setcheckedItems] = useState('');
     const [inputText, setInputText] = useState('')
 
     const onChange = (e) => {
@@ -26,11 +26,9 @@ function Main() {
     }
 
     useEffect(() => {
-        
         axios.get('/api/farm/findall').then(
             (res) => {
-                console.log(res);
-                console.log(res.data.data);
+                console.log(res.data.data.length, '개의 농장 찾기 성공');
             }
         )
         .catch()
@@ -39,7 +37,7 @@ function Main() {
 
         ps.keywordSearch(place, placesSearchCB)
         function placesSearchCB(data, status, pagination) {
-            console.log("m", data[0]);
+            console.log("설정위치", data[0]);
             if (data.length===0){
                 setPlace("");
                 alert('해당하는 위치를 찾을 수 없습니다');
@@ -62,15 +60,16 @@ function Main() {
     
     return (
         <div>
-            <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check>
+            {/* <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check> */}
             <div className='warp'>
                 <h2 className='farmQ'>어느 농장을 찾고 싶나요?</h2>
                 <form className="inputForm" onSubmit={handleSubmit} style={{display:'flex', justifyContent: 'space-between'}}>
                     <input placeholder={place==="" ? "검색어를 입력해주세요." : place } onChange={onChange} value={inputText} />
-                    {/* <button type="submit"><img style={{width: '27px', height:'27px'}} src={search} alt="검색"></img></button> */}
-                </form>
+                    {(place !== '' ) ? 
+                        <Link to='/home'><img style={{width: '27px', height:'27px'}} src={search} alt="검색"></img></Link> 
+                        : <img style={{width: '27px', height:'27px'}} src={search} alt="검색"></img>}
+                    </form>
                 
-                {(place !== '' & checkedItems[0]!==undefined) ? <Link to='/home'>농장찾으러가기</Link> : null}
             </div>
         </div>
         

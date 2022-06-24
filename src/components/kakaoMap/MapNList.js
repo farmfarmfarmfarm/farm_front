@@ -98,7 +98,6 @@ const MapNList = () => {
         });
         var position = new window.kakao.maps.LatLng(37.586272, 127.029005);
         map.setCenter(position); //중심좌표 재설정
-        // infowindow.open(map);
         var infoTitle = document.querySelectorAll('.iwTextDiv');
         infoTitle[i].parentElement.parentElement.style.border = '0px';
         infoTitle[i].parentElement.parentElement.style.background = 'unset';
@@ -152,7 +151,7 @@ const MapNList = () => {
       }
     }
   })
-  ////////////////////
+  
   return (
     <div>
       <div>
