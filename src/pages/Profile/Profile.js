@@ -33,7 +33,7 @@ const Profile =({username,setUsername})=>{
             <form onSubmit={onSubmit}>
                 <input onChange={onChange} type="text" value={newNickname} placeholder="You can change your nickname" />
             </form>
-            <button className='login-btn' onClick={onLogOutClick}><Link to ="/">Log Out</Link></button>
+            <button className='login-btn' onClick={onLogOutClick} ><Link to ="/" style={{color: 'white', textDecoration: 'none'}}>Log Out</Link></button>
             
         </>
     )
