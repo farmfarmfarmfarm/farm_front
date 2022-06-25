@@ -1,29 +1,29 @@
 import React ,{useState,useEffect}from 'react';
 import axios from 'axios';
 import {useRecoilState} from 'recoil';
-import {selectedDiease} from '../../Atom';
+import {selectedDiease, selectedCrop} from '../../Atom';
 import { Link } from 'react-router-dom';
 import './Care.css';
 
 
 
-const Disease = () => {
+const AllCrops = () => {
 
     const [checkedItems, setcheckedItems] = useState([]);
-    const [diseases,setDiseases] = useState(null);   //결과값
+    const [allcrops,setallCrops] = useState(null);   //결과값
     const [loading,setLoading] = useState(false); // 로딩되는지 여부
     const [error,setError] = useState(null); //에러    
     const [isChecked, setIsChecked] = useState(false);
-    const [rcdiease, setRcdiease] = useRecoilState(selectedDiease);
+    const [rccrop, setRccrop] = useRecoilState(selectedCrop);
 
 
-    const fetchDisease = async () => { 
+    const fetchAllCrops = async () => { 
         try {
-            setDiseases(null);
+            setallCrops(null);
             setError(null);
             setLoading(true); //로딩이 시작됨
-            const response = await axios.get('api/effect/findall');
-            setDiseases(response.data.data);
+            const response = await axios.get('api/crop/findall');
+            setallCrops(response.data.data);
         } catch (e) {
             setError(e);
         }
@@ -34,20 +34,14 @@ const Disease = () => {
 
     useEffect( () =>{
         
-        fetchDisease();
+      fetchAllCrops();
     },[] )
-
-    useEffect(() => {
-      setRcdiease(checkedItems);
-    },[checkedItems]);
-
-
 
     if ( loading ) return <div>로딩중..</div>
     if (error) return <div>에러 발생!!</div>
-    if (!diseases) return null; 
+    if (!allcrops) return null; 
 
-    const formData = diseases;
+    const formData =allcrops;
 
     const onRemove = id => {
       setcheckedItems(checkedItems.filter(each => each !== id));
@@ -69,28 +63,21 @@ const Disease = () => {
 
     return (
     <div>
-      <p className='select'>증상을 선택하세요</p>
-      <p className='check'>자신의 증상에 가까운 것들을 체크해 주세요</p>
+      <h2>모든 작물 보기</h2>
         <div className="container">
           {formData.map((item) => (
             <div className="item" key={item.id} >             
-                <input className="StDiseInput"
-                  type = "checkbox"
-                  value={item.id}
-                  id={item.id}
-                  onChange={(e) => checkHandler(e)}
-                />
+                <input className="StDiseInput" type = "checkbox" value={item.id} id={item.id} onChange={(e) => checkHandler(e)}/>
                 <label className="innerbox" for={item.id} style={{cursor: 'pointer'}}>
-                <p style={{fontSize: '13px'}}>{item.symptom}</p>
+                <p style={{fontSize: '13px'}}>{item.name}</p>
               </label> 
             </div>
           ))}
         </div>
-        {(rcdiease !== '' & checkedItems[0]!==undefined) ? <button className='after-btn'><Link to='/crop' style={{color: 'white', textDecoration: 'none'}}>결과보기</Link></button> : <button className='before-btn'>결과보기</button>}
     </div>
     );
     
 }
 
 
-export default Disease;
+export default AllCrops;

@@ -2,10 +2,13 @@ import React ,{useState,useEffect}from 'react';
 import axios from 'axios';
 import {selectedDiease, selectedCrop} from '../../Atom';
 import {useRecoilState} from 'recoil';
+import AllCrops from './AllCrops';
+import './Care.css';
 
 const Crop = () => {
 
     const [checkedItems, setcheckedItems] = useState([]);
+    const [formData, setformData] = useState([]);
     const [crops,setCrops] = useState(null);   //결과값
     const [nocrops,setNoCrops] = useState(null);   //결과값
     const [loading,setLoading] = useState(false); // 로딩되는지 여부
@@ -15,8 +18,7 @@ const Crop = () => {
     const [rccrop, setRccrop] = useRecoilState(selectedCrop);
 
     const dieaselist = rcdiease;   
-    console.log(dieaselist)
-    const requests = dieaselist&&dieaselist.map(num => fetch(`http://52.78.15.203:8080/api/crop/${num}`));
+    const requests = dieaselist&&dieaselist.map(num => fetch(`/api/crop/${num}`));
 
     Promise.all(requests)
       .then(responses => Promise.all(responses.map(r => r.json())))
@@ -26,8 +28,11 @@ const Crop = () => {
 
     function croplist (data) {
       console.log(data.data)
+      setformData([...formData, data.data]);
     }
 
+    console.log(formData);
+    
     useEffect(() => {
       setRccrop(checkedItems);
     },[checkedItems]);
@@ -45,18 +50,15 @@ const Crop = () => {
     const checkedItemHandler = (text, id, isChecked) => {
         if(isChecked) {
           setcheckedItems([...checkedItems, id]);
-          text.style.color = 'black';
         } else if (!isChecked ) {
           onRemove(id);
-          text.style.color = '#aeaeae';
         }
         return checkedItems;
     };
 
     return (
     <div>
-      <h3>효능 작물</h3>
-
+      <h2>효능 작물</h2>
       {/* <StFarmChooseContainer className="contStyle">
         {formData.map((item) => (
           <StFarmDiv key={item.id} >
@@ -71,6 +73,7 @@ const Crop = () => {
           </StFarmDiv>
         ))}
       </StFarmChooseContainer> */}
+      <AllCrops></AllCrops>
     </div>
     );
     
