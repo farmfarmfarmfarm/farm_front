@@ -17,7 +17,7 @@ export const selectedLoc = atom({
 
 export const selectedFarm = atom({
     key: 'selectedFarm',
-    default: [],
+    default: '',
     effects_UNSTABLE: [persistAtom],
   }); 
 
