@@ -4,7 +4,6 @@ import {selectedFarm} from '../../Atom';
 
 const Check = ({checkedItems, setcheckedItems}) => {
   const [rcfarm, setRcfarm] = useRecoilState(selectedFarm);
-
   const formData = [
     {id: 1, name: "주말농장"},
     {id: 2, name: "치유농장"},
@@ -16,6 +15,8 @@ const Check = ({checkedItems, setcheckedItems}) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const checkHandler = ({ target }) => {
+    console.log(target);
+    setRcfarm(target.value);
     setIsChecked(!isChecked);
     checkedItemHandler(target.parentNode.lastChild, target.value, target.checked);
   };
@@ -30,9 +31,9 @@ const Check = ({checkedItems, setcheckedItems}) => {
     }
     return checkedItems;
   };
-  useEffect(() => {
-    setRcfarm(checkedItems);
-  },[checkedItems]);
+  // useEffect(() => {
+  //   setRcfarm(checkedItems);
+  // },[checkedItems]);
 
   return (
     <div className="contStyle">

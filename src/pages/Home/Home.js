@@ -6,13 +6,12 @@ import {selectedLoc, selectedFarm, selectedPlace} from '../../Atom';
 
 const Home =()=>{
     const [place, setPlace] = useRecoilState(selectedPlace);
-    const [checkedItems, setcheckedItems] = useState([]);
+    const [checkedItems, setcheckedItems] = useState(['주말농장']);
+    console.log('중심위치',place);
 
     return(
         <>
-            THIS IS HOME_이거나중엔 nav에서 없애야됨. Main에서 위치, 농장 선택 후에 접근 가능
             <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check>
-            <h3>{place}</h3>
             <MapNList />
         </>
     )

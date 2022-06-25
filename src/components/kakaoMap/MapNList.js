@@ -14,9 +14,12 @@ const MapNList = () => {
   let category, markerPosition;
   const [done, setDone] = useState(false);
 
-  async function getData() {
-    await axios.get(`/api/farm/${category}`).then(
+  async function getData(cate) {
+    console.log(cate);
+    await axios.get(`/api/farm/${cate}`).then(
       (res) => {
+        setPlaces((Places) => []);
+        // console.log(Places);
         res.data.data.forEach((e) =>{
           // console.log(e) //{id: 1, category: 'EXP', name: '가나안농장', reviews: Array(0), reviewRating: 0, …}
           setPlaces((prev)=>[...prev,{
@@ -37,18 +40,17 @@ const MapNList = () => {
   }
 
   useEffect(() => {
-    if (rcfarm[0]==='주말농장') {category='EXP'}
-    else if (rcfarm[0]==='치유농장') {category='HEAL'}
-    else if (rcfarm[0]==='체험농장') {category='WKND'}
+    if (rcfarm==='주말농장') {getData('WKND');}
+    else if (rcfarm==='치유농장') {getData('HEAL')}
+    else if (rcfarm==='체험농장') {getData('EXP')}
     console.log("RECOIL","중심좌표:", rcloc, "선택한농장",rcfarm);
     
-    getData();
+    // getData(category);
     
   }, [rcfarm])
 
   useEffect(() => {
-    if (done){
-      console.log(Places);
+      // console.log(Places);
       const container = document.getElementById('mapNList')
       const options = {
         center: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)), //검색좌표
@@ -98,13 +100,16 @@ const MapNList = () => {
         });
         var position = new window.kakao.maps.LatLng(37.586272, 127.029005);
         map.setCenter(position); //중심좌표 재설정
-        var infoTitle = document.querySelectorAll('.iwTextDiv');
+
+      }
+      var infoTitle = document.querySelectorAll('.iwTextDiv');
+      for (let i=0; i<infoTitle.length; i++){
         infoTitle[i].parentElement.parentElement.style.border = '0px';
         infoTitle[i].parentElement.parentElement.style.background = 'unset';
         infoTitle[i].parentElement.style.left = '35px';
       }
     }
-  }, [done]);
+  );
 
   useEffect(()=>{
     let slider = document.querySelector(".slider");
@@ -171,6 +176,7 @@ const MapNList = () => {
                 <h5>{item.name}</h5>
                 <span>{item.address}</span>
                 <span>{item.phone}</span>
+                <span>{item.category}</span>
               </div>
             </div>
           ))}
