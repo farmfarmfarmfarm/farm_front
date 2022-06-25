@@ -10,35 +10,90 @@ h1 {
   font-size: 14px;
   color: #7c7c7c;
 }
-.checkStyle {
+.container {
   display: flex;
   justify-content: space-around;
   padding: 10px 0 18px;
   text-align: center;
-  color: #aeaeae;
-  font-size: 26px;
+  color: black;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
-.StDiseInput{
-  display: none
+.item {
+  position: relative
 }
-.StDiseDiv {
-  width: 80px;
-  height: 80px;
-  border: 1.5px solid #666666;
+.innerbox{
+  text-align: center;
+  width: 75px;
+  height: 75px;
+  margin : 20px;
+  border: 2px solid #666666;
   border-radius: 100%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e2e6d9;
+  background-color: white;
 }
-.StDiseInput:checked .StDiseDiv {
-  width: 80px;
-  height: 80px;
-  border: 1.5px solid #037F00;
-  border-radius: 100%;
+input[type="checkbox"]{
+  position: absolute; 
+  top: 20px; 
+  right: 20px;
+  appearance: none;
+  cursor: pointer;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
 }
-.innerbox{
+input[type="checkbox"]::before{
+  content: "✔";
+  color: #fff;
+  margin-left: 3px;
+}
+input[type="checkbox"]:checked {
+  background: #037F00;
+  border: none;
+}
+input[type="checkbox"]:checked + .innerbox{
   text-align: center;
+  width: 75px;
+  height: 75px;
+  margin : 20px;
+  border: 2px solid #037F00;
+  border-radius: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #037F00;
+}
+p {
+  text-align: center;
+}
+
+/*button*/
+.before-btn {
+  position: fixed;
+  bottom: 15px;
+  width: 150px;
+  height: 35px;
+  left: 50%;
+  margin-left: -75px;
+  background-color: #ededed;
+  color:#7c7c7c;
+  border: 1px solid #a2a2a2;
+  border-radius: 8px;
+}
+.after-btn {
+  position: fixed;
+  bottom: 15px;
+  width: 150px;
+  height: 35px;
+  left: 50%;
+  margin-left: -75px;
+  background-color: #037F00;
+  color: white;
+  border: 1px solid #037F00;
+  border-radius: 8px;
 }
