@@ -1,3 +1,13 @@
+/*Home.js */
+.home {
+    position: relative;
+}
+.farmcheck {
+    position:absolute;
+    right:10px;
+    top:0px;
+}
+
 .slider {
     position: relative;
     /* left: 10%;
@@ -29,23 +39,37 @@
 
 /*Check.js */
 .contStyle{
+    box-sizing: content-box;
     display: flex;
     justify-content: space-around;
-    padding: 10px 0 18px;
+    align-items: center;
     text-align: center;
-    font-size: 26px;
+    width: 170px;
+    height: 25px;
+    padding: 2px 5px 2px 5px;  
+    font-size: 15px;
+    border : solid 1px gray;
+    border-radius: 10px;
 }
-.StFarmDiv{
+.innerBox{
     cursor: pointer;
-    height: 35px;
-    width: 120px;
+    height: 22px;
+    width: 54px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
-    border-radius: 5px;
-    border: solid 1px;
-    border-radius: 10px;
+    border-radius: 8px;
+}
+input[type="checkbox"]:checked + .innerBox{
+    cursor: pointer;
+    height: 22px;
+    width: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #cbd7be;
+    border-radius: 8px;
 }
 .StFarmInput{
     display: none;

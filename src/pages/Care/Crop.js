@@ -28,10 +28,10 @@ const Crop = () => {
 
     function croplist (data) {
       console.log(data.data)
-      setformData([...formData, data.data]);
+      // setformData([...formData, data.data]);
     }
 
-    console.log(formData);
+    // console.log(formData);
     
     useEffect(() => {
       setRccrop(checkedItems);

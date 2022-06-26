@@ -24,10 +24,8 @@ const Check = ({checkedItems, setcheckedItems}) => {
   const checkedItemHandler = (text, category, isChecked) => {
     if(isChecked) {
       setcheckedItems([...checkedItems, category]);
-      text.style.color = 'gray';
     } else if (!isChecked ) {
       onRemove(category);
-      text.style.color = '#aeaeae';
     }
     return checkedItems;
   };
@@ -39,13 +37,9 @@ const Check = ({checkedItems, setcheckedItems}) => {
     <div className="contStyle">
       {formData.map((item) => (
         <div className="StFarmDiv" key={item.id} >
-          <label className="innerBox" style={{cursor: 'pointer'}}>
-            <input className="StFarmInput"
-              type = "checkbox"
-              value={item.name}
-              onChange={(e) => checkHandler(e)}
-            />
-            <span style={{fontSize: '16px'}}>{item.name}</span>
+          <input className="StFarmInput" type = "checkbox" value={item.name} id={item.id} onChange={(e) => checkHandler(e)}/>
+          <label className="innerBox" for={item.id} style={{cursor: 'pointer'}}>
+            <span style={{fontSize: '12px'}}>{item.name}</span>
           </label>
         </div>
       ))}

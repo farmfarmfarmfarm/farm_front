@@ -74,13 +74,8 @@ const Disease = () => {
         <div className="container">
           {formData.map((item) => (
             <div className="item" key={item.id} >             
-                <input className="StDiseInput"
-                  type = "checkbox"
-                  value={item.id}
-                  id={item.id}
-                  onChange={(e) => checkHandler(e)}
-                />
-                <label className="innerbox" for={item.id} style={{cursor: 'pointer'}}>
+              <input className="StDiseInput" type = "checkbox" value={item.id} id={item.id} onChange={(e) => checkHandler(e)}/>
+              <label className="innerbox" for={item.id} style={{cursor: 'pointer'}}>
                 <p style={{fontSize: '13px'}}>{item.symptom}</p>
               </label> 
             </div>
