@@ -3,7 +3,8 @@ import {useRecoilState} from 'recoil';
 import '../../pages/Home/Home.css';
 import {selectedLoc, selectedFarm, selectedPlace} from '../../Atom';
 import axios from 'axios';
-import dummy from './dummy.json';
+import listFarm from '../../assets/icons/listFarm.png'
+
 const { kakao } = window
 
 const MapNList = () => {
@@ -29,6 +30,7 @@ const MapNList = () => {
             address: e.address,
             location_x: e.location_x,
             location_y: e.location_y,
+            phone: e.phone,
           }]);
         });
         setDone(true);
@@ -172,11 +174,14 @@ const MapNList = () => {
         <div className="slider-inner" style={{gridTemplateColumns: `repeat(${resultLength}, 1fr)`}}>
           {Places.map((item, i) => (
             <div key={i} style={i===0 ? {marginLeft: '16px'} : i===resultLength-1 ? {marginRigth : '16px'} :null} className='slider-item'>
-              <div>
-                <h5>{item.name}</h5>
-                <span>{item.address}</span>
-                <span>{item.phone}</span>
-                <span>{item.category}</span>
+              <div style={{display: 'grid', justifyContent: 'center'}}>
+                <div style={{marginBottom: '10px',display: 'flex', alignItems: 'center'}}>
+                  <img style={{width: '50px', height: '50px', display: 'inline-block', marginRight: '20px'}} src={listFarm} alt="로고" />
+                  <div style={{display: 'inline-block', fontSize: '20px'}}>{item.name}</div>
+                </div>
+                <div style={{color: '#5f5f5f'}}>{item.address}</div>
+                <div style={{color: '#5f5f5f'}}>{item.phone}</div>
+                {/* <div>{item.category}</div> */}
               </div>
             </div>
           ))}

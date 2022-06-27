@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StHeader = styled.header`
-    border : 1px solid black;
 `;
 
 export const StHeaderMain = styled.div`
