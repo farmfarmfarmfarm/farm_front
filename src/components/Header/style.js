@@ -20,12 +20,3 @@ export const StNav = styled.nav`
     display: flex;
     justify-content: space-around;
 `;
-
-export const Chartcontainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-`;
-
-export const Chartitem = styled.div`
-    width: 120px;
-`;

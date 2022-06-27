@@ -1,10 +1,14 @@
 import { PieChart } from "react-minimal-pie-chart";
 import { Chartcontainer, Chartitem } from 'components/Header/style';
+import {useRecoilState} from 'recoil';
+import {ratingAvg} from '../../Atom';
 
 const Chart = () => {
   const distance = 20;
   const rating = 30;
   const recommendation = (distance+rating)/2
+  const [rateAvg, setRateAvg] = useRecoilState(ratingAvg);
+
   return (
     <Chartcontainer>
       <Chartitem>
