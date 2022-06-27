@@ -1,0 +1,29 @@
+/*Review.js*/
+.reviews {
+  border-radius: 30px;
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  position: relative;
+  background-color: rgb(232, 232, 232);
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.content {
+  text-align: center;
+}
+.name {
+  position: absolute;
+  left : 20px;
+  bottom: 5px;
+}
+
+
+
+/*ReviewChart*/
+.Chartcontainer {
+  width: 200px;
+  height: 200px;
+  transition: 0.3s;
+  margin: 0 auto;
+}
