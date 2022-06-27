@@ -10,6 +10,7 @@ import {authService} from 'pages/Login/fbase';
 import Care from 'pages/Care/Care';
 import Crop from 'pages/Care/Crop';
 import {RecoilRoot} from 'recoil';
+import Review from 'pages/Review/Review';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
               <Route path="home" element={<Home />} />
               <Route path="login" element={<Login />} />
               <Route path="profile" element={<Profile username={username} setUsername={setUsername} />} />
+              <Route path="home/review/:reviewId" element={<Review />} />
               <Route path="care" element={<Care />} />
               <Route path="crop" element={<Crop />} />
             </Routes>

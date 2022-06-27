@@ -4,10 +4,13 @@ import '../../pages/Home/Home.css';
 import {selectedLoc, selectedFarm, selectedPlace} from '../../Atom';
 import axios from 'axios';
 import listFarm from '../../assets/icons/listFarm.png';
+import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const { kakao } = window
 
 const MapNList = () => {
+  const navigate = useNavigate();
   const [rcloc, setRcloc] = useRecoilState(selectedLoc); //설정한 중심위치 좌표
   const [rcfarm, setRcfarm] = useRecoilState(selectedFarm); //선택한 농장종류 ['주말농장', '치유농장', '체험농장']
   const [resultLength, setLength] = useState(10); //결과값 길이
@@ -20,7 +23,6 @@ const MapNList = () => {
     await axios.get(`/api/farm/${cate}`).then(
       (res) => {
         setPlaces((Places) => []);
-        // console.log(Places);
         res.data.data.forEach((e) =>{
           // console.log(e) //{id: 1, category: 'EXP', name: '가나안농장', reviews: Array(0), reviewRating: 0, …}
           setPlaces((prev)=>[...prev,{
@@ -52,6 +54,9 @@ const MapNList = () => {
   }, [rcfarm])
 
   useEffect(() => {
+    function handleIwClick(e) {
+      navigate(`review/${e.target.id}`)
+    }
       // console.log(Places);
       const container = document.getElementById('mapNList')
       const options = {
@@ -70,22 +75,9 @@ const MapNList = () => {
           // map: map, // 마커가 지도 위에 표시되도록 설정합니다
         });
 
-        // //인포윈도우
-        // var infowindow = new window.kakao.maps.InfoWindow({
-        //   content: activeInfoWindow,
-        // });
-        // infowindow.open(map,marker); //(map,marker)하면 마커(핀)도 나타납니다.
-
-        // kakao.maps.event.addListener(marker, 'click', function () {
-
-          /// 인포윈도우 클릭시 해당 카드가 중앙으로
-          // let sliderinner = document.querySelector(".slider-inner");
-          // sliderinner.style.left = `-${dummy.data[i].id*250 +5*dummy.data[i].id}px`;
-        // })
-        
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: `<div class="iwTextDiv" style="
+            content: `<div class="iwTextDiv" id=${Places[i].id} style="
               display: block;
               background: #e0e0df;
               color: black;
@@ -98,8 +90,10 @@ const MapNList = () => {
               font-size: 11px;
             ">${Places[i].name}</div>`,
             position: markerPosition,
-            map: map
+            map: map,
+            clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
         });
+
         var position = new window.kakao.maps.LatLng(37.586272, 127.029005);
         map.setCenter(position); //중심좌표 재설정
 
@@ -109,6 +103,7 @@ const MapNList = () => {
         infoTitle[i].parentElement.parentElement.style.border = '0px';
         infoTitle[i].parentElement.parentElement.style.background = 'unset';
         infoTitle[i].parentElement.style.left = '35px';
+        infoTitle[i].onclick = handleIwClick; //인포윈도우 클릭이벤트
       }
     }
   );
@@ -174,15 +169,18 @@ const MapNList = () => {
         <div className="slider-inner" style={{gridTemplateColumns: `repeat(${resultLength}, 1fr)`}}>
           {Places.map((item, i) => (
             <div key={i} style={i===0 ? {marginLeft: '16px'} : i===resultLength-1 ? {marginRigth : '16px'} :null} className='slider-item'>
-              <div style={{display: 'grid', justifyContent: 'center'}}>
-                <div style={{marginBottom: '10px',display: 'flex', alignItems: 'center'}}>
-                  <img style={{width: '50px', height: '50px', display: 'inline-block', marginRight: '20px'}} src={listFarm} alt="로고" />
-                  <div style={{display: 'inline-block', fontSize: '20px'}}>{item.name}</div>
+                <div style={{display: 'grid', justifyContent: 'center'}}>
+                  <div style={{marginBottom: '10px',display: 'flex', alignItems: 'center'}}>
+                    <img style={{width: '50px', height: '50px', display: 'inline-block', marginRight: '20px'}} src={listFarm} alt="로고" />
+                    <Link to="review/1">
+                      <div style={{display: 'inline-block', fontSize: '20px'}}>{item.name}</div>
+                    </Link>
+                  </div>
+                  <div style={{color: '#5f5f5f'}}>{item.address}</div>
+                  <div style={{color: '#5f5f5f'}}>{item.phone}</div>
+                  {/* <div>{item.category}</div> */}
                 </div>
-                <div style={{color: '#5f5f5f'}}>{item.address}</div>
-                <div style={{color: '#5f5f5f'}}>{item.phone}</div>
-                {/* <div>{item.category}</div> */}
-              </div>
+              
             </div>
           ))}
           <div id="pagination"></div>
