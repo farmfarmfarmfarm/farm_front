@@ -3,7 +3,7 @@ import {useRecoilState} from 'recoil';
 import '../../pages/Home/Home.css';
 import {selectedLoc, selectedFarm, selectedPlace} from '../../Atom';
 import axios from 'axios';
-import listFarm from '../../assets/icons/listFarm.png'
+import listFarm from '../../assets/icons/listFarm.png';
 
 const { kakao } = window
 
