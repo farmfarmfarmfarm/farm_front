@@ -9,13 +9,12 @@ import './Care.css';
 
 const AllCrops = () => {
 
-    const [checkedItems, setcheckedItems] = useState([]);
+    const [checkedItem, setcheckedItem] = useState('');
     const [allcrops,setallCrops] = useState(null);   //결과값
     const [loading,setLoading] = useState(false); // 로딩되는지 여부
     const [error,setError] = useState(null); //에러    
     const [isChecked, setIsChecked] = useState(false);
     const [rccrop, setRccrop] = useRecoilState(selectedCrop);
-
 
     const fetchAllCrops = async () => { 
         try {
@@ -43,22 +42,11 @@ const AllCrops = () => {
 
     const formData =allcrops;
 
-    const onRemove = id => {
-      setcheckedItems(checkedItems.filter(each => each !== id));
-    };
-    const checkHandler = ({ target }) => {
-      setIsChecked(!isChecked);
-      checkedItemHandler(target.parentNode.lastChild, target.value, target.checked);
-    };
-  
-    const checkedItemHandler = (text, id, isChecked) => {
-      if(isChecked) {
-        setcheckedItems([...checkedItems, id]);
-      } else if (!isChecked ) {
-        onRemove(id);
-      }
-      return checkedItems;
-    };
+
+    const onclick = ({target}) => {
+      setRccrop([...rccrop, target.value]);
+      console.log(rccrop);
+    }
 
 
     return (
@@ -66,12 +54,13 @@ const AllCrops = () => {
       <h2>모든 작물 보기</h2>
         <div className="container">
           {formData.map((item) => (
-            <div className="item" key={item.id} >             
-                <input className="StDiseInput" type = "checkbox" value={item.id} id={item.id} onChange={(e) => checkHandler(e)}/>
-                <label className="innerbox" for={item.id} style={{cursor: 'pointer'}}>
-                <p style={{fontSize: '13px'}}>{item.name}</p>
-              </label> 
-            </div>
+              <div className="item" key={item.id} >
+                <Link to='/recipe'>
+                  <button className="StDiseInput" type = "checkbox" value={item.id} id={item.id} onClick={(e) => onclick(e)}>
+                    <p style={{fontSize: '13px'}}>{item.name}</p>
+                  </button>
+                </Link>             
+              </div>
           ))}
         </div>
     </div>

@@ -48,7 +48,6 @@ const MapNList = () => {
     else if (rcfarm==='치유농장') {getData('HEAL')}
     else if (rcfarm==='체험농장') {getData('EXP')}
     console.log("RECOIL","중심좌표:", rcloc, "선택한농장",rcfarm);
-    
     // getData(category);
     
   }, [rcfarm])

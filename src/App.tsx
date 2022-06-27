@@ -9,6 +9,9 @@ import Profile from 'pages/Profile/Profile';
 import {authService} from 'pages/Login/fbase';
 import Care from 'pages/Care/Care';
 import Crop from 'pages/Care/Crop';
+import AllCrops from 'pages/Care/AllCrops';
+import Recipe from 'pages/Care/Recipe';
+import Menu from 'pages/Menu/Menu';
 import {RecoilRoot} from 'recoil';
 import Review from 'pages/Review/Review';
 
@@ -42,6 +45,9 @@ function App() {
               <Route path="home/review/:reviewId" element={<Review />} />
               <Route path="care" element={<Care />} />
               <Route path="crop" element={<Crop />} />
+              <Route path="allcrops" element={<AllCrops />} />
+              <Route path="recipe" element={<Recipe />} />
+              <Route path="menu" element={<Menu />} />
             </Routes>
           </div>
         </BrowserRouter>

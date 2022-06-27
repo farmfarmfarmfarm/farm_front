@@ -53,6 +53,7 @@ const Disease = () => {
       setcheckedItems(checkedItems.filter(each => each !== id));
     };
     const checkHandler = ({ target }) => {
+      console.log(target.Disease);
       setIsChecked(!isChecked);
       checkedItemHandler(target.parentNode.lastChild, target.value, target.checked);
     };
