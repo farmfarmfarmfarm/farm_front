@@ -19,19 +19,18 @@ const Crop = () => {
 
     const dieaselist = rcdiease;   
     const requests = dieaselist&&dieaselist.map(num => fetch(`/api/crop/${num}`));
+    console.log(rcdiease.includes(''));
 
-    Promise.all(requests)
+    useEffect( () => {
+      Promise.all(requests)
       .then(responses => Promise.all(responses.map(r => r.json())))
-      // .then(users => users.forEach(user => console.log(user.data)))
-      .then(result => result.map(crop => croplist(crop)))
+      .then(users => users.forEach(user => {
+        setformData([...formData, user.data]);
+        console.log(user.data);
+      }))
       .catch(error => console.log(error))
+    }, [])
 
-    function croplist (data) {
-      console.log(data.data)
-      // setformData([...formData, data.data]);
-    }
-
-    // console.log(formData);
     
     useEffect(() => {
       setRccrop(checkedItems);
@@ -59,6 +58,11 @@ const Crop = () => {
     return (
     <div>
       <h2>효능 작물</h2>
+      <div>
+        {formData&&formData.map((i) => (
+          <p>{i.name}</p>
+        ))}
+      </div>
       {/* <StFarmChooseContainer className="contStyle">
         {formData.map((item) => (
           <StFarmDiv key={item.id} >
