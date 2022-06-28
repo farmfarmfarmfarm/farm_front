@@ -4,81 +4,100 @@ import {selectedDiease, selectedCrop} from '../../Atom';
 import {useRecoilState} from 'recoil';
 import AllCrops from './AllCrops';
 import './Care.css';
+import { Link } from 'react-router-dom';
 
 const Crop = () => {
-
-    const [checkedItems, setcheckedItems] = useState([]);
     const [formData, setformData] = useState([]);
     const [crops,setCrops] = useState(null);   //결과값
     const [nocrops,setNoCrops] = useState(null);   //결과값
-    const [loading,setLoading] = useState(false); // 로딩되는지 여부
+    const [Done,setDone] = useState(false); // 로딩되는지 여부
     const [error,setError] = useState(null); //에러    
     const [isChecked, setIsChecked] = useState(false);
     const [rcdiease, setRcdiease] = useRecoilState(selectedDiease);
     const [rccrop, setRccrop] = useRecoilState(selectedCrop);
+    const [Result, setResult] = useState([]);
+    const [Effect, setEffect] = useState([]);
 
     const dieaselist = rcdiease;   
-    const requests = dieaselist&&dieaselist.map(num => fetch(`/api/crop/${num}`));
-    console.log(rcdiease.includes(''));
+    const requests = dieaselist&&dieaselist.map(num => fetch(`/api/crop/${num}`)); 
+    // console.log(rcdiease); //['1','2'] //증상번호
 
     useEffect( () => {
-      Promise.all(requests)
-      .then(responses => Promise.all(responses.map(r => r.json())))
-      .then(users => users.forEach(user => {
-        setformData([...formData, user.data]);
-        console.log(user.data);
-      }))
-      .catch(error => console.log(error))
+      for(let i=1; i<=75; i++) {
+        axios.get(`/api/effect/${i}`).then( //작물번호로 그작물의 효능(증상)찾기
+          (res) => {
+            res.data.data.forEach((e) =>{
+              // console.log(e.effect);
+              setEffect((prev)=>[...prev,{
+                id: e.id,
+                effect: e.effect,
+              }]);
+            });
+          }
+        )
+        .catch((err)=>{
+          console.log(err);
+        })
+      }
+      for (let i=0; i<rcdiease.length; i++){
+        getData(parseInt(rcdiease[i]));
+
+      }
     }, [])
+    async function getEffect(cropId) {
 
-    
-    useEffect(() => {
-      setRccrop(checkedItems);
-    },[checkedItems]);
-
-
-    const onRemove = id => {
-        setcheckedItems(checkedItems.filter(each => each !== id));
-    };
-
-    const checkHandler = ({ target }) => {
-        setIsChecked(!isChecked);
-        checkedItemHandler(target.parentNode.lastChild, target.value, target.checked);
-    };
-    
-    const checkedItemHandler = (text, id, isChecked) => {
-        if(isChecked) {
-          setcheckedItems([...checkedItems, id]);
-        } else if (!isChecked ) {
-          onRemove(id);
+    }
+    async function getData(cate) {
+      await axios.get(`/api/crop/${cate}`).then( //증상(효능)번호로 해당되는 작물찾기
+        (res) => {
+          // console.log(res.data.data);
+          res.data.data.forEach((e) =>{
+            setResult((prev)=>[...prev,{
+              id: e.id, //작물번호
+              ingredient: e.ingredient,
+              name: e.name,
+            }]);
+          });
         }
-        return checkedItems;
-    };
+      )
+      .catch((err)=>{
+        console.log(err);
+      })
+    }
 
+
+
+    const resultpring = (i) => {
+      for(let j=1;j<75;i++){
+        if (i===j){
+          console.log(Effect[i].id);
+        }
+      }
+      return ;
+    }
+    function goRecipe(e) {
+      console.log(e.target.id);
+    }
     return (
-    <div>
-      <h2>효능 작물</h2>
       <div>
-        {formData&&formData.map((i) => (
-          <p>{i.name}</p>
-        ))}
+        <h2>효능 작물</h2>
+        <div>
+          {formData&&formData.map((i) => (
+            <p>{i.name}</p>
+          ))}
+        </div>
+          {Result.map((item, i) => (
+            <div key={i}>
+                  <button className="StDiseInput" onClick={goRecipe} type = "checkbox" value={item.id} id={item.id}>
+                    {item.name}
+                    {/* {console.log(Effect)} 나옴 */}
+                     {/* - {returnEffect(item.id)} */}
+                  </button>
+            </div>
+          ))}
+        
+          <AllCrops />
       </div>
-      {/* <StFarmChooseContainer className="contStyle">
-        {formData.map((item) => (
-          <StFarmDiv key={item.id} >
-            <label className="innerBox">
-              <StFarmInput
-                type = "checkbox"
-                value={item.name}
-                onChange={(e) => checkHandler(e)}
-              />
-              <span>{item.name}</span>
-            </label>
-          </StFarmDiv>
-        ))}
-      </StFarmChooseContainer> */}
-      <AllCrops></AllCrops>
-    </div>
     );
     
 }
