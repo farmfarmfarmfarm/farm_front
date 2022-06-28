@@ -2,8 +2,12 @@ import React, {useState} from "react";
 import { authService } from "pages/Login/fbase";
 import { useNavigate } from "react-router-dom";
 import {Link } from "react-router-dom";
+import {useRecoilState} from 'recoil';
+import {userId} from '../../Atom';
 
 const Profile =({username,setUsername})=>{
+    const [rcUserId, setRcUserId] = useRecoilState(userId);
+    const [user, setUser] = useState(localStorage.getItem('userId')); //회원번호이렇게 가져다씀
 
     const [nickname, setNickname] = useState(localStorage.getItem('nickname'));
     const [newNickname, setNewNickname] = useState("");
