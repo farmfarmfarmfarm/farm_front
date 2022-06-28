@@ -17,7 +17,7 @@ const Review =()=>{
     const [rateAvg, setRateAvg] = useRecoilState(ratingAvg);
 
     async function getData(cate) {
-        await axios.get(`/api/review/findname/${cate}`).then(
+        await axios.get(REACT_APP_DB_HOST+`/api/review/findname/${cate}`).then(
           (res) => {
             setReviews((Reviews) => []);
             res.data.data.forEach((e) =>{

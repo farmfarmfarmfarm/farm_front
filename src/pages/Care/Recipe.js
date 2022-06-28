@@ -26,7 +26,7 @@ const Recipe =()=>{
             setRecipe(null);
             setError(null);
             setLoading(true); //로딩이 시작됨
-            const response = await axios.get(`/api/recipe/${cropId}`);
+            const response = await axios.get(REACT_APP_DB_HOST+`/api/recipe/${cropId}`);
             setRecipe(response.data.data);
         } catch (e) {
             setError(e);

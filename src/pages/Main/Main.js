@@ -26,7 +26,7 @@ function Main() {
     }
 
     useEffect(() => {
-        axios.get('/api/farm/findall').then(
+        axios.get(REACT_APP_DB_HOST+'/api/farm/findall').then(
             (res) => {
                 console.log(res.data.data.length, '개의 농장 찾기 성공');
             }
