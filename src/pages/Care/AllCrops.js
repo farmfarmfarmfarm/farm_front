@@ -2,11 +2,11 @@ import React ,{useState,useEffect}from 'react';
 import axios from 'axios';
 import {useRecoilState} from 'recoil';
 import {selectedDiease, selectedCrop} from '../../Atom';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Care.css';
 
 const AllCrops = () => {
-
+    const navigate = useNavigate();
     const [checkedItem, setcheckedItem] = useState('');
     const [allcrops,setallCrops] = useState(null);   //결과값
     const [loading,setLoading] = useState(false); // 로딩되는지 여부
@@ -32,7 +32,8 @@ const AllCrops = () => {
     },[] )
 
     function goRecipe(e) {
-      console.log(e);
+      console.log(e.target.id);
+      navigate(`recipe/${e.target.id}`)
     }
     if ( loading ) return <div>로딩중..</div>
     if (error) return <div>에러 발생!!</div>
@@ -46,9 +47,14 @@ const AllCrops = () => {
         <div className="container">
           {formData.map((item) => (
               <div className="item" key={item.id} >
-                <button className="StDiseInput" onClick={() => goRecipe} type = "checkbox" value={item.id} id={item.id}>
+                <button className="StDiseInput" onClick={goRecipe} type = "checkbox" value={item.id} id={item.id}>
                   <p style={{fontSize: '13px'}}>{item.name}</p>
-                </button>             
+                </button>   
+                <p className='arrow_box'>
+                  <div>제철시기:{item.season}</div>
+                  <div>보관 온도: {item.temperature}</div>
+                  <div>보관 방법: {item.storage}</div>
+                </p>          
               </div>
           ))}
         </div>
