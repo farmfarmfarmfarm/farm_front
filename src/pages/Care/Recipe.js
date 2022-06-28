@@ -56,7 +56,7 @@ const Recipe =()=>{
     return(
         <div>
             <div className='titlewrap'>
-                <div className='recipetitle'>테라피아 작물 레시피</div>
+                <div className='recipetitle'>테라피아 작물 레시피</div> 
             </div>
             <Slider {...settings}>
             {formData.map((item, i) => (
