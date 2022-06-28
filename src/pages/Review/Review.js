@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useRecoilState} from 'recoil';
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from 'axios';
 import {ratingAvg} from '../../Atom';
 import ReviewChart from "pages/Review/ReviewChart";

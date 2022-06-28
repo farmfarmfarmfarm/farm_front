@@ -46,7 +46,7 @@ function App() {
               <Route path="care" element={<Care />} />
               <Route path="crop" element={<Crop />} />
               <Route path="allcrops" element={<AllCrops />} />
-              <Route path="recipe" element={<Recipe />} />
+              <Route path="recipe/:cropId" element={<Recipe />} />
               <Route path="menu" element={<Menu />} />
             </Routes>
           </div>

@@ -5,8 +5,6 @@ import {selectedDiease, selectedCrop} from '../../Atom';
 import { Link } from 'react-router-dom';
 import './Care.css';
 
-
-
 const AllCrops = () => {
 
     const [checkedItem, setcheckedItem] = useState('');
@@ -29,25 +27,18 @@ const AllCrops = () => {
         setLoading(false);
     };
 
-
-
     useEffect( () =>{
-        
       fetchAllCrops();
     },[] )
 
+    function goRecipe(e) {
+      console.log(e);
+    }
     if ( loading ) return <div>로딩중..</div>
     if (error) return <div>에러 발생!!</div>
     if (!allcrops) return null; 
 
     const formData =allcrops;
-
-
-    const onclick = ({target}) => {
-      setRccrop([...rccrop, target.value]);
-      console.log(rccrop);
-    }
-
 
     return (
     <div>
@@ -55,11 +46,9 @@ const AllCrops = () => {
         <div className="container">
           {formData.map((item) => (
               <div className="item" key={item.id} >
-                <Link to='/recipe'>
-                  <button className="StDiseInput" type = "checkbox" value={item.id} id={item.id} onClick={(e) => onclick(e)}>
-                    <p style={{fontSize: '13px'}}>{item.name}</p>
-                  </button>
-                </Link>             
+                <button className="StDiseInput" onClick={() => goRecipe} type = "checkbox" value={item.id} id={item.id}>
+                  <p style={{fontSize: '13px'}}>{item.name}</p>
+                </button>             
               </div>
           ))}
         </div>

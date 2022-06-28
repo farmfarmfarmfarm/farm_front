@@ -4,8 +4,11 @@ import {useRecoilState} from 'recoil';
 import {selectedCrop} from '../../Atom';
 import { Link } from 'react-router-dom';
 import './Care.css';
+import { useParams } from "react-router-dom";
 
 const Recipe =()=>{
+    const params = useParams();
+    console.log(params);
     const [rccrop, setRccrop] = useRecoilState(selectedCrop);
     const [recipe,setRecipe] = useState(null);   //결과값
     const [loading,setLoading] = useState(false); // 로딩되는지 여부
@@ -15,12 +18,12 @@ const Recipe =()=>{
     
     const num = rccrop;
     
-    const fetchDisease = async () => { 
+    const fetchDisease = async (cropId) => { 
         try {
             setRecipe(null);
             setError(null);
             setLoading(true); //로딩이 시작됨
-            const response = await axios.get(`/api/recipe/1`);
+            const response = await axios.get(`/api/recipe/${cropId}`);
             setRecipe(response.data.data);
         } catch (e) {
             setError(e);
@@ -29,8 +32,7 @@ const Recipe =()=>{
     };
 
     useEffect( () =>{
-        
-        fetchDisease();
+        fetchDisease(params.cropId);
     },[] )
 
     if ( loading ) return <div>로딩중..</div>

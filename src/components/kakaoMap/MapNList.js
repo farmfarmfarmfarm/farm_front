@@ -171,9 +171,7 @@ const MapNList = () => {
                 <div style={{display: 'grid', justifyContent: 'center'}}>
                   <div style={{marginBottom: '10px',display: 'flex', alignItems: 'center'}}>
                     <img style={{width: '50px', height: '50px', display: 'inline-block', marginRight: '20px'}} src={listFarm} alt="로고" />
-                    <Link to="review/1">
                       <div style={{display: 'inline-block', fontSize: '20px'}}>{item.name}</div>
-                    </Link>
                   </div>
                   <div style={{color: '#5f5f5f'}}>{item.address}</div>
                   <div style={{color: '#5f5f5f'}}>{item.phone}</div>
