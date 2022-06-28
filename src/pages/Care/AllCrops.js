@@ -48,12 +48,7 @@ const AllCrops = () => {
               <div className="item" key={item.id} >
                 <button className="StDiseInput" onClick={goRecipe} type = "checkbox" value={item.id} id={item.id}>
                   <p style={{fontSize: '13px'}}>{item.name}</p>
-                </button>   
-                <p className='arrow_box'>
-                  <div>제철시기: {item.season}</div>
-                  <div>보관 온도: {item.temperature}</div>
-                  <div>보관 방법: {item.storage}</div>
-                </p>          
+                </button>            
               </div>
           ))}
         </div>

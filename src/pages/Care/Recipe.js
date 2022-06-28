@@ -58,7 +58,7 @@ const Recipe =()=>{
     if (!crop) return null; 
 
     const formData = recipe;
-    console.log(formData);
+    // console.log(formData);
 
     const settings = {
         dots: true, // 캐러셀이미지가 몇번째인지 알려주는 점을 보여줄지 정한다.

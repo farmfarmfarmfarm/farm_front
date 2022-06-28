@@ -87,11 +87,6 @@ const Crop = () => {
               <button className="StDiseInput" onClick={goRecipe} type = "checkbox" value={item.id} id={item.id}>
                 {item.name}
               </button>
-              <p className='arrow_box'>
-                <div>제철시기: {item.season}</div>
-                <div>보관 온도: {item.temperature}</div>
-                <div>보관 방법: {item.storage}</div>
-              </p>
             </div>
           ))}
         
