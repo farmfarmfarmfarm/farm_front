@@ -4,7 +4,7 @@ import {selectedDiease, selectedCrop} from '../../Atom';
 import {useRecoilState} from 'recoil';
 import AllCrops from './AllCrops';
 import './Care.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Crop = () => {
     const [formData, setformData] = useState([]);
@@ -17,6 +17,7 @@ const Crop = () => {
     const [rccrop, setRccrop] = useRecoilState(selectedCrop);
     const [Result, setResult] = useState([]);
     const [Effect, setEffect] = useState([]);
+    const navigate = useNavigate();
 
     const dieaselist = rcdiease;   
     const requests = dieaselist&&dieaselist.map(num => fetch(`/api/crop/${num}`)); 
@@ -54,8 +55,11 @@ const Crop = () => {
           res.data.data.forEach((e) =>{
             setResult((prev)=>[...prev,{
               id: e.id, //작물번호
-              ingredient: e.ingredient,
               name: e.name,
+              season: e.season,
+              temperature: e.temperature,
+              storage: e.storage,
+              ingredient: e.ingredient
             }]);
           });
         }
@@ -77,6 +81,7 @@ const Crop = () => {
     }
     function goRecipe(e) {
       console.log(e.target.id);
+      navigate(`recipe/${e.target.id}`)
     }
     return (
       <div>
@@ -87,12 +92,15 @@ const Crop = () => {
           ))}
         </div>
           {Result.map((item, i) => (
-            <div key={i}>
-                  <button className="StDiseInput" onClick={goRecipe} type = "checkbox" value={item.id} id={item.id}>
-                    {item.name}
-                    {/* {console.log(Effect)} 나옴 */}
-                     {/* - {returnEffect(item.id)} */}
-                  </button>
+            <div className='cropbtn' key={i}>
+              <button className="StDiseInput" onClick={goRecipe} type = "checkbox" value={item.id} id={item.id}>
+                {item.name}
+              </button>
+              <p className='arrow_box'>
+                <div>제철시기:{item.season}</div>
+                <div>보관 온도: {item.temperature}</div>
+                <div>보관 방법: {item.storage}</div>
+              </p>
             </div>
           ))}
         
