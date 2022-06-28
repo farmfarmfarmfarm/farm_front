@@ -7,9 +7,10 @@ import ReviewChart from "pages/Review/ReviewChart";
 import quotes from 'assets/icons/quotes.png'
 import triangle from 'assets/icons/triangle.png'
 import './Review.css';
-
+import { useNavigate } from "react-router-dom";
 
 const Review =()=>{
+  const navigate = useNavigate();
     const params = useParams();
     const [Reviews, setReviews] = useState([])  // 검색결과 배열에 담아줌
     const [rateAvg, setRateAvg] = useRecoilState(ratingAvg);
@@ -46,13 +47,18 @@ const Review =()=>{
       setRateAvg((result / rating.length).toFixed(2));
 
       useEffect(() => {
-        getData(params.reviewId);
+        getData(params.farmId);
       }, [])
+    function makeReview() {
+      console.log('리뷰뷰');
+      navigate(`/home/review/make/${params.farmId}`)
 
+    }
 
     return(
         <div className='review'>  
             <h2>리뷰</h2>
+            <button onClick={makeReview}>나도 리뷰남기기</button>
             <ReviewChart></ReviewChart>
             {rateAvg > 3.0 ? <p>이 농장 <b>추천해요!</b></p> : <p>이 농장 <b>추천하지 않아요!</b></p>}
             {Reviews.map((item, i) => (

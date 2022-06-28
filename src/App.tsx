@@ -14,6 +14,7 @@ import Recipe from 'pages/Care/Recipe';
 import Menu from 'pages/Menu/Menu';
 import {RecoilRoot} from 'recoil';
 import Review from 'pages/Review/Review';
+import MakeReview from 'pages/Review/MakeReview';
 
 
 function App() {
@@ -42,7 +43,8 @@ function App() {
               <Route path="home" element={<Home />} />
               <Route path="login" element={<Login />} />
               <Route path="profile" element={<Profile username={username} setUsername={setUsername} />} />
-              <Route path="home/review/:reviewId" element={<Review />} />
+              <Route path="home/review/:farmId" element={<Review />} />
+              <Route path="home/review/make/:farmId" element={<MakeReview />} />
               <Route path="care" element={<Care />} />
               <Route path="crop" element={<Crop />} />
               <Route path="allcrops" element={<AllCrops />} />
