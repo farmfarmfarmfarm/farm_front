@@ -33,14 +33,8 @@ export const selectedDiease = atom({
     effects_UNSTABLE: [persistAtom],
   }); 
 
-export const selectedCrop = atom({
-    key: 'selectedCrop',
-    default: [],
-    effects_UNSTABLE: [persistAtom],
-  }); 
-
 export const ratingAvg = atom({
     key: 'ratingAvg',
-    default: '',
+    default: 0,
     effects_UNSTABLE: [persistAtom],
   }); 

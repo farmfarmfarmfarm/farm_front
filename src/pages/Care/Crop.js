@@ -14,7 +14,6 @@ const Crop = () => {
     const [error,setError] = useState(null); //에러    
     const [isChecked, setIsChecked] = useState(false);
     const [rcdiease, setRcdiease] = useRecoilState(selectedDiease);
-    const [rccrop, setRccrop] = useRecoilState(selectedCrop);
     const [Result, setResult] = useState([]);
     const [Effect, setEffect] = useState([]);
     const navigate = useNavigate();
@@ -25,7 +24,7 @@ const Crop = () => {
 
     useEffect( () => {
       for(let i=1; i<=75; i++) {
-        axios.get(`/api/effect/${i}`).then( //작물번호로 그작물의 효능(증상)찾기
+        axios.get(`/api/cropList/${i}`).then( //작물번호로 그작물의 효능(증상)찾기
           (res) => {
             res.data.data.forEach((e) =>{
               // console.log(e.effect);
@@ -56,9 +55,6 @@ const Crop = () => {
             setResult((prev)=>[...prev,{
               id: e.id, //작물번호
               name: e.name,
-              season: e.season,
-              temperature: e.temperature,
-              storage: e.storage,
               ingredient: e.ingredient
             }]);
           });
@@ -69,8 +65,6 @@ const Crop = () => {
       })
     }
 
-
-
     const resultpring = (i) => {
       for(let j=1;j<75;i++){
         if (i===j){
@@ -79,25 +73,22 @@ const Crop = () => {
       }
       return ;
     }
+
     function goRecipe(e) {
       console.log(e.target.id);
       navigate(`recipe/${e.target.id}`)
     }
+
     return (
       <div>
         <h2>효능 작물</h2>
-        <div>
-          {formData&&formData.map((i) => (
-            <p>{i.name}</p>
-          ))}
-        </div>
           {Result.map((item, i) => (
             <div className='cropbtn' key={i}>
               <button className="StDiseInput" onClick={goRecipe} type = "checkbox" value={item.id} id={item.id}>
                 {item.name}
               </button>
               <p className='arrow_box'>
-                <div>제철시기:{item.season}</div>
+                <div>제철시기: {item.season}</div>
                 <div>보관 온도: {item.temperature}</div>
                 <div>보관 방법: {item.storage}</div>
               </p>

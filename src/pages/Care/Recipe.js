@@ -1,7 +1,5 @@
 import React ,{useState,useEffect}from 'react';
 import axios from 'axios';
-import {useRecoilState} from 'recoil';
-import {selectedCrop} from '../../Atom';
 import { Link } from 'react-router-dom';
 import './Care.css';
 import { useParams } from "react-router-dom";
@@ -12,15 +10,31 @@ import Slider from 'react-slick';
 const Recipe =()=>{
     const params = useParams();
     console.log(params);
-    const [rccrop, setRccrop] = useRecoilState(selectedCrop);
+    const [crop, setCrop] = useState(null);
     const [recipe,setRecipe] = useState(null);   //결과값
     const [loading,setLoading] = useState(false); // 로딩되는지 여부
     const [error,setError] = useState(null); //에러   
     const [checkedItems, setcheckedItems] = useState([]);  
     const [isChecked, setIsChecked] = useState(false);
     
-    const num = rccrop;
-    
+    const fetchCropInfo = async (cropId) => { 
+        try {
+            setCrop(null);
+            setError(null);
+            setLoading(true); //로딩이 시작됨
+            const response = await axios.get(`/api/cropList/${cropId}`);
+            setCrop(response.data.data);
+        } catch (e) {
+            setError(e);
+        }
+        setLoading(false);
+    };
+
+    useEffect( () =>{
+        fetchCropInfo(params.cropId);
+    },[] )
+    console.log(crop);
+
     const fetchDisease = async (cropId) => { 
         try {
             setRecipe(null);
@@ -41,6 +55,7 @@ const Recipe =()=>{
     if ( loading ) return <div>로딩중..</div>
     if (error) return <div>에러 발생!!</div>
     if (!recipe) return null; 
+    if (!crop) return null; 
 
     const formData = recipe;
     console.log(formData);
@@ -58,6 +73,7 @@ const Recipe =()=>{
             <div className='titlewrap'>
                 <div className='recipetitle'>테라피아 작물 레시피</div>
             </div>
+            
             <Slider {...settings}>
             {formData.map((item, i) => (
                 <div className="recipeitem" key={item.id} >            

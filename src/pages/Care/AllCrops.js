@@ -12,7 +12,6 @@ const AllCrops = () => {
     const [loading,setLoading] = useState(false); // 로딩되는지 여부
     const [error,setError] = useState(null); //에러    
     const [isChecked, setIsChecked] = useState(false);
-    const [rccrop, setRccrop] = useRecoilState(selectedCrop);
 
     const fetchAllCrops = async () => { 
         try {
@@ -51,7 +50,7 @@ const AllCrops = () => {
                   <p style={{fontSize: '13px'}}>{item.name}</p>
                 </button>   
                 <p className='arrow_box'>
-                  <div>제철시기:{item.season}</div>
+                  <div>제철시기: {item.season}</div>
                   <div>보관 온도: {item.temperature}</div>
                   <div>보관 방법: {item.storage}</div>
                 </p>          
