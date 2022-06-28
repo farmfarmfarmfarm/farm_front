@@ -9,7 +9,6 @@ const Chart = () => {
   const rating = 30;
   const [rateAvg, setRateAvg] = useRecoilState(ratingAvg);
   const distance = (rateAvg)/5*100;
-  console.log(distance);
 
   return (
     <div className='Chartcontainer'>
@@ -17,7 +16,7 @@ const Chart = () => {
         data={[
           {
             value: rateAvg,
-            color: "#F6CB44", 
+            color: "#C0D993", 
             name: "reviewrating",
           },
         ]}
