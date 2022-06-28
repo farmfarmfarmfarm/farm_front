@@ -19,7 +19,7 @@ const AllCrops = () => {
             setallCrops(null);
             setError(null);
             setLoading(true); //로딩이 시작됨
-            const response = await axios.get(REACT_APP_DB_HOST+'api/crop/findall');
+            const response = await axios.get(process.env.REACT_APP_DB_HOST+'api/crop/findall');
             setallCrops(response.data.data);
         } catch (e) {
             setError(e);

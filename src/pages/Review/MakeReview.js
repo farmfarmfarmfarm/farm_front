@@ -11,7 +11,7 @@ const MakeReview =()=>{
     const [farm, setFarm] = useState([]);   
 
     async function getData() {
-        await axios.get(REACT_APP_DB_HOST+`/api/farm/findone/${params.farmId}`).then(
+        await axios.get(process.env.REACT_APP_DB_HOST+`/api/farm/findone/${params.farmId}`).then(
           (res) => {
             setFarm((prev) => [...prev,{
                 id: res.data.id,
@@ -40,7 +40,7 @@ const MakeReview =()=>{
       };
       async function postData(rating,title,contents) {
         try {
-          const response = await axios.post(REACT_APP_DB_HOST+`/api/review/add/${localStorage.getItem('userId')}/${params.farmId}`,
+          const response = await axios.post(process.env.REACT_APP_DB_HOST+`/api/review/add/${localStorage.getItem('userId')}/${params.farmId}`,
             JSON.stringify({rating, title, contents}),
             { headers }
           );

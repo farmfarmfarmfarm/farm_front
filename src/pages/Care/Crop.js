@@ -20,12 +20,12 @@ const Crop = () => {
     const navigate = useNavigate();
 
     const dieaselist = rcdiease;   
-    const requests = dieaselist&&dieaselist.map(num => fetch(REACT_APP_DB_HOST+`/api/crop/${num}`)); 
+    const requests = dieaselist&&dieaselist.map(num => fetch(process.env.REACT_APP_DB_HOST+`/api/crop/${num}`)); 
     // console.log(rcdiease); //['1','2'] //증상번호
 
     useEffect( () => {
       for(let i=1; i<=75; i++) {
-        axios.get(REACT_APP_DB_HOST+`/api/effect/${i}`).then( //작물번호로 그작물의 효능(증상)찾기
+        axios.get(process.env.REACT_APP_DB_HOST+`/api/effect/${i}`).then( //작물번호로 그작물의 효능(증상)찾기
           (res) => {
             res.data.data.forEach((e) =>{
               // console.log(e.effect);
@@ -49,7 +49,7 @@ const Crop = () => {
 
     }
     async function getData(cate) {
-      await axios.get(REACT_APP_DB_HOST+`/api/crop/${cate}`).then( //증상(효능)번호로 해당되는 작물찾기
+      await axios.get(process.env.REACT_APP_DB_HOST+`/api/crop/${cate}`).then( //증상(효능)번호로 해당되는 작물찾기
         (res) => {
           // console.log(res.data.data);
           res.data.data.forEach((e) =>{
