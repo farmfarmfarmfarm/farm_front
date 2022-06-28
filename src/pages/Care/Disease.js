@@ -5,17 +5,13 @@ import {selectedDiease} from '../../Atom';
 import { Link } from 'react-router-dom';
 import './Care.css';
 
-
-
 const Disease = () => {
-
     const [checkedItems, setcheckedItems] = useState([]);
     const [diseases,setDiseases] = useState(null);   //결과값
     const [loading,setLoading] = useState(false); // 로딩되는지 여부
     const [error,setError] = useState(null); //에러    
     const [isChecked, setIsChecked] = useState(false);
     const [rcdiease, setRcdiease] = useRecoilState(selectedDiease);
-
 
     const fetchDisease = async () => { 
         try {
@@ -30,30 +26,22 @@ const Disease = () => {
         setLoading(false);
     };
 
-
-
     useEffect( () =>{
-        
         fetchDisease();
     },[] )
-
     useEffect(() => {
       setRcdiease(checkedItems);
     },[checkedItems]);
 
-
-
-    if ( loading ) return <div>로딩중..</div>
+    if (loading) return <div>로딩중..</div>
     if (error) return <div>에러 발생!!</div>
     if (!diseases) return null; 
 
     const formData = diseases;
-
     const onRemove = id => {
       setcheckedItems(checkedItems.filter(each => each !== id));
     };
     const checkHandler = ({ target }) => {
-      console.log(target.Disease);
       setIsChecked(!isChecked);
       checkedItemHandler(target.parentNode.lastChild, target.value, target.checked);
     };
@@ -66,7 +54,6 @@ const Disease = () => {
       }
       return checkedItems;
     };
-
 
     return (
     <div>
