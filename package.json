@@ -36,7 +36,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "aws s3 sync ./build s3://therapia --profile=therapia",
-    "invalidate" : "aws cloudfront create-invalidation --profil=therapia --distribution-id E3MWR0NKELFNNS --paths /*"
+    "invalidate": "aws cloudfront create-invalidation --profil=therapia --distribution-id E3MWR0NKELFNNS --paths /*"
   },
   "eslintConfig": {
     "extends": [
@@ -55,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0"
   }
 }
