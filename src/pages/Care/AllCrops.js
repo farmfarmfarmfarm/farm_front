@@ -12,14 +12,13 @@ const AllCrops = () => {
     const [loading,setLoading] = useState(false); // 로딩되는지 여부
     const [error,setError] = useState(null); //에러    
     const [isChecked, setIsChecked] = useState(false);
-    const [rccrop, setRccrop] = useRecoilState(selectedCrop);
 
     const fetchAllCrops = async () => { 
         try {
             setallCrops(null);
             setError(null);
             setLoading(true); //로딩이 시작됨
-            const response = await axios.get('api/crop/findall');
+            const response = await axios.get('/api/crop/findall');
             setallCrops(response.data.data);
         } catch (e) {
             setError(e);
@@ -47,14 +46,16 @@ const AllCrops = () => {
         <div className="container">
           {formData.map((item) => (
               <div className="item" key={item.id} >
-                <button className="StDiseInput" onClick={goRecipe} type = "checkbox" value={item.id} id={item.id}>
+                <button className="StDiseInput" type = "checkbox" value={item.id} id={item.id}>
                   <p style={{fontSize: '13px'}}>{item.name}</p>
-                </button>   
-                <p className='arrow_box'>
+                </button> 
+                  <p className='arrow_box'>
+                  <div>{item.name} 정보</div>
                   <div>제철시기:{item.season}</div>
                   <div>보관 온도: {item.temperature}</div>
                   <div>보관 방법: {item.storage}</div>
-                </p>          
+                </p>
+                <button onClick={goRecipe}>레시피보러가기</button>           
               </div>
           ))}
         </div>

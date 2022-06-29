@@ -99,26 +99,26 @@ p {
   border: 1px solid #037F00;
   border-radius: 8px;
 }
+
 /*cropInfo*/
-.cropbtn {
+.cropwrap {
   position: relative;
 }
 .arrow_box {
   display: none;
-  position: absolute;
+  position:absolute;
   width: 200px;
   padding: 8px;
-  left: -80px;
+  right:0;
+  top:0;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
-  background: #333;
-  color: #fff;
+  background: rgb(220, 220, 220);
   font-size: 14px;
   z-index: 999;
 }
-
-.arrow_box:after {
+/* .arrow_box:after {
   position: absolute;
   bottom: 100%;
   left: 50%;
@@ -132,9 +132,9 @@ p {
   pointer-events: none;
   content: ' ';
   z-index: 0;
-}
+} */
 
-button:hover + p.arrow_box {
+button:focus + p.arrow_box {
   display: block;
 }
 
@@ -193,7 +193,7 @@ button:hover + p.arrow_box {
 .step {
   position: relative;
   width: 300px;
-  height: 70px;
+  height: 50px;
   font-size: 15px;
   border-radius:2px;
   outline: none;

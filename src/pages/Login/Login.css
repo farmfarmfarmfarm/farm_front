@@ -1,3 +1,8 @@
+.login{
+  text-align: center;
+  line-height: 1px;
+}
+
 .login-btn{
   background-image: linear-gradient(to right, #C0D993, #8AAD87);
   border: 0;

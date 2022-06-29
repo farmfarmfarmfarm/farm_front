@@ -43,16 +43,16 @@ const Login = ()=>{
         }
       }
     return(
-        <>
-            THIS IS LOGIN
-            <div>로그인하세요 로그인하세요</div>
-            <div>
+      <div className="login">
+        <div className="subtitle">신개념 농장 플랫폼</div>
+        <h4>테라피아</h4>
+        <div>
             {/* <button onClick={postData}>크을릭</button>     */}
             <div>
                 <button className='login-btn' name="google" onClick={onSocialClick}>Continue with Google</button>
             </div>
         </div>
-        </>
+      </div>
     )
 }
 export default Login;

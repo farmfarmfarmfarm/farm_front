@@ -45,25 +45,23 @@ const Crop = () => {
       console.log(e.target.id);
       navigate(`recipe/${e.target.id}`)
     }
+
     return (
-      <div>
+      <div className='cropwrap'>
         <h2>효능 작물</h2>
-        <div>
-          {formData&&formData.map((i) => (
-            <p>{i.name}...</p>
-          ))}
-        </div>
           {Result.map((item, i) => (
             <div className='cropbtn' key={i}>
-              <button className="StDiseInput" onClick={goRecipe} type = "checkbox" value={item.id} id={item.id}>
+              <button className="StDiseInput" type = "checkbox" value={item.id} id={item.id}>
                 {item.name} -
-                 {item.effectList.map((e,i) => (<span>{e} </span>))}
+                {item.effectList.map((e,i) => (<span>{e} </span>))}
               </button>
               <p className='arrow_box'>
+                <div>{item.name} 정보</div>
                 <div>제철시기:{item.season}</div>
                 <div>보관 온도: {item.temperature}</div>
                 <div>보관 방법: {item.storage}</div>
               </p>
+              <button onClick={goRecipe}>레시피보러가기</button>
             </div>
           ))}
         
