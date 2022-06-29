@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {Link } from "react-router-dom";
 import {useRecoilState} from 'recoil';
 import {userId} from '../../Atom';
-import '../Login.css';
+import './Login.css';
 
 const Profile =({username,setUsername})=>{
     const [rcUserId, setRcUserId] = useRecoilState(userId);
@@ -28,6 +28,7 @@ const Profile =({username,setUsername})=>{
     const onLogOutClick = () =>{
         authService.signOut();
         navigate("/");
+        localStorage.clear();
     }
     return(
         <>
