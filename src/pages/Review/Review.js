@@ -62,7 +62,6 @@ const Review =()=>{
             <button onClick={makeReview}>나도 리뷰남기기</button>
             <ReviewChart></ReviewChart>
             {rateAvg > 3.0 ? <p>이 농장 <b>추천해요!</b></p> : <p>이 농장 <b>추천하지 않아요!</b></p>}
-            <Link to='/write' >리뷰작성하러가기</Link>
             {Reviews.map((item, i) => (
                 <div key={i} className='reviews'>
                   <img src={quotes} className='quotes'></img>
