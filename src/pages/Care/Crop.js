@@ -24,10 +24,10 @@ const Crop = () => {
 
     useEffect( () => {
       for(let i=1; i<=75; i++) {
-        axios.get(`/api/cropList/${i}`).then( //작물번호로 그작물의 효능(증상)찾기
+        axios.get(`/api/crop/${i}`).then( //작물번호로 그작물의 효능(증상)찾기
           (res) => {
             res.data.data.forEach((e) =>{
-              // console.log(e.effect);
+              console.log(e.effect);
               setEffect((prev)=>[...prev,{
                 id: e.id,
                 effect: e.effect,
@@ -39,39 +39,9 @@ const Crop = () => {
           console.log(err);
         })
       }
-      for (let i=0; i<rcdiease.length; i++){
-        getData(parseInt(rcdiease[i]));
-
-      }
     }, [])
     async function getEffect(cropId) {
 
-    }
-    async function getData(cate) {
-      await axios.get(`/api/crop/${cate}`).then( //증상(효능)번호로 해당되는 작물찾기
-        (res) => {
-          // console.log(res.data.data);
-          res.data.data.forEach((e) =>{
-            setResult((prev)=>[...prev,{
-              id: e.id, //작물번호
-              name: e.name,
-              ingredient: e.ingredient
-            }]);
-          });
-        }
-      )
-      .catch((err)=>{
-        console.log(err);
-      })
-    }
-
-    const resultpring = (i) => {
-      for(let j=1;j<75;i++){
-        if (i===j){
-          console.log(Effect[i].id);
-        }
-      }
-      return ;
     }
 
     function goRecipe(e) {
