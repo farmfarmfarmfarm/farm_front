@@ -28,7 +28,7 @@ function Main() {
     useEffect(() => {
         axios.get('/api/farm/findall').then(
             (res) => {
-                console.log(res.data.data.length, '개의 농장 찾기 성공');
+                // console.log(res.data.data.length, '개의 농장 찾기 성공');
             }
         )
         .catch()

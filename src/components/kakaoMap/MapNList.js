@@ -17,7 +17,7 @@ const MapNList = () => {
   const [done, setDone] = useState(false);
 
   async function getData(cate) {
-    console.log(cate);
+    // console.log(cate);
     await axios.get(`/api/farm/${cate}`).then(
       (res) => {
         setPlaces((Places) => []);
