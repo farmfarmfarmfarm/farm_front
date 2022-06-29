@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import Main from 'pages/Main/Main';
 import Home from 'pages/Home/Home';
 import Login from 'pages/Login/Login';
-import Profile from 'pages/Login/Profile';
+import Profile from 'pages/Profile/Profile';
 import {authService} from 'pages/Login/fbase';
 import Care from 'pages/Care/Care';
 import Crop from 'pages/Care/Crop';
