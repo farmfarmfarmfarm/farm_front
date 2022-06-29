@@ -6,6 +6,7 @@ import {useRecoilState} from 'recoil';
 import {userId} from '../../Atom';
 import './Login.css';
 
+
 const Profile =({username,setUsername})=>{
     const [rcUserId, setRcUserId] = useRecoilState(userId);
     const [user, setUser] = useState(localStorage.getItem('userId')); //회원번호이렇게 가져다씀
@@ -32,15 +33,15 @@ const Profile =({username,setUsername})=>{
     }
     return(
         <>
-            <p>THIS IS Profile</p>
             <h2>안녕하세요.</h2>
             <h1>{nickname} 님</h1>
-            <p>오늘도 나의 농장에서 힐링하세요!</p>
-            <form onSubmit={onSubmit}>
+            <p>오늘도 나의 농장에서 힐링하세요🌾</p>
+            {/* <form onSubmit={onSubmit}>
                 <input onChange={onChange} type="text" value={newNickname} placeholder="You can change your nickname" />
-            </form>
-            <button className='login-btn' onClick={onLogOutClick} ><Link to ="/" style={{color: 'white', textDecoration: 'none'}}>Log Out</Link></button>
-            
+            </form> */}
+            <div style={{display: 'flex'}}>
+                <button className='login-btn' onClick={onLogOutClick} ><Link to ="/" style={{color: 'white', textDecoration: 'none'}}>Log Out</Link></button>
+            </div>
         </>
     )
 }
