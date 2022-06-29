@@ -68,9 +68,9 @@ const MakeReview =()=>{
         <div className='review'>  
         { farm[0]!==undefined && <>
             <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '50px', backgroundColor: '#C2D8A2'}}>
-                <button onClick={onClickBack} style={{backgroundColor:'#A3BA79', borderRadius: '5', height:'30px', width: '60px', borderWidth: 0}}>취소</button>
+                <button onClick={onClickBack} style={{color: 'white', backgroundColor:'#A3BA79', borderRadius: '5', height:'30px', width: '60px', borderWidth: 0, borderRadius: '5px'}}>취소</button>
                 <div>농장 후기</div>
-                <button onClick={onClickSave} style={{backgroundColor:'#A3BA79', borderRadius: '5', height:'30px', width: '60px', borderWidth: 0}}>저장</button>
+                <button onClick={onClickSave} style={{color: 'white', backgroundColor:'#A3BA79', borderRadius: '5', height:'30px', width: '60px', borderWidth: 0, borderRadius: '5px'}}>저장</button>
             </div>
             <div>
                 <div style={{ marginTop: '16px',  width: '382px', borderRadius:' 20px', 

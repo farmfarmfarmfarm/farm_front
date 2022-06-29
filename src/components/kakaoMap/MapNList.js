@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import {useRecoilState} from 'recoil';
 import '../../pages/Home/Home.css';
-import {selectedLoc, selectedFarm, selectedPlace} from '../../Atom';
+import {selectedLoc, selectedFarm} from '../../Atom';
 import axios from 'axios';
 import listFarm from '../../assets/icons/listFarm.png';
-import {Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const { kakao } = window
@@ -15,11 +14,10 @@ const MapNList = () => {
   const [rcfarm, setRcfarm] = useRecoilState(selectedFarm); //선택한 농장종류 ['주말농장', '치유농장', '체험농장']
   const [resultLength, setLength] = useState(10); //결과값 길이
   const [Places, setPlaces] = useState([])  // 검색결과 배열에 담아줌
-  let category, markerPosition;
   const [done, setDone] = useState(false);
 
   async function getData(cate) {
-    console.log(cate);
+    // console.log(cate);
     await axios.get(`/api/farm/${cate}`).then(
       (res) => {
         setPlaces((Places) => []);
@@ -47,9 +45,7 @@ const MapNList = () => {
     if (rcfarm==='주말농장') {getData('WKND');}
     else if (rcfarm==='치유농장') {getData('HEAL')}
     else if (rcfarm==='체험농장') {getData('EXP')}
-    console.log("RECOIL","중심좌표:", rcloc, "선택한농장",rcfarm);
-    // getData(category);
-    
+    // console.log("RECOIL","중심좌표:", rcloc, "선택한농장",rcfarm);    
   }, [rcfarm])
 
   useEffect(() => {
@@ -92,10 +88,8 @@ const MapNList = () => {
             map: map,
             clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
         });
-
         var position = new window.kakao.maps.LatLng(37.586272, 127.029005);
         map.setCenter(position); //중심좌표 재설정
-
       }
       
       var infoTitle = document.querySelectorAll('.iwTextDiv');
@@ -159,31 +153,22 @@ const MapNList = () => {
   return (
     <div>
       <div>
-        <div
-          id="mapNList"
-          style={{
-            width: '100%',
-            height: '40vh',
-          }}
-        ></div>
+        <div id="mapNList" style={{width: '100%',height: '40vh'}}></div>
       </div>
       <div className='slider'>
         <div className="slider-inner" style={{gridTemplateColumns: `repeat(${resultLength}, 1fr)`}}>
           {Places.map((item, i) => (
             <div key={i} style={i===0 ? {marginLeft: '16px'} : i===resultLength-1 ? {marginRigth : '16px'} :null} className='slider-item'>
-                <div style={{display: 'grid', justifyContent: 'center'}}>
+                <div style={{display: 'grid', justifyContent: 'center', width: '200px'}}>
                   <div style={{marginBottom: '10px',display: 'flex', alignItems: 'center'}}>
                     <img style={{width: '50px', height: '50px', display: 'inline-block', marginRight: '20px'}} src={listFarm} alt="로고" />
                       <div style={{display: 'inline-block', fontSize: '20px'}}>{item.name}</div>
                   </div>
-                  <div style={{color: '#5f5f5f'}}>{item.address}</div>
-                  <div style={{color: '#5f5f5f'}}>{item.phone}</div>
-                  {/* <div>{item.category}</div> */}
-                </div>
-              
+                  <div style={{color: '#5f5f5f'}}>🏡{item.address}</div>
+                  <div style={{color: '#5f5f5f'}}>🌾{item.phone}</div>
+                </div>              
             </div>
           ))}
-          <div id="pagination"></div>
         </div>
       </div>
     </div>

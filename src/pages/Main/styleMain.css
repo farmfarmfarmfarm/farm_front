@@ -1,11 +1,12 @@
 .warp {
     height: 400px;
-    background-image: url('assets/icons/backgroundimg.jpg');
-    background-size: cover;
+    /* background-color: rgba(22,109,30,.1); */
+    background-color: rgba(6,123,17,.1);
 }
 .farmQ{
     text-align: center;
     padding-top: 90px;
+    margin: 0;
 }
 form {
     width: 80%;

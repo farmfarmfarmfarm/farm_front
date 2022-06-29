@@ -10,7 +10,8 @@ export const StHeaderMain = styled.div`
     padding: 26px 32px;
     -webkit-box-align: center;
     align-items: center;
-
+    margin-bottome: 15px;
+    
     img {
         width:40px;
     }
