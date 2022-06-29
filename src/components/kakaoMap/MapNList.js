@@ -97,12 +97,15 @@ const MapNList = () => {
         map.setCenter(position); //중심좌표 재설정
 
       }
+      
       var infoTitle = document.querySelectorAll('.iwTextDiv');
       for (let i=0; i<infoTitle.length; i++){
         infoTitle[i].parentElement.parentElement.style.border = '0px';
         infoTitle[i].parentElement.parentElement.style.background = 'unset';
         infoTitle[i].parentElement.style.left = '35px';
         infoTitle[i].onclick = handleIwClick; //인포윈도우 클릭이벤트
+        // infoTitle[i].parentElement.previousSibling.style.backgroundImage =
+        // "url('https://user-images.githubusercontent.com/81412212/176420490-33d5fc07-3986-4014-b89e-23c30cbcd9c9.png')"; //꼭지
       }
     }
   );
