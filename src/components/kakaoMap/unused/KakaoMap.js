@@ -1,5 +1,5 @@
 import React from "react";
-import Map from "../../../pages/Home/Map";
+import Map from "../../../pages/Review/Map";
 
 function KakaoMap() {
   return (

@@ -46,9 +46,16 @@ const AllCrops = () => {
         <div className="container">
           {formData.map((item) => (
               <div className="item" key={item.id} >
-                <button className="StDiseInput" onClick={goRecipe} type = "checkbox" value={item.id} id={item.id}>
+                <button className="StDiseInput" type = "checkbox" value={item.id} id={item.id}>
                   <p style={{fontSize: '13px'}}>{item.name}</p>
-                </button>            
+                </button> 
+                  <p className='arrow_box'>
+                  <div>{item.name} 정보</div>
+                  <div>제철시기:{item.season}</div>
+                  <div>보관 온도: {item.temperature}</div>
+                  <div>보관 방법: {item.storage}</div>
+                </p>
+                <button onClick={goRecipe}>레시피보러가기</button>           
               </div>
           ))}
         </div>

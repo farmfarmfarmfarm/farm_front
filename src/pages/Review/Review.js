@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {useRecoilState} from 'recoil';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
-import {ratingAvg} from '../../Atom';
-import ReviewChart from "pages/Review/ReviewChart";
+import {ratingAvg, thisloc} from '../../Atom';
+import Chart from "pages/Review/Chart";
+import Map from "pages/Review/Map";
 import { Link } from 'react-router-dom';
 import quotes from 'assets/icons/quotes.png'
 import triangle from 'assets/icons/triangle.png'
@@ -18,6 +19,21 @@ const Review =()=>{
     const params = useParams();
     const [Reviews, setReviews] = useState([])  // 검색결과 배열에 담아줌
     const [rateAvg, setRateAvg] = useRecoilState(ratingAvg);
+    const [thislocation, setThislocation] = useRecoilState(thisloc);
+
+    async function getLocation(cate) {
+      await axios.get(`/api/farm/findone/${cate}`).then(
+        (res) => {
+          setThislocation({
+              x: res.data.location_x,
+              y: res.data.location_y,
+          })
+        }
+      )
+      .catch((err)=>{
+        console.log('ERR',err);
+      })
+    }
 
     async function getData(cate) {
         await axios.get(`/api/review/findname/${cate}`).then(
@@ -38,20 +54,23 @@ const Review =()=>{
         })
       }
       
+      //리뷰 평균
       const rating = [0];
       Reviews.map((item, i) => {
         const rate = Number(item.rating);
         rating[i] = rate;
       });
-
       const result = rating.reduce(function add(sum, currValue) {
         return sum + currValue;
       }, 0);
       setRateAvg((result / rating.length).toFixed(2));
 
       useEffect(() => {
+        getLocation(params.farmId)
         getData(params.farmId);
       }, [])
+    
+    //리뷰쓰러가기
     function makeReview() {
       console.log('리뷰뷰');
       navigate(`/home/review/make/${params.farmId}`)
@@ -67,12 +86,10 @@ const Review =()=>{
 
     return(
         <div className='review'>  
-            <h2>리뷰</h2>
+            <h2>추천도</h2>
+            <Chart></Chart>
+            <h2>리뷰보기</h2>
             <button onClick={makeReview}>나도 리뷰남기기</button>
-            <ReviewChart></ReviewChart>
-            {
-              (rateAvg==0) ? <p>아직 <b>리뷰가 없어요!</b></p> : (rateAvg >3.0) ? <p>이 농장 <b>추천해요!</b></p> : <p>이 농장 <b>추천하지 않아요!</b></p>
-            }
             <Slider {...reviewsettings}>
             {Reviews.map((item, i) => (
                 <div key={i} className='reviews'>

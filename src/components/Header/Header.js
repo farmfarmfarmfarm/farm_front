@@ -14,10 +14,6 @@ function Header({isLoggedIn}) {
         {isLoggedIn ? <Link to="/profile"><img style={{width: '30px', height:'30px'}} src={login} alt="프로필"></img></Link>
         : <Link to="/login"><img style={{width: '30px', height:'30px'}} src={login} alt="로그인"></img></Link> }
       </StHeaderMain>
-      <StNav id = "gnb">
-          <li style={{listStyle: 'none',}}><Link to="/home" className='gnb-intro' title="HOME">HOME</Link></li>
-          <li style={{listStyle: 'none',}}><Link to="/care" className='gnb-care' title="CARE">CARE</Link></li>
-      </StNav>
     </StHeader>
   );
 }

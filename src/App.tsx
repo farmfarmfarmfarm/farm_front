@@ -15,6 +15,7 @@ import Menu from 'pages/Menu/Menu';
 import {RecoilRoot} from 'recoil';
 import Review from 'pages/Review/Review';
 import MakeReview from 'pages/Review/MakeReview';
+import CareFarm from 'pages/Home/CareFarm';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
               <Route path="crop/recipe/:cropId" element={<Recipe />} />
               <Route path="allcrops/recipe/:cropId" element={<Recipe />} />
               <Route path="menu" element={<Menu />} />
+              <Route path="carefarm" element={<CareFarm />} />
             </Routes>
           </div>
         </BrowserRouter>
