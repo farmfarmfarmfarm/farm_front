@@ -74,7 +74,7 @@ const MapNList = () => {
         var infowindow = new kakao.maps.InfoWindow({
             content: `<div class="iwTextDiv" id=${Places[i].id} style="
               display: block;
-              background: #e0e0df;
+              background: #f7f7f7;
               color: black;
               border: 1px solid #86a889;
               text-align: center;
