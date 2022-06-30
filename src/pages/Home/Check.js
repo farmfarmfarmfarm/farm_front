@@ -15,7 +15,7 @@ const Check = ({checkedItems, setcheckedItems}) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const checkHandler = ({ target }) => {
-    console.log(target);
+    // console.log(target);
     setRcfarm(target.value);
     setIsChecked(!isChecked);
     checkedItemHandler(target.parentNode.lastChild, target.value, target.checked);
@@ -29,9 +29,6 @@ const Check = ({checkedItems, setcheckedItems}) => {
     }
     return checkedItems;
   };
-  // useEffect(() => {
-  //   setRcfarm(checkedItems);
-  // },[checkedItems]);
 
   return (
     <div className="contStyle">

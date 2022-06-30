@@ -28,7 +28,7 @@ function Main() {
     useEffect(() => {
         axios.get(process.env.REACT_APP_DB_HOST+'/api/farm/findall').then(
             (res) => {
-                console.log(res.data.data.length, '개의 농장 찾기 성공');
+                // console.log(res.data.data.length, '개의 농장 찾기 성공');
             }
         )
         .catch()
@@ -63,10 +63,10 @@ function Main() {
             {/* <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check> */}
             <div className='warp'>
                 <h2 className='farmQ'>어느 농장을 찾고 싶나요?</h2>
-                <form className="inputForm" onSubmit={handleSubmit} style={{display:'flex', justifyContent: 'space-between'}}>
+                <form className="inputForm" onSubmit={handleSubmit} style={{display:'flex', justifyContent: 'space-around'}}>
                     <input placeholder={place==="" ? "검색어를 입력해주세요." : place } onChange={onChange} value={inputText} />
                     {(place !== '' ) ? 
-                        <Link to='/home'><img style={{width: '27px', height:'27px'}} src={search} alt="검색"></img></Link> 
+                        <Link to='/home'><img style={{width: '27px', height:'40px'}} src={search} alt="검색"></img></Link> 
                         : <img style={{width: '27px', height:'27px'}} src={search} alt="검색"></img>}
                     </form>
                 

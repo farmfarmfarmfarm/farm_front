@@ -16,7 +16,7 @@ const Login = ()=>{
         let provider;
         provider = new GoogleAuthProvider();
         const data = await signInWithPopup(authService, provider); //auth 가능
-        console.log('유저식별id',data.user);
+        // console.log('유저식별id',data.user);
         localStorage.setItem('nickname', data.user.displayName);
         postData(data.user.displayName, data.user.email);
         navigate("/");
@@ -32,9 +32,6 @@ const Login = ()=>{
             JSON.stringify({nickname, email}),
             { headers }// 500에러
           );
-          console.log('닉넴',nickname)
-          console.log('로그인POST', response);
-          console.log('회원번호리턴', response.data.memberid);
           setRcUserId(response.data.memberid);
           localStorage.setItem('userId', response.data.memberid);
         } catch (error) {
@@ -43,16 +40,15 @@ const Login = ()=>{
         }
       }
     return(
-        <>
-            THIS IS LOGIN
-            <div>로그인하세요 로그인하세요</div>
-            <div>
-            {/* <button onClick={postData}>크을릭</button>     */}
-            <div>
-                <button className='login-btn' name="google" onClick={onSocialClick}>Continue with Google</button>
+      <div className="login" style={{marginTop: '20px'}}>
+        <div className="subtitle" style={{color: '#166d1e'}}>신개념 농장 플랫폼</div>
+        <h3  style={{color: '#226f29'}}>테라피아</h3>
+        <div>
+            <div style={{marginTop: '40px'}}>
+                <button className='login-btn' name="google" onClick={onSocialClick} style={{cursor: 'pointer'}}>Continue with Google</button>
             </div>
         </div>
-        </>
+      </div>
     )
 }
 export default Login;
