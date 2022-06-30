@@ -5,8 +5,10 @@ import {useRecoilState} from 'recoil';
 import {ratingAvg, thisloc} from '../../Atom';
 import { getDistance } from 'geolib';
 import './Review.css';
+import { useNavigate } from "react-router-dom";
 
 const Chart = () => {
+  const navigate = useNavigate();
   const [thislocation, setThislocation] = useRecoilState(thisloc);
   const [stdistance, setstdistance] = useState(null);
   const [rateAvg, setRateAvg] = useRecoilState(ratingAvg);
@@ -21,7 +23,8 @@ const Chart = () => {
   }
 
   function error() {
-    alert('Unable to retrieve your location') ;
+    alert('사용자 위치를 찾을 수 없습니다.') ;
+    navigate(`/`)
   }
 
   if(!navigator.geolocation) {
