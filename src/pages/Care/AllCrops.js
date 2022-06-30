@@ -30,11 +30,6 @@ const AllCrops = () => {
       fetchAllCrops();
     },[] )
 
-    function goRecipe(e) {
-      console.log('레시피로');
-      console.log(e.target.id);
-      navigate(`/crop/recipe/${e.target.id}`)
-    }
     if ( loading ) return <div>로딩중..</div>
     if (error) return <div>에러 발생!!</div>
     if (!allcrops) return null; 
@@ -57,7 +52,7 @@ const AllCrops = () => {
                     <div>● 보관 온도: <b>{item.temperature}</b></div>
                     <div>● 보관 방법: <b>{item.storage}</b></div>
                   </p>
-                <button className='gotoRe' onClick={goRecipe}>-레시피보러가기-</button>           
+                <button className='gotoRe' onClick={() => navigate(`/crop/recipe/${item.id}`)}>-레시피보러가기-</button>           
               </div>
           ))}
         </div>
