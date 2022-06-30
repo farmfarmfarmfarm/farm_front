@@ -51,17 +51,20 @@ const Crop = () => {
         <h2>효능 작물</h2>
           {Result.map((item, i) => (
             <div className='cropbtn' key={i}>
-              <button className="StDiseInput" type = "checkbox" value={item.id} id={item.id}>
-                {item.name} -
-                {item.effectList.map((e,i) => (<span>{e} </span>))}
-              </button>
+              <div className='EffectCrop'>
+                <button className="StCropInput" type = "checkbox" value={item.id} id={item.id}>
+                  {item.name}
+                </button>
+                <div className='effectList'>
+                  {item.effectList.map((e,i) => (<span>{e} </span>))}
+                </div>
+              </div>
               <p className='arrow_box'>
                 <div>{item.name} 정보</div>
                 <div>제철시기:{item.season}</div>
                 <div>보관 온도: {item.temperature}</div>
                 <div>보관 방법: {item.storage}</div>
               </p>
-              <button onClick={goRecipe}>레시피보러가기</button>
             </div>
           ))}
         

@@ -53,6 +53,7 @@ const Review =()=>{
           console.log(err);
         })
       }
+      console.log(Reviews);
       
       //리뷰 평균
       const rating = [0];
@@ -78,9 +79,9 @@ const Review =()=>{
     }
     const reviewsettings = {
       dots: false, // 캐러셀이미지가 몇번째인지 알려주는 점을 보여줄지 정한다.
-      infinite: true, // loop를 만들지(마지막 이미지-처음 이미지-중간 이미지들-마지막 이미지)
+      infinite: false, // loop를 만들지(마지막 이미지-처음 이미지-중간 이미지들-마지막 이미지)
       speed: 500, // 애미메이션의 속도, 단위는 milliseconds
-      slidesToShow: 1.7, // 한번에 몇개의 슬라이드를 보여줄 지
+      slidesToShow: 1, // 한번에 몇개의 슬라이드를 보여줄 지
       slidesToScroll: 1 // 한번 스크롤시 몇장의 슬라이드를 넘길지
     };
 
@@ -92,6 +93,7 @@ const Review =()=>{
             <button onClick={makeReview}>나도 리뷰남기기</button>
             <Slider {...reviewsettings}>
             {Reviews.map((item, i) => (
+              <div className='itemwrap'>
                 <div key={i} className='reviews'>
                   <img src={quotes} className='quotes'></img>
                   <div className='content'>
@@ -102,6 +104,7 @@ const Review =()=>{
                   </div>
                   <img src={triangle} className='triangle'></img>
                 </div>
+              </div>
             ))}
             </Slider>
         </div>

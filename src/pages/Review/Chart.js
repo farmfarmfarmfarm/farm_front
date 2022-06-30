@@ -108,7 +108,7 @@ const Chart = () => {
           <h4 className="piename">👑추천도👑</h4>
       </div>
       {
-        (Number(distance)==0) ? <p>아직 <b>리뷰가 없어요!</b></p> : (Number(avgdistance) >60) ? <p>이 농장 <b>추천해요!</b></p> : <p>이 농장 <b>추천하지 않아요!</b></p>
+        (Number(distance)==0) ? <p>아직 <b>리뷰가 없어요!</b></p> : (Number(avgdistance) >70) ? <p>이 농장 <b>추천해요!</b></p> : <p>이 농장 <b>추천하지 않아요!</b></p>
       }
     </div>
   );
