@@ -30,7 +30,7 @@ const Chart = () => {
     navigator.geolocation.getCurrentPosition(success, error);
   }
 
-  const locdistance = (325-(stdistance))/325*100;
+  const locdistance = (300-(stdistance))/300*100;
   const distance = (rateAvg)/5*100;
   const avgdistance = ((locdistance+distance)/2).toFixed(2);
 
@@ -103,12 +103,12 @@ const Chart = () => {
         />
       </div>
       <div className='pieInfo'>
-          <h4 className="piename">거리!!!!!!!</h4>
-          <h4 className="piename">!!!!평점!!!!</h4>
-          <h4 className="piename">👑추천도👑</h4>
+          <h4 className="piename">거리</h4>
+          <h4 className="piename">평점</h4>
+          <h4 className="piename">추천도</h4>
       </div>
       {
-        (Number(distance)==0) ? <p>아직 <b>리뷰가 없어요!</b></p> : (Number(avgdistance) >70) ? <p>이 농장 <b>추천해요!</b></p> : <p>이 농장 <b>추천하지 않아요!</b></p>
+        (Number(distance)==0) ? <p style={{marginTop:'10px', fontSize:'25px'}}>아직 <b>리뷰가 없어요!</b></p> : (Number(avgdistance) >70) ? <p style={{marginTop:'10px', fontSize:'25px'}}>이 농장 <b>추천해요!</b></p> : <p style={{marginTop:'10px', fontSize:'25px'}}>이 농장 <b>추천하지 않아요!</b></p>
       }
     </div>
   );
