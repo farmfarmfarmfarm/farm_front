@@ -90,7 +90,6 @@ const Review =()=>{
             <h2>추천도</h2>
             <Chart></Chart>
             <h2 style={{marginBottom:'0'}}>리뷰보기 <span style={{fontSize:'15px', color:'#8AAD87'}}>리뷰 {Reviews.length}개</span></h2>
-            <div style={{fontSize:'10px'}}> 좌우로 스크롤하면 더 많은 리뷰를 볼 수 있어요</div>
             <button className = 'makeReview' onClick={makeReview}>나도 리뷰 남기기</button>
             <Slider {...reviewsettings}>
             {Reviews.map((item, i) => (
