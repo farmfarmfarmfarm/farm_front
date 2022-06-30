@@ -62,9 +62,9 @@ function Main() {
         <div>
             {/* <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check> */}
             <div className='warp'>
-                <h2 className='farmQ'>어느 농장을 찾고 싶나요?</h2>
+                <h3 className='farmQ'>주변 농장 검색할 위치를 알려주세요!</h3>
                 <form className="inputForm" onSubmit={handleSubmit} style={{display:'flex', justifyContent: 'space-around'}}>
-                    <input placeholder={place==="" ? "검색어를 입력해주세요." : place } onChange={onChange} value={inputText} />
+                    <input placeholder={place==="" ? "어디로 갈까요?" : place } onChange={onChange} value={inputText} />
                     {(place !== '' ) ? 
                         <Link to='/home'><img style={{width: '27px', height:'40px'}} src={search} alt="검색"></img></Link> 
                         : <img style={{width: '27px', height:'27px'}} src={search} alt="검색"></img>}
