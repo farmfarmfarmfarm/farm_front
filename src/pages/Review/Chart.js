@@ -7,28 +7,34 @@ import { getDistance } from 'geolib';
 import './Review.css';
 
 const Chart = () => {
-  const [thislocation, setThislocation] = useRecoilState(thisloc);
+  // const [thislocation, setThislocation] = useRecoilState(thisloc); //내가 누른 농장의 위도,경도
   const [stdistance, setstdistance] = useState(null);
   const [rateAvg, setRateAvg] = useRecoilState(ratingAvg);
+  const [rcloc, setRcloc] = useRecoilState(selectedLoc);
 
-  function success(position) {
-    const latitude  = position.coords.latitude;
-    const longitude = position.coords.longitude;
     setstdistance((getDistance(
       { latitude: latitude, longitude: longitude },
-      { latitude: thislocation.y, longitude: thislocation.x}
+      { latitude: rcloc.y, longitude: rcloc.x}
     )/1000).toFixed(2));
-  }
 
-  function error() {
-    alert('Unable to retrieve your location') ;
-  }
+  // function success(position) {
+  //   const latitude  = position.coords.latitude; //나의 현위치
+  //   const longitude = position.coords.longitude;
+  //   setstdistance((getDistance(
+  //     { latitude: latitude, longitude: longitude },
+  //     { latitude: thislocation.y, longitude: thislocation.x}
+  //   )/1000).toFixed(2));
+  // }
 
-  if(!navigator.geolocation) {
-    alert('Geolocation is not supported by your browser') ;
-  } else {
-    navigator.geolocation.getCurrentPosition(success, error);
-  }
+  // function error() {
+  //   alert('Unable to retrieve your location') ;
+  // }
+
+  // if(!navigator.geolocation) {
+  //   alert('Geolocation is not supported by your browser') ;
+  // } else {
+  //   navigator.geolocation.getCurrentPosition(success, error);
+  // }
 
   const locdistance = (300-(stdistance))/300*100;
   const distance = (rateAvg)/5*100;
