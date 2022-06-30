@@ -77,3 +77,14 @@ input[type="checkbox"]:checked + .innerBox{
 .StFarmInput{
     display: none;
 }
+
+/*CareFarm.js*/
+.carefarm {
+    width: 200px;
+    height: 40px;
+    border: 5px solid #C9DBC9;
+    border-radius: 10px;
+    background-color: #D7E0D7;
+    margin: 10px 0;
+    text-align: center;
+}
