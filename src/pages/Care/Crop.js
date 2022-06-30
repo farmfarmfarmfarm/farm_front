@@ -41,10 +41,6 @@ const Crop = () => {
         console.log(err);
       })
     } ;
-    function goRecipe(e) {
-      console.log(e.target.id);
-      navigate(`recipe/${e.target.id}`)
-    }
 
     return (
       <div className='cropwrap'>
@@ -59,12 +55,6 @@ const Crop = () => {
                   {item.effectList.map((e,i) => (<span>{e} </span>))}
                 </div>
               </div>
-              <p className='arrow_box'>
-                <div>{item.name} 정보</div>
-                <div>제철시기:{item.season}</div>
-                <div>보관 온도: {item.temperature}</div>
-                <div>보관 방법: {item.storage}</div>
-              </p>
             </div>
           ))}
         

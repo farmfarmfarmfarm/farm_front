@@ -33,10 +33,10 @@ const Home =()=>{
                     <div>●</div>
                 </div>
                 <div className='navcontents'>
-                    <div><Link to='/careFarm' className='navtitle'><img className='navlogo' src={listFarm}></img>치유 농장 소개</Link></div>
-                    <div><Link to='/home' className='navtitle'><img className='navlogo' src={search}></img>지도에서 찾아보기</Link></div>           
-                    <div><Link to='/care' className='navtitle'><img className='navlogo' src={nav3}></img>작물로 치유하기</Link></div>
-                    <div><Link to='/allcrops' className='navtitle'><img className='navlogo' src={nav4}></img>작물 찾아보기</Link></div>           
+                    <div><Link to='/careFarm' className='navtitle'><img className='navlogo' src={listFarm}/>치유 농장 소개</Link></div>
+                    <div><Link to='/home' className='navtitle'><img className='navlogo' src={search}/>지도에서 찾아보기</Link></div>           
+                    <div><Link to='/care' className='navtitle'><img className='navlogo' src={nav3}/>작물로 치유하기</Link></div>
+                    <div><Link to='/allcrops' className='navtitle'><img className='navlogo' src={nav4}/>작물 찾아보기</Link></div>           
                 </div>
                 <div className='arrow'>
                     <div>&gt;</div>

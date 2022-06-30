@@ -30,10 +30,6 @@ const AllCrops = () => {
       fetchAllCrops();
     },[] )
 
-    function goRecipe(e) {
-      console.log(e.target.id);
-      navigate(`recipe/${e.target.id}`)
-    }
     if ( loading ) return <div>로딩중..</div>
     if (error) return <div>에러 발생!!</div>
     if (!allcrops) return null; 
@@ -42,20 +38,21 @@ const AllCrops = () => {
 
     return (
     <div>
-      <h2>모든 작물 보기</h2>
-        <div className="container">
+      <h2 style={{marginBottom:'0'}}>모든 작물 보기</h2>
+        <span style={{fontSize:'10px'}}> 작물을 누르면 정보를 알 수 있어요</span>
+        <div className="allcropswrap">
           {formData.map((item) => (
-              <div className="item" key={item.id} >
-                <button className="StDiseInput" type = "checkbox" value={item.id} id={item.id}>
-                  <p style={{fontSize: '13px'}}>{item.name}</p>
+              <div className="allcropsbtn" key={item.id} >
+                <button className="allcropsname" type = "checkbox" value={item.id} id={item.id} style={{fontSize: '16px'}}>
+                  {item.name}
                 </button> 
                   <p className='arrow_box'>
-                  <div>{item.name} 정보</div>
-                  <div>제철시기:{item.season}</div>
-                  <div>보관 온도: {item.temperature}</div>
-                  <div>보관 방법: {item.storage}</div>
-                </p>
-                <button onClick={goRecipe}>레시피보러가기</button>           
+                    <div>-{item.name} 정보-</div>
+                    <div>● 제철시기:<b>{item.season}</b></div>
+                    <div>● 보관 온도: <b>{item.temperature}</b></div>
+                    <div>● 보관 방법: <b>{item.storage}</b></div>
+                  </p>
+                <button className='gotoRe' onClick={() => navigate(`/crop/recipe/${item.id}`)}>-레시피보러가기-</button>           
               </div>
           ))}
         </div>
