@@ -80,7 +80,7 @@ const Review =()=>{
     setRateAvg((result / rating.length).toFixed(2));
     console.log(thisloc);
     // getLocation(params.farmId)
-    axios.get(`/api/review/findname/${params.farmId}`).then(
+    axios.get(process.env.REACT_APP_DB_HOST + `/api/review/findname/${params.farmId}`).then(
       (res) => {
         setReviews((Reviews) => []);
         res.data.data.forEach((e) =>{
