@@ -19,6 +19,7 @@ const Chart = () => {
   const distance = (rateAvg)/5*100;
   const avgdistance = ((locdistance+distance)/2).toFixed(2);
 
+  console.log(thislocation, stdistance);
   console.log(rateAvg);
   return (
     <div>

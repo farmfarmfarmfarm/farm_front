@@ -69,8 +69,6 @@ const Review =()=>{
   // setRateAvg((result / rating.length).toFixed(2));
 
   useEffect(() => {
-          
-
     // getLocation(params.farmId)
     axios.get(`/api/review/findname/${params.farmId}`).then(
       (res) => {
@@ -83,6 +81,7 @@ const Review =()=>{
             rating: e.rating
           }]);
         });
+        setDone(true);
       }
     )
     .catch((err)=>{
@@ -106,6 +105,7 @@ const Review =()=>{
   }, [])
   
   useEffect(() => {
+    console.log(done);
       //리뷰 평균
       const rating = [0];
       Reviews.map((item, i) => {
