@@ -41,6 +41,6 @@ export const ratingAvg = atom({
 
 export const thisloc = atom({
     key: 'thisloc',
-    default: [],
+    default: {x:1, y:1},
     effects_UNSTABLE: [persistAtom],
   }); 

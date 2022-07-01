@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {useRecoilState} from 'recoil';
 import '../../pages/Home/Home.css';
-import {selectedLoc, selectedFarm} from '../../Atom';
+import {selectedLoc, selectedFarm, thisloc} from '../../Atom';
 import axios from 'axios';
 import listFarm from '../../assets/icons/listFarm.png';
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,7 @@ const MapNList = () => {
   const [resultLength, setLength] = useState(10); //결과값 길이
   const [Places, setPlaces] = useState([])  // 검색결과 배열에 담아줌
   const [done, setDone] = useState(false);
+  const [thislocation, setThislocation] = useRecoilState(thisloc);
 
   async function getData(cate) {
     console.log(cate);
@@ -50,6 +51,19 @@ const MapNList = () => {
 
   useEffect(() => {
     function handleIwClick(e) {
+      console.log('--------------',e.target);
+      axios.get(`/api/farm/findone/${e.target.id}`).then(
+        (res) => {
+          setThislocation((prev) => ({
+            ...prev,
+            x: res.data.location_x,
+            y: res.data.location_y,
+          }))
+        }
+      )
+      .catch((err)=>{
+        console.log('ERR',err);
+      })
       navigate(`review/${e.target.id}`)
     }
       // console.log(Places);
