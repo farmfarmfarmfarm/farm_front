@@ -35,7 +35,7 @@ export const selectedDiease = atom({
 
 export const ratingAvg = atom({
     key: 'ratingAvg',
-    default: '',
+    default: 0,
     effects_UNSTABLE: [persistAtom],
   }); 
 
