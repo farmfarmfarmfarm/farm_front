@@ -21,6 +21,8 @@ const Review =()=>{
     const [rateAvg, setRateAvg] = useRecoilState(ratingAvg);
     const [thislocation, setThislocation] = useRecoilState(thisloc);
 
+    const [done, setDone] = useState(false);
+
     async function getLocation(cate) {
       await axios.get(process.env.REACT_APP_DB_HOST+`/api/farm/findone/${cate}`).then(
         (res) => {
@@ -67,18 +69,6 @@ const Review =()=>{
   // setRateAvg((result / rating.length).toFixed(2));
 
   useEffect(() => {
-          
-    //리뷰 평균
-    const rating = [0];
-    Reviews.map((item, i) => {
-      const rate = Number(item.rating);
-      rating[i] = rate;
-    });
-    const result = rating.reduce(function add(sum, currValue) {
-      return sum + currValue;
-    }, 0);
-    setRateAvg((result / rating.length).toFixed(2));
-    console.log(thisloc);
     // getLocation(params.farmId)
     axios.get(process.env.REACT_APP_DB_HOST + `/api/review/findname/${params.farmId}`).then(
       (res) => {
@@ -91,13 +81,47 @@ const Review =()=>{
             rating: e.rating
           }]);
         });
+        setDone(true);
       }
     )
-  .catch((err)=>{
-    console.log('ERR',err);
-  })
+    .catch((err)=>{
+      console.log('ERR',err);
+    })
+      // //리뷰 평균
+      // const rating = [0];
+      // Reviews.map((item, i) => {
+      //   const rate = Number(item.rating);
+      //   rating[i] = rate;
+      // });
+      // const result = rating.reduce(function add(sum, currValue) {
+      //   return sum + currValue;
+      // }, 0);
+      // console.log(result,rating,rateAvg);
+  
+      // console.log((result / rating.length).toFixed(2));
+      // setRateAvg((result / rating.length).toFixed(2));
+      // console.log(rateAvg);
+      // console.log(thisloc);
   }, [])
-    
+  
+  useEffect(() => {
+    console.log(done);
+      //리뷰 평균
+      const rating = [0];
+      Reviews.map((item, i) => {
+        const rate = Number(item.rating);
+        rating[i] = rate;
+      });
+      const result = rating.reduce(function add(sum, currValue) {
+        return sum + currValue;
+      }, 0);
+      console.log(result,rating,rateAvg);
+  
+      console.log((result / rating.length).toFixed(2));
+      setRateAvg((result / rating.length).toFixed(2));
+      console.log(rateAvg);
+      console.log(thisloc);
+  }, [done])
     //리뷰쓰러가기
   function makeReview() {
     console.log('리뷰뷰');

@@ -54,6 +54,7 @@ const MapNList = () => {
       console.log('--------------',e.target);
       axios.get(`/api/farm/findone/${e.target.id}`).then(
         (res) => {
+          console.log('농장좌표!!!!!!!!!!,',res.data)
           setThislocation((prev) => ({
             ...prev,
             x: res.data.location_x,
