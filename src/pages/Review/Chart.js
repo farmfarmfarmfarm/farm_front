@@ -10,7 +10,6 @@ const Chart = () => {
   const [thislocation, setThislocation] = useRecoilState(thisloc); //내가 누른 농장의 위도,경도
   const [rateAvg, setRateAvg] = useRecoilState(ratingAvg);
   const [rcloc, setRcloc] = useRecoilState(selectedLoc);
-
     const stdistance = ((getDistance(
       { latitude: thislocation.y, longitude: thislocation.x },
       { latitude: Number(rcloc.y), longitude: Number(rcloc.x)}
