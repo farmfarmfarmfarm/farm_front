@@ -16,6 +16,7 @@ const Chart = () => {
       { latitude: Number(rcloc.y), longitude: Number(rcloc.x)}
     )/1000).toFixed(2));
 
+
   const locdistance = (300-(stdistance))/300*100;
   const distance = (rateAvg)/5*100;
   const avgdistance = ((locdistance+distance)/2).toFixed(2);
