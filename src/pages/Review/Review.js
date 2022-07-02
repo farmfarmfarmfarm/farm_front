@@ -38,7 +38,7 @@ const Review =()=>{
 
   useEffect(() => {
     getLocation(params.farmId)
-    axios.get(`/api/review/findname/${params.farmId}`).then(
+    axios.get(process.env.REACT_APP_DB_HOST + `/api/review/findname/${params.farmId}`).then(
       (res) => {
         setReviews((Reviews) => []);
         res.data.data.forEach((e) =>{
@@ -86,7 +86,6 @@ const Review =()=>{
     slidesToShow: 1.4, // 한번에 몇개의 슬라이드를 보여줄 지
     slidesToScroll: 1 // 한번 스크롤시 몇장의 슬라이드를 넘길지
   };
-  console.log(thislocation);
 
   return(
       <div className='review'>  
