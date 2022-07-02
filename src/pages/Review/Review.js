@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 import {ratingAvg, thisloc} from '../../Atom';
 import Chart from "pages/Review/Chart";
-import Map from "pages/Review/Map";
-import { Link } from 'react-router-dom';
 import quotes from 'assets/icons/quotes.png'
 import triangle from 'assets/icons/triangle.png'
 import './Review.css';
@@ -36,40 +34,10 @@ const Review =()=>{
         console.log('ERR',err);
       })
     }
-
-    async function getData(cate) {
-      await axios.get(`/api/review/findname/${cate}`).then(
-        (res) => {
-          setReviews((Reviews) => []);
-          res.data.data.forEach((e) =>{
-            setReviews((prev)=>[...prev,{
-              id: e.id,
-              nickname: e.nickname,
-              contents: e.contents,
-              rating: e.rating
-            }]);
-          });
-        }
-      )
-    .catch((err)=>{
-      console.log('ERR',err);
-    })
-    }
-      // console.log(Reviews);
       
-  //리뷰 평균
-  // const rating = [0];
-  // Reviews.map((item, i) => {
-  //   const rate = Number(item.rating);
-  //   rating[i] = rate;
-  // });
-  // const result = rating.reduce(function add(sum, currValue) {
-  //   return sum + currValue;
-  // }, 0);
-  // setRateAvg((result / rating.length).toFixed(2));
 
   useEffect(() => {
-    // getLocation(params.farmId)
+    getLocation(params.farmId)
     axios.get(`/api/review/findname/${params.farmId}`).then(
       (res) => {
         setReviews((Reviews) => []);
@@ -87,21 +55,6 @@ const Review =()=>{
     .catch((err)=>{
       console.log('ERR',err);
     })
-      // //리뷰 평균
-      // const rating = [0];
-      // Reviews.map((item, i) => {
-      //   const rate = Number(item.rating);
-      //   rating[i] = rate;
-      // });
-      // const result = rating.reduce(function add(sum, currValue) {
-      //   return sum + currValue;
-      // }, 0);
-      // console.log(result,rating,rateAvg);
-  
-      // console.log((result / rating.length).toFixed(2));
-      // setRateAvg((result / rating.length).toFixed(2));
-      // console.log(rateAvg);
-      // console.log(thisloc);
   }, [])
   
   useEffect(() => {
@@ -115,13 +68,11 @@ const Review =()=>{
       const result = rating.reduce(function add(sum, currValue) {
         return sum + currValue;
       }, 0);
-      console.log(result,rating,rateAvg);
   
       console.log((result / rating.length).toFixed(2));
       setRateAvg((result / rating.length).toFixed(2));
-      console.log(rateAvg);
-      console.log(thisloc);
   }, [done])
+
     //리뷰쓰러가기
   function makeReview() {
     console.log('리뷰뷰');
@@ -135,6 +86,7 @@ const Review =()=>{
     slidesToShow: 1.4, // 한번에 몇개의 슬라이드를 보여줄 지
     slidesToScroll: 1 // 한번 스크롤시 몇장의 슬라이드를 넘길지
   };
+  console.log(thislocation);
 
   return(
       <div className='review'>  
