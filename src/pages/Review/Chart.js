@@ -11,7 +11,7 @@ const Chart = () => {
   const [rateAvg, setRateAvg] = useRecoilState(ratingAvg);
   const [rcloc, setRcloc] = useRecoilState(selectedLoc);
 
-    const stdistance = ((getDistance (
+  const stdistance = ((getDistance(
       { latitude: thislocation.y, longitude: thislocation.x },
       { latitude: Number(rcloc.y), longitude: Number(rcloc.x)}
     )/1000).toFixed(2));
@@ -21,8 +21,8 @@ const Chart = () => {
   const distance = (rateAvg)/5*100;
   const avgdistance = ((locdistance+distance)/2).toFixed(2);
 
-  console.log(thislocation, stdistance);
-  console.log(rateAvg);
+  console.log(thislocation, rcloc, stdistance);
+
   return (
     <div>
       <div className='Chartcontainer'>
