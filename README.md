@@ -11,7 +11,7 @@
 <img width="250px" src="https://user-images.githubusercontent.com/81412212/182316037-a0e20f64-fc8d-4235-a18a-c938e908f435.png"><img width="250px" src="https://user-images.githubusercontent.com/81412212/182316043-871c926e-b197-45bf-a2f2-b4634f4154dd.png"> <img width="250px" src="https://user-images.githubusercontent.com/81412212/182316060-abcac787-2752-468e-bae9-8eef2e23194e.png">
 
 
- **가고 싶은 지역을 검색**하여 지정합니다다. <br/>
+ **가고 싶은 지역을 검색**하여 지정합니다. <br/>
  해당 지역에서 운영되고 있는 농장들을 볼 수 있습니다. <br/>
  
  **‘주말 농장’, ‘치유 농장’, ‘체험 농장’** 중 관심 있는 농장 유형을 고르면 **지도**에서 선택한 유형의 농장만 볼 수 있습니다. <br/>
@@ -61,6 +61,6 @@
 | Name    | 이예진                                     | 최진실                                   |
 | ------- | ---------------------------------------- | ---------------------------------------- |
 | Profile | <img width="200px" src="" />                               | <img width="200px" src="" />                               |
-| Role    | Frontend                 | Frontend                                  |
+| Role    |                  |                                   |
 | Github  | [@yejinleee](https://github.com/yejinleee) | [@chlwlstlf](https://github.com/chlwlstlf) |
 
