@@ -23,6 +23,8 @@
  거리는 현위치로부터 선택한 농장까지의 직선거리, 평점은 사람들이 리뷰와 함께 남긴 평점들의 평균, 추천도는 거리와 평균을 환산한 값의 평균입니다.<br/>
  리뷰 카드는 좌우 스크롤로 이동하며 볼 수 있습니다.
 
+<img width="250px" src="https://user-images.githubusercontent.com/81412212/184290331-6cd71d8f-3077-4078-9f59-6dcff33c3a05.png"><img width="250px" src="https://user-images.githubusercontent.com/81412212/184290326-1367b414-127f-453c-ba99-a0c1abc48933.png"><img width="250px" src="https://user-images.githubusercontent.com/81412212/184291117-aa8e0951-c946-4c48-a5e6-d0d89187f231.png">
+
  자신의 증상을 체크하면 그 증상에 맞는 효능 작물을 소개합니다. <br/>
  또한, 작물들로 음식을 만들 수 있게 작물의 효능, 제철 시기, 보관방법, 재료, 레시피 정보를 제공합니다.
  
