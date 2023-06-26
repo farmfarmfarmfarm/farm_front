@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import {useRecoilState} from 'recoil';
-import {selectedFarm} from '../../Atom';
+import { useRecoilState } from "recoil";
+import { selectedFarm } from "../../Atom";
 
-const Check = ({checkedItems, setcheckedItems}) => {
+const Check = ({ checkedItems, setcheckedItems }) => {
   const [rcfarm, setRcfarm] = useRecoilState(selectedFarm);
   const formData = [
-    {id: 1, name: "주말농장"},
-    {id: 2, name: "치유농장"},
-    {id: 3, name: "체험농장"},
+    { id: 1, name: "주말농장" },
+    { id: 2, name: "치유농장" },
+    { id: 3, name: "체험농장" },
   ];
-  const onRemove = id => {
-    setcheckedItems(checkedItems.filter(each => each !== id));
+  const onRemove = (id) => {
+    setcheckedItems(checkedItems.filter((each) => each !== id));
   };
   const [isChecked, setIsChecked] = useState(false);
 
@@ -18,13 +18,17 @@ const Check = ({checkedItems, setcheckedItems}) => {
     // console.log(target);
     setRcfarm(target.value);
     setIsChecked(!isChecked);
-    checkedItemHandler(target.parentNode.lastChild, target.value, target.checked);
+    checkedItemHandler(
+      target.parentNode.lastChild,
+      target.value,
+      target.checked
+    );
   };
 
   const checkedItemHandler = (text, category, isChecked) => {
-    if(isChecked) {
+    if (isChecked) {
       setcheckedItems([...checkedItems, category]);
-    } else if (!isChecked ) {
+    } else if (!isChecked) {
       onRemove(category);
     }
     return checkedItems;
@@ -33,10 +37,20 @@ const Check = ({checkedItems, setcheckedItems}) => {
   return (
     <div className="contStyle">
       {formData.map((item) => (
-        <div className="StFarmDiv" key={item.id} >
-          <input className="StFarmInput" type = "checkbox" value={item.name} id={item.id} onChange={(e) => checkHandler(e)}/>
-          <label className="innerBox" for={item.id} style={{cursor: 'pointer'}}>
-            <span style={{fontSize: '12px'}}>{item.name}</span>
+        <div className="StFarmDiv" key={item.id}>
+          <input
+            className="StFarmInput"
+            type="checkbox"
+            value={item.name}
+            id={item.id}
+            onChange={(e) => checkHandler(e)}
+          />
+          <label
+            className="innerBox"
+            htmlFor={item.id}
+            style={{ cursor: "pointer" }}
+          >
+            <span style={{ fontSize: "12px" }}>{item.name}</span>
           </label>
         </div>
       ))}

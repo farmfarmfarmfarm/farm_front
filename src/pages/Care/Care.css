@@ -3,7 +3,7 @@ h1 {
 }
 .select {
   text-align: center;
-  color : #166d1e;
+  color: #166d1e;
 }
 .check {
   text-align: center;
@@ -21,11 +21,11 @@ h1 {
   flex-wrap: wrap;
 }
 .item {
-  position: relative
+  position: relative;
 }
-input[type="checkbox"]{
-  position: absolute; 
-  top: 20px; 
+input[type="checkbox"] {
+  position: absolute;
+  top: 20px;
   right: 20px;
   appearance: none;
   cursor: pointer;
@@ -33,22 +33,22 @@ input[type="checkbox"]{
   height: 1.1rem;
   border-radius: 50%;
 }
-input[type="checkbox"]::before{
+input[type="checkbox"]::before {
   content: "✔";
   color: #fff;
   margin-left: 3px;
 }
 input[type="checkbox"]:checked {
   content: "✔";
-  background: #037F00;
+  background: #037f00;
   border: none;
   opacity: 1;
 }
-.innerbox{
+.innerbox {
   text-align: center;
   width: 75px;
   height: 75px;
-  margin : 20px;
+  margin: 20px;
   border: 2px solid #666666;
   border-radius: 100%;
   cursor: pointer;
@@ -57,19 +57,19 @@ input[type="checkbox"]:checked {
   justify-content: center;
   background-color: white;
 }
-input[type="checkbox"]:checked + .innerbox{
+input[type="checkbox"]:checked + .innerbox {
   text-align: center;
   width: 75px;
   height: 75px;
-  margin : 20px;
-  border: 2px solid #037F00;
+  margin: 20px;
+  border: 2px solid #037f00;
   border-radius: 100%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: white;
-  color: #037F00;
+  color: #037f00;
 }
 p {
   text-align: center;
@@ -84,7 +84,7 @@ p {
   left: 50%;
   margin-left: -75px;
   background-color: #ededed;
-  color:#7c7c7c;
+  color: #7c7c7c;
   border: 1px solid #a2a2a2;
   border-radius: 8px;
 }
@@ -95,9 +95,9 @@ p {
   height: 35px;
   left: 50%;
   margin-left: -75px;
-  background-color: #037F00;
+  background-color: #037f00;
   color: white;
-  border: 1px solid #037F00;
+  border: 1px solid #037f00;
   border-radius: 8px;
 }
 
@@ -106,8 +106,8 @@ p {
   position: relative;
   padding: 5px;
 }
-.EffectCrop{
-  background-color: #E9F1E9;
+.EffectCrop {
+  background-color: #e9f1e9;
   display: inline-block;
   margin: 5px;
   border-radius: 40px;
@@ -116,31 +116,31 @@ p {
   height: 37px;
   line-height: 0;
 }
-.StCropInput{
-  border:0;
-  outline:0;
+.StCropInput {
+  border: 0;
+  outline: 0;
   padding: 0 15px;
   font-size: 17px;
   border-radius: 40px;
   height: 26px;
-  background-color: #D8E6D8;
+  background-color: #d8e6d8;
 }
-.effectList{
+.effectList {
   display: inline-block;
-  margin:20px;
+  margin: 20px;
 }
 
 /*allcrops*/
-.allcropswrap{
-  display: flex;
+.allcropswrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-around;
   text-align: center;
   flex-wrap: wrap;
 }
-.allcropsbtn{
+.allcropsbtn {
   position: relative;
-  background-color: #F2F2F2;
-  width: 190px;
+  background-color: #f2f2f2;
   height: 80px;
   margin: 5px;
   border: 1px solid rgb(201, 201, 201);
@@ -149,16 +149,15 @@ p {
 }
 .allcropsname {
   display: block;
-  width: 110px;
   height: 30px;
   margin: 5px 40px;
   border-radius: 20px;
-  border : 3px solid #A0BAA4;
+  border: 3px solid #a0baa4;
   cursor: pointer;
 }
 .gotoRe {
-  border : 0;
-  outline : 0;
+  border: 0;
+  outline: 0;
   margin: 5px;
   cursor: pointer;
 }
@@ -166,11 +165,11 @@ p {
 /*cropInfo*/
 .arrow_box {
   display: none;
-  position:absolute;
+  position: absolute;
   width: 200px;
   padding: 8px;
-  right:0;
-  top:15px;
+  right: 0;
+  top: 15px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 15px;
@@ -185,56 +184,56 @@ button:focus + p.arrow_box {
 /*Recipe*/
 .titlewrap {
   position: relative;
-  width:100%;
-  height:50px;
-  background-color: #C2D8C2;
+  width: 100%;
+  height: 50px;
+  background-color: #c2d8c2;
 }
 .recipetitle {
-  position:absolute;
-  width:50%;
-  height:30px;
-  background-color: #D6E3D6;
-  margin:0 auto;
+  position: absolute;
+  width: 50%;
+  height: 30px;
+  background-color: #d6e3d6;
+  margin: 0 auto;
   text-align: center;
   line-height: 30px;
   left: 100px;
   top: 10px;
   border-radius: 10px;
 }
-.recipeitem{
+.recipeitem {
   position: relative;
 }
 .recipeName {
-  width:200px;
+  width: 200px;
   height: 200px;
-  border:10px solid transparent;
+  border: 10px solid transparent;
   border-radius: 50%;
-  background-image: linear-gradient(#E2E9E0, #E2E9E0), 
-    linear-gradient(to bottom right, #BFD6A2, #C0D4BF);;
+  background-image: linear-gradient(#e2e9e0, #e2e9e0),
+    linear-gradient(to bottom right, #bfd6a2, #c0d4bf);
   background-origin: border-box;
   background-clip: content-box, border-box;
   text-align: center;
-  margin:auto;
+  margin: auto;
   margin-bottom: 20px;
   margin-top: 30px;
 }
 .recipeId {
-  margin:35px;
+  margin: 35px;
 }
 .recipeIngre {
   width: 300px;
   height: 120px;
   font-size: 15px;
-  border-radius:10px;
+  border-radius: 10px;
   outline: none;
   box-shadow: 4px 4px 6px 2px #c7c7c7;
   background-color: white;
   margin: 0 auto;
-  padding:20px;
+  padding: 20px;
 }
 .stepWrap {
   border-left: 7px solid;
-  border-image: linear-gradient(#C0D993, #8AAD87);
+  border-image: linear-gradient(#c0d993, #8aad87);
   border-image-slice: 1;
 }
 .step {
@@ -242,7 +241,7 @@ button:focus + p.arrow_box {
   width: 300px;
   height: 50px;
   font-size: 15px;
-  border-radius:2px;
+  border-radius: 2px;
   outline: none;
   box-shadow: 4px 4px 10px 2px #c7c7c7;
   background-color: white;
@@ -255,10 +254,10 @@ button:focus + p.arrow_box {
   height: 50px;
   font-size: 40px;
   text-align: center;
-  border-right:1px solid;
+  border-right: 1px solid;
 }
-.stepCooking{
-  position:absolute;
+.stepCooking {
+  position: absolute;
   width: 70%;
   height: 50px;
   max-height: 50px;
@@ -266,10 +265,9 @@ button:focus + p.arrow_box {
   right: 20px;
   overflow: auto;
 }
-.slick-dots {  
-  top:0;
+.slick-dots {
+  top: 0;
 }
 .slick-list {
   margin: 0 auto;
 }
-

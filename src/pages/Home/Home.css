@@ -1,90 +1,91 @@
 /*Home.js */
 .home {
-    position: relative;
+  position: relative;
 }
 .farmcheck {
-    position:absolute;
-    right:10px;
-    top:0px;
+  position: absolute;
+  right: 10px;
+  top: 0px;
 }
 
 .slider {
-    position: relative;
-    /* left: 10%;
+  position: relative;
+  /* left: 10%;
     top: 30%; */
-    /* width: 380px; */
-    height: 200px;
-    overflow: hidden;
-  }
+  /* width: 380px; */
+  height: 200px;
+  overflow: hidden;
+}
 
 .slider-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 80%;
-    /* width: 200%; */
-    display: flex; /* grid */
-    gap: 5px;
-    pointer-events: none;
-    margin-top: 16px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80%;
+  /* width: 200%; */
+  display: flex; /* grid */
+  gap: 5px;
+  pointer-events: none;
+  margin-top: 16px;
 }
 
 .slider-item {
-    width: 250px;
-    border: 1px solid #156e1c;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-    background-color: #f0f0f0;
+  width: 250px;
+  border: 1px solid #156e1c;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
 }
-
 
 /*Check.js */
-.contStyle{
-    box-sizing: content-box;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    width: 170px;
-    height: 25px;
-    padding: 2px 5px 2px 5px;  
-    font-size: 15px;
-    border : solid 1px gray;
-    border-radius: 10px;
+.contStyle {
+  box-sizing: content-box;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  width: 170px;
+  height: 25px;
+  padding: 2px 5px 2px 5px;
+  font-size: 15px;
+  border: solid 1px gray;
+  border-radius: 10px;
 }
-.innerBox{
-    cursor: pointer;
-    height: 22px;
-    width: 54px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    border-radius: 8px;
+.innerBox {
+  cursor: pointer;
+  height: 22px;
+  width: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 8px;
 }
-input[type="checkbox"]:checked + .innerBox{
-    cursor: pointer;
-    height: 22px;
-    width: 54px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #cbd7be;
-    border-radius: 8px;
+input[type="checkbox"]:checked + .innerBox {
+  cursor: pointer;
+  height: 22px;
+  width: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #cbd7be;
+  border-radius: 8px;
 }
-.StFarmInput{
-    display: none;
+.StFarmInput {
+  display: none;
 }
 
 /*CareFarm.js*/
 .carefarm {
-    width: 200px;
-    height: 40px;
-    border: 5px solid #C9DBC9;
-    border-radius: 10px;
-    background-color: #D7E0D7;
-    margin: 10px 0;
-    text-align: center;
+  width: 200px;
+  height: 40px;
+  border: 5px solid #c9dbc9;
+  border-radius: 10px;
+  background-color: #d7e0d7;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
