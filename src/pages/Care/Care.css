@@ -177,7 +177,7 @@ p {
   font-size: 14px;
   z-index: 999;
 }
-button:focus + p.arrow_box {
+button:focus + div.arrow_box {
   display: block;
 }
 

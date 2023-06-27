@@ -18,7 +18,6 @@ function Main() {
 
   const onChange = (e) => {
     setInputText(e.target.value);
-    console.log(inputText);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,9 +29,9 @@ function Main() {
 
   useEffect(() => {
     axios
-      .get("/api/farm/findall")
+      .get("/api/farms")
       .then((res) => {
-        // console.log(res.data.data.length, '개의 농장 찾기 성공');
+        console.log(res.data.length, "개의 농장 찾기 성공");
       })
       .catch();
 

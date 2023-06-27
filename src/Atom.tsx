@@ -1,46 +1,53 @@
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue } from 'recoil';
-import { recoilPersist } from 'recoil-persist';
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from "recoil";
+import { recoilPersist } from "recoil-persist";
 
-const { persistAtom } = recoilPersist()
+const { persistAtom } = recoilPersist();
 
 export const userId = atom({
-  key: 'userId',
+  key: "userId",
   default: 0,
   effects_UNSTABLE: [persistAtom],
-}); 
+});
 
-export const selectedPlace = atom({ //입력한 검색중심 장소
-  key: 'selectedPlace',
-  default: '',
+export const selectedPlace = atom({
+  //입력한 검색중심 장소
+  key: "selectedPlace",
+  default: "",
   effects_UNSTABLE: [persistAtom],
-}); 
+});
 
 export const selectedLoc = atom({
-  key: 'selectedLoc',
-  default: {x:0, y:0},
+  key: "selectedLoc",
+  default: { x: 0, y: 0 },
   effects_UNSTABLE: [persistAtom],
-}); 
+});
 
 export const selectedFarm = atom({
-    key: 'selectedFarm',
-    default: '',
-    effects_UNSTABLE: [persistAtom],
-  }); 
+  key: "selectedFarm",
+  default: "주말농장",
+  effects_UNSTABLE: [persistAtom],
+});
 
 export const selectedDiease = atom({
-    key: 'selectedDiease',
-    default: [],
-    effects_UNSTABLE: [persistAtom],
-  }); 
+  key: "selectedDiease",
+  default: [],
+  effects_UNSTABLE: [persistAtom],
+});
 
 export const ratingAvg = atom({
-    key: 'ratingAvg',
-    default: 0,
-    effects_UNSTABLE: [persistAtom],
-  }); 
+  key: "ratingAvg",
+  default: 0,
+  effects_UNSTABLE: [persistAtom],
+});
 
 export const thisloc = atom({
-    key: 'thisloc',
-    default: {x:1, y:1},
-    effects_UNSTABLE: [persistAtom],
-  }); 
+  key: "thisloc",
+  default: { x: 1, y: 1 },
+  effects_UNSTABLE: [persistAtom],
+});
