@@ -1,1 +1,16 @@
-* {font-family: 'NanumBarunGothic', 'serif';}
+* {
+  font-family: "NanumBarunGothic", "serif";
+}
+.mainlogo {
+  font-family: "EF_cucumbersalad", "serif";
+  color: rgb(138, 173, 135);
+  font-weight: bold;
+  font-size: 30px;
+}
+@font-face {
+  font-family: "EF_cucumbersalad";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_cucumbersalad.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
