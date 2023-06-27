@@ -2,79 +2,64 @@
   position:relative;
 }
 .menulogo {
-  background-image: url(assets/icons/menu.png);
-  background-size:cover;
   position: absolute;
-  top: -156px;
-  width:100%;
+  background-color: white;
+  width:414px;
   height: 200px;
+  top: -155px;
 }
-.loginQ{
-  position: absolute;
-  top: -100px;
-  width:100px;
-  height: 100px;
-  z-index: 999;
+.mainlogo{
+  margin: 50px 50px 0px 50px;
 }
 .before {
-  margin: 60px 50px;
+  margin: 30px 50px;
 }
 .after {
-  margin: 40px 50px;
+  margin: 10px 50px;
   line-height: 5px;
 }
 .goback {
   position: absolute;
-  top:5px;
-  right:10px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  border:0;
-  outline: 0;
-  font-size: 25px;
-  color: gray;
+  top:25px;
+  right:30px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 /*nav*/
 .nav {
   position: absolute;
-  top: 45px;
+  top: 0px;
   width: 100%
+}
+.navcontents {
+  float:left;
+  line-height: 50px;
+  width: 414px;
+}
+.navcontent{
+  width: 380px;
+  height: 50px;
+  margin: 30px 17px;
+  border-radius: 10px;
+}
+.navcontent:hover {
+  background-color: #ddedd1;
 }
 .navtitle {
   text-decoration: none;
   color:black;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 .navlogo {
-  width: 30px;
-  height: 30px;
-  padding: 10px 30px 0 20px;
+  width: 25px;
+  height: 25px;
+  margin: 0 30px 0 20px;
 }
-.dots{
-  float: left;
-  line-height: 100px;
-  font-size: 12px;
-  color:gray;
-  padding: 0 20px;
-  border-right:1px solid rgb(188, 188, 188);
-}
-.navcontents {
-  float:left;
-  line-height: 100px;
-  width: 300px;
-}
-.navtitle{
-  font-size: 20px;
-  color:gray;
-}
-.navtitle:active {
-  color:black;
-}
-.arrow {
-  float:left;
-  line-height: 100px;
+.right-arrow {
   width: 20px;
-  font-size: 30px;
-  color:gray;
+  height: 20px;
+  margin: 15px 10px;
 }
