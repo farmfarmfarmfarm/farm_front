@@ -13,8 +13,7 @@ const Recipe = () => {
   const [recipe, setRecipe] = useState(null); //결과값
   const [loading, setLoading] = useState(false); // 로딩되는지 여부
   const [error, setError] = useState(null); //에러
-  const [checkedItems, setcheckedItems] = useState([]);
-  const [isChecked, setIsChecked] = useState(false);
+  const [cropinfo, setCropinfo] = useState([]);
 
   const fetchCropInfo = async (cropId) => {
     try {
@@ -32,7 +31,6 @@ const Recipe = () => {
   useEffect(() => {
     fetchCropInfo(params.cropId);
   }, []);
-  console.log(crop);
 
   const fetchDisease = async (cropId) => {
     try {
@@ -46,9 +44,19 @@ const Recipe = () => {
     }
     setLoading(false);
   };
-
+  async function getCropInfo(farmID) {
+    await axios
+      .get(`/api/crops/${farmID}`)
+      .then((res) => {
+        setCropinfo(res.data);
+      })
+      .catch((err) => {
+        console.log("ERR", err);
+      });
+  }
   useEffect(() => {
     fetchDisease(params.cropId);
+    getCropInfo(params.cropId);
   }, []);
 
   if (loading) return <div>로딩중..</div>;
@@ -69,9 +77,27 @@ const Recipe = () => {
 
   return (
     <div>
-      {/* <div className="titlewrap">
-        <div className="recipetitle">테라피아 작물 레시피</div>
-      </div> */}
+      <div className="titlewrap">
+        {cropinfo && (
+          <>
+            <div className="recipetitle">{cropinfo.name}</div>
+            <div className="recipecropinfo">
+              <div>
+                <div style={{ color: "#383e38" }}>제철</div>
+                <div>{cropinfo.season}</div>
+              </div>
+              <div>
+                <div style={{ color: "#383e38" }}>보관 방법</div>
+                <div>{cropinfo.storage}</div>
+              </div>
+              <div>
+                <div style={{ color: "#383e38" }}>보관 온도</div>
+                <div>{cropinfo.temperature}</div>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
 
       <Slider {...settings}>
         {formData.map((item, i) => (

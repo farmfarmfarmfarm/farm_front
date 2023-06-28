@@ -80,7 +80,9 @@ const Disease = () => {
                 htmlFor={item.id}
                 style={{ cursor: "pointer" }}
               >
-                <p style={{ fontSize: "13px" }}>{item.symptom}</p>
+                <p style={{ fontSize: "13px", wordBreak: "keep-all" }}>
+                  {item.symptom}
+                </p>
               </label>
             </div>
           ))}

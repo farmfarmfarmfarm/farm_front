@@ -32,46 +32,29 @@ const AllCrops = () => {
   if (!allcrops) return null;
 
   const formData = allcrops;
-  console.log(formData);
 
   return (
     <div>
       <h2 style={{ marginBottom: "0" }}>모든 작물 보기</h2>
       <span style={{ fontSize: "10px" }}>
         {" "}
-        작물을 누르면 정보를 알 수 있어요
+        작물을 누르면 작물 정보와 활용 레시피를 볼 수 있어요
       </span>
       <div className="allcropswrap">
         {formData.map((item) => (
-          <div className="allcropsbtn" key={item.id}>
-            <button
-              className="allcropsname"
-              type="checkbox"
-              value={item.id}
-              id={item.id}
-              style={{ fontSize: "16px" }}
-            >
-              {item.name}
-            </button>
-            <div className="arrow_box">
-              <div>-{item.name} 정보-</div>
-              <div>
-                ● 제철시기:<b>{item.season}</b>
-              </div>
-              <div>
-                ● 보관 온도: <b>{item.temperature}</b>
-              </div>
-              <div>
-                ● 보관 방법: <b>{item.storage}</b>
-              </div>
-            </div>
-            <button
-              className="gotoRe"
-              onClick={() => navigate(`/crop/recipe/${item.id}`)}
-            >
-              -레시피보러가기-
-            </button>
-          </div>
+          // <div className="allcropsbtn" key={item.id}>
+          <button
+            className="allcropsname"
+            key={item.id}
+            type="checkbox"
+            value={item.id}
+            id={item.id}
+            style={{ fontSize: "16px" }}
+            onClick={() => navigate(`/crop/recipe/${item.id}`)}
+          >
+            {item.name}
+          </button>
+          // </div>
         ))}
       </div>
     </div>

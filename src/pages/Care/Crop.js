@@ -20,13 +20,14 @@ const Crop = () => {
       getData(parseInt(rcdiease[i]));
     }
   }, [rcdiease]);
-  async function getData(cate) {
+  async function getData(effectId) {
     await axios
-      .get(`api/effects/${cate}/crops`)
+      .get(`api/effects/${effectId}/crops?include_effects=true`)
       .then(
         //증상(효능)번호로 해당되는 작물찾기
         (res) => {
-          res.data.data.forEach((e) => {
+          setResult([]);
+          res.data.forEach((e) => {
             setResult((prev) => [
               ...prev,
               {
@@ -49,7 +50,7 @@ const Crop = () => {
 
   return (
     <div className="cropwrap">
-      <h2>효능 작물</h2>
+      <h2 style={{ marginBottom: 0 }}>효능 작물</h2>
       {Result.map((item, i) => (
         <div className="cropbtn" key={i}>
           <div className="EffectCrop">
