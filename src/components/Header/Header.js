@@ -6,6 +6,8 @@ import menu from "assets/icons/nav_bar.png";
 import { Link } from "react-router-dom";
 
 function Header({ isLoggedIn }) {
+  if (window.location.hash === '#/menu') return null;
+
   return (
     <StHeader>
       <StHeaderMain>
@@ -16,8 +18,8 @@ function Header({ isLoggedIn }) {
             alt="메뉴"
           ></img>
         </Link>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <h3 className="mainlogo">Therapia</h3>
+        <Link to="/" style={{ textDecoration: "none"}}>
+          <h3 className="mainlogo" style={{marginTop:"0"}}>Therapia</h3>
         </Link>
         {isLoggedIn ? (
           <Link

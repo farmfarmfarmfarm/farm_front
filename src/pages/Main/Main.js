@@ -52,6 +52,7 @@ function Main() {
       }
     }
   }, [place]);
+  
   let navigate = useNavigate();
   useEffect(() => {
     if ((place !== "") & (checkedItems[0] !== undefined)) {

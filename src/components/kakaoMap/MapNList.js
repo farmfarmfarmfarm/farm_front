@@ -17,28 +17,22 @@ const MapNList = () => {
   const [done, setDone] = useState(false);
   const [thislocation, setThislocation] = useRecoilState(thisloc);
 
+  useEffect(() => {
+    axios
+    .get("/api/farms")
+    .then((res) => {
+      setPlaces(res.data);
+    })
+    .catch();
+  }, []);
+
   async function getData(cate) {
     // console.log(cate);
     await axios
       .get(`api/farms/category/${cate}`)
       .then((res) => {
         console.log(res); /////
-        // setPlaces((Places) => []);// ??
-        res.data.forEach((e) => {
-          // console.log(e); //{id: 1, category: 'EXP', name: '가나안농장', reviews: Array(0), reviewRating: 0, …}
-          setPlaces((prev) => [
-            ...prev,
-            {
-              id: e.id,
-              category: e.category,
-              name: e.name,
-              address: e.address,
-              location_x: e.location_x,
-              location_y: e.location_y,
-              phone: e.phone,
-            },
-          ]);
-        });
+        setPlaces(res.data);
         setDone(true);
       })
       .catch((err) => {
@@ -108,6 +102,7 @@ const MapNList = () => {
               border-radius: 4px;
               padding: 0px 10px;
               font-size: 11px;
+              cursor: pointer;
             ">${Places[i].name}</div>`,
         position: markerPosition,
         map: map,
@@ -176,6 +171,8 @@ const MapNList = () => {
 
   return (
     <div>
+      <div style={{fontSize: '11px'}}>검색 결과 {Places.length}개 </div>
+      <span style={{fontSize: '11px', color: '#7c7c7c'}}>지도에서 농장의 이름을 누르면 농장에 대한 자세한 정보를 볼 수 있어요</span>
       <div>
         <div id="mapNList" style={{ width: "100%", height: "40vh" }}></div>
       </div>
