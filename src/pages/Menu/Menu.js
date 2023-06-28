@@ -21,7 +21,7 @@ const Home = () => {
     <div className="home">
       <div className="menulogo">
         <div className="mainlogo">Therapia</div>
-        {rcUserId === 0 ? (
+        {!localStorage.getItem("userId") ? (
           <div className="before">
             <Link to="/login" style={{ color: "black" }}>
               로그인 해주세요 <img src={rightArrow} style={{ width: "15px" }} />

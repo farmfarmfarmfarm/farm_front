@@ -6,7 +6,7 @@
   background-color: white;
   width:414px;
   height: 200px;
-  top: -155px;
+  top: -100px;
 }
 .mainlogo{
   margin: 50px 50px 0px 50px;
@@ -29,7 +29,7 @@
 /*nav*/
 .nav {
   position: absolute;
-  top: 0px;
+  top: 50px;
   width: 100%
 }
 .navcontents {
