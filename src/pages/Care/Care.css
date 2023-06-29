@@ -19,6 +19,7 @@ h1 {
   text-align: center;
   color: black;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 .item {
   position: relative;
@@ -32,6 +33,9 @@ input[type="checkbox"] {
   width: 1.1rem;
   height: 1.1rem;
   border-radius: 50%;
+}
+input[type="checkbox"]:not(:checked)::before {
+  content: none;
 }
 input[type="checkbox"]::before {
   content: "✔";
@@ -56,6 +60,7 @@ input[type="checkbox"]:checked {
   align-items: center;
   justify-content: center;
   background-color: white;
+  z-index: -1;
 }
 input[type="checkbox"]:checked + .innerbox {
   text-align: center;
