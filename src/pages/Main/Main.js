@@ -29,7 +29,7 @@ function Main() {
 
   useEffect(() => {
     axios
-      .get("/api/farms")
+      .get(process.env.REACT_APP_DB_HOST+`/api/farms`)
       .then((res) => {
         console.log(res.data.length, "개의 농장 찾기 성공");
       })

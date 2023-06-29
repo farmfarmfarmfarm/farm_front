@@ -18,7 +18,7 @@ const Disease = () => {
       setDiseases(null);
       setError(null);
       setLoading(true); //로딩이 시작됨
-      const response = await axios.get("/api/effects");
+      const response = await axios.get(process.env.REACT_APP_DB_HOST+`/api/effects`);
       setDiseases(response.data);
     } catch (e) {
       setError(e);

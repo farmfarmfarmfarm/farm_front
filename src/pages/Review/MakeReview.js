@@ -12,7 +12,7 @@ const MakeReview = () => {
 
   async function getData() {
     await axios
-      .get(`/api/farms/${params.farmId}`)
+      .get(process.env.REACT_APP_DB_HOST+`/api/farms/${params.farmId}`)
       .then((res) => {
         setFarm((prev) => [
           ...prev,
@@ -44,7 +44,7 @@ const MakeReview = () => {
   async function postData(rating, title, contents) {
     try {
       const response = await axios.post(
-        `/api/members/${localStorage.getItem("userId")}/farms/${
+        process.env.REACT_APP_DB_HOST+`/api/members/${localStorage.getItem("userId")}/farms/${
           params.farmId
         }/reviews`,
         JSON.stringify({ rating, title, contents }),

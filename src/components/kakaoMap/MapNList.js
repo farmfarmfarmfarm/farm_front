@@ -19,7 +19,7 @@ const MapNList = () => {
 
   useEffect(() => {
     axios
-    .get("/api/farms")
+    .get(process.env.REACT_APP_DB_HOST+`/api/farms`)
     .then((res) => {
       setPlaces(res.data);
     })
@@ -54,7 +54,7 @@ const MapNList = () => {
   useEffect(() => {
     function handleIwClick(e) {
       axios
-        .get(`/api/farms/${e.target.id}`)
+        .get(process.env.REACT_APP_DB_HOST+`/api/farms/${e.target.id}`)
         .then((res) => {
           // console.log("농장좌표!!!!!!!!!!,", res.data);
           setThislocation((prev) => ({
