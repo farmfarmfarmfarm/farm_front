@@ -23,5 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
+setupProxy.js
 
 firebaseSetting.txt

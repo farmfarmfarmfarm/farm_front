@@ -89,6 +89,7 @@ input[type="checkbox"]:checked + .innerbox {
   color: #7c7c7c;
   border: 1px solid #a2a2a2;
   border-radius: 8px;
+  cursor: pointer;
 }
 .after-btn {
   position: fixed;
@@ -109,29 +110,36 @@ input[type="checkbox"]:checked + .innerbox {
   padding: 5px;
 }
 .EffectCrop {
-  background-color: #f3faf3;
-  display: flex;
-  margin: 5px;
+  position: relative;
+  background-color: #8aad8726;
+  margin: 20px 0;
   border-radius: 40px;
   font-size: 13px;
-  padding: 1px 2px 2px 6px;
-  height: 37px;
-  line-height: 0;
+  padding: 1px 2px 2px 100px;
+  width: 300px;
 }
 .StCropInput {
+  position: absolute;
+  top: calc(50% - 13px);
+  left: 10px;
   border: 0;
   outline: 0;
-  padding: 0 15px;
   font-size: 17px;
   border-radius: 40px;
+  width: 100px;
   height: 26px;
-  background-color: #d8e6d8;
+  background-color: #8aad8780;
 }
 .effectList {
-  margin: 20px;
-  width: 26px;
+  display: flex;
+  margin: 10px 20px;
+  width: 270px;
   white-space: normal;
   word-wrap:break-word;
+  flex-wrap: wrap;
+}
+.effectList div{
+  margin: 0 5px;
 }
 
 /*allcrops*/
@@ -165,6 +173,9 @@ input[type="checkbox"]:checked + .innerbox {
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
+}
+.allcropsname:hover {
+  background: rgb(138, 173, 135, 0.5);
 }
 .gotoRe {
   border: 0;
