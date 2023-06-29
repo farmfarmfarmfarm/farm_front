@@ -15,6 +15,7 @@ import Slider from "react-slick";
 const Review = () => {
   const navigate = useNavigate();
   const params = useParams();
+  const [farmInfo, setFarmInfo] = useState(null);
   const [Reviews, setReviews] = useState([]); // 검색결과 배열에 담아줌
   const [rateAvg, setRateAvg] = useRecoilState(ratingAvg);
   const [thislocation, setThislocation] = useRecoilState(thisloc);
@@ -25,6 +26,8 @@ const Review = () => {
     await axios
       .get(`/api/farms/${farmID}`)
       .then((res) => {
+        setFarmInfo(res.data)
+        console.log(res.data)
         setThislocation({
           x: res.data.location_x,
           y: res.data.location_y,
@@ -40,19 +43,20 @@ const Review = () => {
     axios
       .get(`/api/farms/${params.farmId}/reviews`)
       .then((res) => {
-        console.log(res)
         setReviews((Reviews) => []);
-        res.data.forEach((e) => {
-          setReviews((prev) => [
-            ...prev,
-            {
-              id: e.id,
-              nickname: e.nickname,
-              contents: e.contents,
-              rating: e.rating,
-            },
-          ]);
-        });
+        if (res.data.code === 200){
+          res.data.forEach((e) => {
+            setReviews((prev) => [
+              ...prev,
+              {
+                id: e.id,
+                nickname: e.nickname,
+                contents: e.contents,
+                rating: e.rating,
+              },
+            ]);
+          });
+        }
         setDone(true);
       })
       .catch((err) => {
@@ -61,7 +65,6 @@ const Review = () => {
   }, []);
 
   useEffect(() => {
-    console.log(done);
     //리뷰 평균
     const rating = [0];
     Reviews.map((item, i) => {
@@ -78,7 +81,6 @@ const Review = () => {
 
   //리뷰쓰러가기
   function makeReview() {
-    // console.log("리뷰뷰");
     navigate(`/home/review/make/${params.farmId}`);
   }
   const reviewsettings = {
@@ -88,12 +90,17 @@ const Review = () => {
     slidesToShow: 1.4, // 한번에 몇개의 슬라이드를 보여줄 지
     slidesToScroll: 1, // 한번 스크롤시 몇장의 슬라이드를 넘길지
   };
-  // console.log(thislocation);
 
   return (
     <div className="review">
+      <h2>농장 정보</h2>
+      {/* <h2>{farmInfo.name}</h2>
+      <h2>{farmInfo.address}</h2>
+      <h2>{farmInfo.contents}</h2> */}
+      <hr></hr>
       <h2>추천도</h2>
       <Chart />
+      <hr></hr>
       <h2 style={{ marginBottom: "0" }}>
         리뷰보기{" "}
         <span style={{ fontSize: "15px", color: "#8AAD87" }}>
