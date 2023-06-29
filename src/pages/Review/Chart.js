@@ -62,6 +62,7 @@ const Chart = () => {
           startAngle={-90}
           label={({dataEntry}) => dataEntry.value}
           labelStyle ={{
+            textAnchor: "middle",
             fontSize: "15px", 
             fill: "#33333",
           }}

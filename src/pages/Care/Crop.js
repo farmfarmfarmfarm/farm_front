@@ -7,46 +7,42 @@ import "./Care.css";
 import { useNavigate } from "react-router-dom";
 
 const Crop = () => {
-  const [formData, setformData] = useState([]);
+  const [formData, setFormData] = useState([]);
   const [rcdiease, setRcdiease] = useRecoilState(selectedDiease);
   const [Result, setResult] = useState([]);
   const navigate = useNavigate();
 
-  const dieaselist = rcdiease;
-  // console.log(rcdiease); //['1','2'] //증상번호
-
   useEffect(() => {
-    for (let i = 0; i < rcdiease.length; i++) {
-      getData(parseInt(rcdiease[i]));
-    }
-  }, [rcdiease]);
-  async function getData(effectId) {
-    await axios
-      .get(`api/effects/${effectId}/crops?include_effects=true`)
-      .then(
-        //증상(효능)번호로 해당되는 작물찾기
-        (res) => {
-          setResult([]);
-          res.data.forEach((e) => {
-            setResult((prev) => [
-              ...prev,
-              {
-                id: e.cropId, //작물번호
-                effectList: e.effects,
-                name: e.name,
-                season: e.season,
-                temperature: e.temperature,
-                storage: e.storage,
-                ingredient: e.ingredient,
-              },
-            ]);
-          });
-        }
-      )
-      .catch((err) => {
+    const fetchData = async () => {
+      const uniqueResults = [];
+
+      for (let i = 0; i < rcdiease.length; i++) {
+        const effectId = parseInt(rcdiease[i]);
+        const res = await axios.get(
+          `api/effects/${effectId}/crops?include_effects=true`
+        );
+
+        res.data.forEach((e) => {
+          const existingCrop = uniqueResults.find((crop) => crop.name === e.name);
+          if (!existingCrop) {
+            uniqueResults.push({
+              effectList: e.effects,
+              name: e.name,
+            });
+          }
+        });
+      }
+      setResult(uniqueResults);
+    };
+
+    if (rcdiease.length > 0) {
+      fetchData().catch((err) => {
         console.log(err);
       });
-  }
+    } else {
+      setResult([]); // 증상이 선택되지 않은 경우 결과를 빈 배열로 설정
+    }
+  }, [rcdiease]);
 
   return (
     <div className="cropwrap">
@@ -56,15 +52,12 @@ const Crop = () => {
           <div className="EffectCrop">
             <button
               className="StCropInput"
-              type="checkbox"
-              value={item.id}
-              id={item.id}
             >
               {item.name}
             </button>
             <div className="effectList">
               {item.effectList.map((e, i) => (
-                <span>{e} </span>
+                <div key={i}>{e}</div>
               ))}
             </div>
           </div>
