@@ -32,18 +32,18 @@ const AllCrops = () => {
   if (!allcrops) return null;
 
   const formData = allcrops;
-
+  console.log(formData);
   return (
     <div>
-      <h2 style={{ marginBottom: "0" }}>모든 작물 보기</h2>
-      <span style={{ fontSize: "10px" }}>
+      <h2>모든 작물 보기</h2>
+      <p style={{ fontSize: "14px", color: "#7c7c7c" }}>
         {" "}
         작물을 누르면 작물 정보와 활용 레시피를 볼 수 있어요
-      </span>
+      </p>
       <div className="allcropswrap">
         {formData.map((item) => (
           // <div className="allcropsbtn" key={item.id}>
-          <button
+          <div
             className="allcropsname"
             key={item.id}
             type="checkbox"
@@ -52,8 +52,9 @@ const AllCrops = () => {
             style={{ fontSize: "16px" }}
             onClick={() => navigate(`/crop/recipe/${item.id}`)}
           >
-            {item.name}
-          </button>
+            <img src={item.img} style={{ width: "40px" }} />
+            <div>{item.name}</div>
+          </div>
           // </div>
         ))}
       </div>
