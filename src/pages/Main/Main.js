@@ -78,14 +78,14 @@ function Main() {
           {place !== "" ? (
             <Link to="/home">
               <img
-                style={{ width: "27px", height: "40px" }}
+                className="search"
                 src={search}
                 alt="검색"
               ></img>
             </Link>
           ) : (
             <img
-              style={{ width: "27px", height: "27px" }}
+              className="search"  
               src={search}
               alt="검색"
             ></img>
