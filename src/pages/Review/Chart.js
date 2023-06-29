@@ -41,7 +41,7 @@ const Chart = () => {
           startAngle={-90}
           label={({dataEntry}) => dataEntry.value+'km'}
           labelStyle ={{
-            fontSize: "20px", 
+            fontSize: "15px", 
             fill: "#33333",
           }}
           labelPosition={0}
@@ -62,7 +62,7 @@ const Chart = () => {
           startAngle={-90}
           label={({dataEntry}) => dataEntry.value}
           labelStyle ={{
-            fontSize: "20px", 
+            fontSize: "15px", 
             fill: "#33333",
           }}
           labelPosition={0}
@@ -83,7 +83,7 @@ const Chart = () => {
           startAngle={-90}
           label={({dataEntry}) => dataEntry.value+'%'}
           labelStyle ={{
-            fontSize: "20px", 
+            fontSize: "15px", 
             fill: "#33333",
           }}
           labelPosition={0}

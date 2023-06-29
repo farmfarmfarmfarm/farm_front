@@ -40,6 +40,7 @@ const Review = () => {
     axios
       .get(`/api/farms/${params.farmId}/reviews`)
       .then((res) => {
+        console.log(res)
         setReviews((Reviews) => []);
         res.data.forEach((e) => {
           setReviews((prev) => [
