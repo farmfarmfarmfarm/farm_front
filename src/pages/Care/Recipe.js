@@ -113,7 +113,7 @@ const Recipe = () => {
             <div className="stepWrap">
               {item.recipeSteps.map((step) => (
                 <div className="step" key={step.id}>
-                  <div className="stepIdx">{step.stepIdx}</div>
+                  <div className="stepIdx">Step {step.stepIdx.toString().padStart(2, '0')}</div>
                   <div className="stepCooking">{step.cooking}</div>
                 </div>
               ))}
