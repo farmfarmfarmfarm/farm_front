@@ -48,19 +48,17 @@ const Review = () => {
       .get(`/api/farms/${params.farmId}/reviews`)
       .then((res) => {
         setReviews((Reviews) => []);
-        if (res.data.code === 200){
-          res.data.forEach((e) => {
-            setReviews((prev) => [
-              ...prev,
-              {
-                id: e.id,
-                nickname: e.nickname,
-                contents: e.contents,
-                rating: e.rating,
-              },
-            ]);
-          });
-        }
+        res.data.forEach((e) => {
+          setReviews((prev) => [
+            ...prev,
+            {
+              id: e.id,
+              nickname: e.nickname,
+              contents: e.contents,
+              rating: e.rating,
+            },
+          ]);
+        });
         setDone(true);
       })
       .catch((err) => {
