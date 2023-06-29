@@ -6,6 +6,10 @@ import { ratingAvg, thisloc } from "../../Atom";
 import Chart from "pages/Review/Chart";
 import quotes from "assets/icons/quotes.png";
 import triangle from "assets/icons/triangle.png";
+import pin from "assets/icons/pin.png";
+import link from "assets/icons/link.png";
+import call from "assets/icons/call.png";
+import info from "assets/icons/info.png";
 import "./Review.css";
 import { useNavigate } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
@@ -94,9 +98,37 @@ const Review = () => {
   return (
     <div className="review">
       <h2>농장 정보</h2>
-      {/* <h2>{farmInfo.name}</h2>
-      <h2>{farmInfo.address}</h2>
-      <h2>{farmInfo.contents}</h2> */}
+      {farmInfo&&
+      <div style={{marginBottom: '40px'}}>
+        <h3>{farmInfo.name}</h3>
+        <div>
+          {farmInfo.address != 'none' &&
+          <div className="farmInfo">
+            <img src={pin} alt=""/>
+            <div>{farmInfo.address}</div>
+          </div>
+          }
+          {farmInfo.placeUrl != 'none' &&
+          <div className="farmInfo">
+            <img src={link} alt=""/>
+            <a href={farmInfo.placeUrl} target="_blank" rel="noopener noreferrer">{farmInfo.placeUrl}</a>
+          </div>
+          }
+          {farmInfo.phone != 'none' &&  
+          <div className="farmInfo">
+            <img src={call} alt=""/>
+            <a href={`tel:${farmInfo.phone}`}>{farmInfo.phone}</a>
+          </div>
+          }
+          {farmInfo.contents != 'none' &&
+          <div className="farmInfo">
+            <img src={info} alt=""/>
+            <div>{farmInfo.contents}</div>
+          </div>
+          }
+        </div>
+      </div>
+      }
       <hr></hr>
       <h2>추천도</h2>
       <Chart />

@@ -1,4 +1,24 @@
 /*Review.js*/
+.review h3{
+  height: 30px;
+  background-color: #d6e3d6;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 10px;
+}
+.farmInfo{
+  display: flex;
+  margin: 10px 0;
+}
+.farmInfo img{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.farmInfo a{
+  text-decoration: none;
+  color: rgb(0, 145, 255);
+}
 .makeReview {
   width: 130px;
   height: 30px;
@@ -6,6 +26,7 @@
   border-radius: 10px;
   background-color: #D7E0D7;
   margin: 10px 0;
+  cursor: pointer;
 }
 
 /*Reviews*/
