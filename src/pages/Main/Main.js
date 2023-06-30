@@ -36,10 +36,13 @@ function Main() {
       .catch();
 
     const ps = new kakao.maps.services.Places();
-
+    // if (place != "") {
+    //   ps.keywordSearch(place, placesSearchCB);
+    //   console.log("괜차나!");
+    // }
     ps.keywordSearch(place, placesSearchCB);
     function placesSearchCB(data, status, pagination) {
-      console.log("설정위치", data[0]);
+      console.log("설정위치", data, "??", data[0]);
       if (data.length === 0) {
         setPlace("");
         alert("해당하는 위치를 찾을 수 없습니다");

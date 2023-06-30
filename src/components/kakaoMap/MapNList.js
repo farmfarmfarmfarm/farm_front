@@ -23,7 +23,7 @@ const MapNList = () => {
       .then((res) => {
         setPlaces(res.data);
       })
-      .catch();
+      .catch((err) => console.log(err));
   }, []);
 
   async function getData(cate) {
