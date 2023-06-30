@@ -49,10 +49,11 @@ function Main() {
           x: data[0].x,
           y: data[0].y,
         })); // 첫번째 검색결과의 좌표를 center좌표로 한다.
+        console.log("setRcloc", data[0]);
       }
     }
   }, [place]);
-  
+
   let navigate = useNavigate();
   useEffect(() => {
     if ((place !== "") & (checkedItems[0] !== undefined)) {
@@ -77,18 +78,10 @@ function Main() {
           />
           {place !== "" ? (
             <Link to="/home">
-              <img
-                className="search"
-                src={search}
-                alt="검색"
-              ></img>
+              <img className="search" src={search} alt="검색"></img>
             </Link>
           ) : (
-            <img
-              className="search"  
-              src={search}
-              alt="검색"
-            ></img>
+            <img className="search" src={search} alt="검색"></img>
           )}
         </form>
       </div>

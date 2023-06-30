@@ -88,11 +88,9 @@ const Disease = () => {
           ))}
       </div>
       {(rcdiease !== "") & (checkedItems[0] !== undefined) ? (
-        <button className="after-btn">
-          <Link to="/crop" style={{ color: "white", textDecoration: "none" }}>
-            결과보기
-          </Link>
-        </button>
+        <Link to="/crop" style={{ color: "white", textDecoration: "none" }}>
+          <button className="after-btn">결과보기</button>
+        </Link>
       ) : (
         <button className="before-btn">결과보기</button>
       )}
