@@ -28,7 +28,7 @@ function Main() {
 
   useEffect(() => {
     axios
-      .get(process.env.REACT_APP_DB_HOST+`/api/farms`)
+      .get(process.env.REACT_APP_DB_HOST + `/api/farms`)
       .then((res) => {
         console.log(res.data.length, "개의 농장 찾기 성공");
       })
@@ -67,7 +67,9 @@ function Main() {
     <div>
       {/* <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check> */}
       <div className="warp">
-        <h3 className="farmQ">주변 농장 검색할 위치를 알려주세요!</h3>
+        <h3 className="farmQ">
+          어떤 지역에서 주변 농장을 검색하고 싶으신가요?
+        </h3>
         <form
           className="inputForm"
           onSubmit={handleSubmit}
