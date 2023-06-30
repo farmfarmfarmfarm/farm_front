@@ -29,7 +29,7 @@ const MapNList = () => {
   async function getData(cate) {
     // console.log(cate);
     await axios
-      .get(`api/farms/category/${cate}`)
+      .get(process.env.REACT_APP_DB_HOST + `/api/farms/category/${cate}`)
       .then((res) => {
         setPlaces(res.data);
         setDone(true);

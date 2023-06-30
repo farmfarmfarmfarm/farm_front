@@ -19,7 +19,8 @@ const Crop = () => {
       for (let i = 0; i < rcdiease.length; i++) {
         const effectId = parseInt(rcdiease[i]);
         const res = await axios.get(
-          `api/effects/${effectId}/crops?include_effects=true`
+          process.env.REACT_APP_DB_HOST +
+            `/api/effects/${effectId}/crops?include_effects=true`
         );
 
         res.data.forEach((e) => {
