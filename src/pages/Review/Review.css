@@ -1,4 +1,7 @@
 /*Review.js*/
+.review{
+  padding: 0 20px;
+}
 .review h3{
   height: 30px;
   background-color: #d6e3d6;
