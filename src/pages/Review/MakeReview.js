@@ -71,7 +71,7 @@ const MakeReview = () => {
   };
   return (
     <div className="review">
-      {farm[0] !== undefined && (
+      {farm[0] != undefined && (
         <>
           <div
             style={{

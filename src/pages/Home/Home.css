@@ -96,3 +96,27 @@ input[type="radio"]:checked + .innerBox {
   align-items: center;
   justify-content: center;
 }
+.farmlist {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  overflow-x: scroll;
+  height: 150px;
+  padding: 5px 0;
+  align-items: center;
+  cursor: pointer;
+}
+
+.farmlist::-webkit-scrollbar {
+  height: 8px;
+}
+
+.farmlist::-webkit-scrollbar-thumb {
+  width: 30%;
+  background-color: #bbbbbb;
+  border-radius: 10px;
+}
+
+.farmlist::-webkit-scrollbar-track {
+  background: rgba(92, 92, 92, 0.1);
+}
