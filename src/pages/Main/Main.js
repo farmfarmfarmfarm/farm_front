@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Check from "pages/Home/Check";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { selectedLoc, selectedFarm, selectedPlace } from "../../Atom";
@@ -56,7 +55,7 @@ function Main() {
 
   let navigate = useNavigate();
   useEffect(() => {
-    if ((place !== "") & (checkedItems[0] !== undefined)) {
+    if ((place != "") & (checkedItems[0] != undefined)) {
       navigate("/home");
     }
   }, [checkedItems]);
@@ -76,7 +75,7 @@ function Main() {
             onChange={onChange}
             value={inputText}
           />
-          {place !== "" ? (
+          {place != "" ? (
             <Link to="/home">
               <img className="search" src={search} alt="검색"></img>
             </Link>

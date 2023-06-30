@@ -71,7 +71,7 @@ const MakeReview = () => {
   };
   return (
     <div className="review">
-      {farm[0] !== undefined && (
+      {farm[0] != undefined && (
         <>
           <div
             style={{
@@ -116,10 +116,8 @@ const MakeReview = () => {
             <div
               style={{
                 marginTop: "16px",
-                width: "382px",
+                width: "100%",
                 borderRadius: " 20px",
-                marginLeft: "16px",
-                marginRight: "16px",
                 justifyContent: "center",
                 alignItems: "center",
                 backgroundColor: "#E6E6E6 ",
@@ -168,8 +166,8 @@ const MakeReview = () => {
           value={inputRating}
           style={{
             height: "40px",
-            width: "374px",
-            margin: "0px 16px 10px 16px",
+            width: "100%",
+            margin: "10px 0",
           }}
         />
         <input
@@ -179,8 +177,8 @@ const MakeReview = () => {
           value={inputTitle}
           style={{
             height: "50px",
-            width: "374px",
-            margin: "0px 16px 10px 16px",
+            width: "100%",
+            margin: "10px 0",
           }}
         />
         <input
@@ -190,8 +188,8 @@ const MakeReview = () => {
           value={inputText}
           style={{
             height: "300px",
-            width: "374px",
-            margin: "0px 16px 10px 16px",
+            width: "100%",
+            margin: "10px 0",
           }}
         />
       </div>

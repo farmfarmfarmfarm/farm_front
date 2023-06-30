@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Check from "pages/Home/Check";
 import MapNList from "components/kakaoMap/MapNList";
 import { useRecoilState } from "recoil";
 import { selectedLoc, selectedFarm, selectedPlace } from "../../Atom";
@@ -9,7 +8,18 @@ import "./Home.css";
 
 const Home = () => {
   const [place, setPlace] = useRecoilState(selectedPlace);
+  const [rcfarm, setRcfarm] = useState(null);
   console.log("중심위치", place);
+
+  const formData = [
+    { id: 1, name: "주말농장" },
+    { id: 2, name: "치유농장" },
+    { id: 3, name: "체험농장" },
+  ];
+
+  const checkHandler = ({ target }) => {
+    setRcfarm(target.value);
+  };
 
   return (
     <div className="home" style={{ padding: "0px 10px" }}>
@@ -21,9 +31,29 @@ const Home = () => {
         <h3>지도에서 찾아보기</h3>
       )}
       <div className="farmcheck">
-        <Check></Check>
+        <div className="contStyle">
+        {formData.map((item) => (
+          <div className="StFarmDiv" key={item.id}>
+            <input
+              className="StFarmInput"
+              type="radio"
+              value={item.name}
+              id={item.id}
+              name="farm"
+              onChange={(e) => checkHandler(e)}
+            />
+            <label
+              className="innerBox"
+              htmlFor={item.id}
+              style={{ cursor: "pointer" }}
+            >
+              <span style={{ fontSize: "12px" }}>{item.name}</span>
+            </label>
+          </div>
+        ))}
       </div>
-      <MapNList />
+      </div>
+      <MapNList rcfarm={rcfarm}/>
     </div>
   );
 };
