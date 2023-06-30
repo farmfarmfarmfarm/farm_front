@@ -102,21 +102,21 @@ input[type="checkbox"]:checked + .innerbox {
   color: white;
   border: 1px solid #037f00;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 /*effect-crop*/
 .cropwrap {
   position: relative;
-  padding: 5px;
+  padding: 0px 10px;
 }
 .EffectCrop {
   position: relative;
   background-color: #8aad8726;
-  margin: 20px 0;
+  margin: 10px 0;
   border-radius: 40px;
   font-size: 13px;
   padding: 1px 2px 2px 100px;
-  width: 300px;
 }
 .StCropInput {
   position: absolute;
@@ -135,10 +135,10 @@ input[type="checkbox"]:checked + .innerbox {
   margin: 10px 20px;
   width: 270px;
   white-space: normal;
-  word-wrap:break-word;
+  word-wrap: break-word;
   flex-wrap: wrap;
 }
-.effectList div{
+.effectList div {
   margin: 0 5px;
 }
 
@@ -292,7 +292,6 @@ button:focus + div.arrow_box {
 }
 .stepCooking {
   width: 260px;
-
 }
 .slick-dots {
   top: 0;

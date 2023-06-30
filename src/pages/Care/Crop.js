@@ -19,11 +19,14 @@ const Crop = () => {
       for (let i = 0; i < rcdiease.length; i++) {
         const effectId = parseInt(rcdiease[i]);
         const res = await axios.get(
-          `api/effects/${effectId}/crops?include_effects=true`
+          process.env.REACT_APP_DB_HOST +
+            `/api/effects/${effectId}/crops?include_effects=true`
         );
 
         res.data.forEach((e) => {
-          const existingCrop = uniqueResults.find((crop) => crop.name === e.name);
+          const existingCrop = uniqueResults.find(
+            (crop) => crop.name === e.name
+          );
           if (!existingCrop) {
             uniqueResults.push({
               effectList: e.effects,
@@ -50,11 +53,7 @@ const Crop = () => {
       {Result.map((item, i) => (
         <div className="cropbtn" key={i}>
           <div className="EffectCrop">
-            <button
-              className="StCropInput"
-            >
-              {item.name}
-            </button>
+            <button className="StCropInput">{item.name}</button>
             <div className="effectList">
               {item.effectList.map((e, i) => (
                 <div key={i}>{e}</div>

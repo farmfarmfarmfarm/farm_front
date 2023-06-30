@@ -2,7 +2,7 @@
 .home {
   position: relative;
 }
-.home h3{
+.home h3 {
   margin-bottom: 0;
 }
 .farmcheck {
@@ -29,17 +29,21 @@
   display: flex; /* grid */
   gap: 5px;
   pointer-events: none;
-  margin-top: 16px;
+  align-items: center;
 }
 
 .slider-item {
   width: 250px;
-  border: 1px solid #156e1c;
-  border-radius: 20px;
+  height: 80%;
+  padding: 10px;
+  border-radius: 9px;
   display: flex;
   justify-content: center;
+  background-color: #8aad8726;
   align-items: center;
-  background-color: #f0f0f0;
+}
+.slider-item:hover {
+  background: rgb(138, 173, 135, 0.5);
 }
 
 /*Check.js */

@@ -33,7 +33,7 @@ const Login = () => {
         JSON.stringify({ nickname, email }),
         { headers } // 500에러
       );
-      console.log(response.data)
+      console.log(response.data);
       setRcUserId(response.data.id);
       localStorage.setItem("userId", response.data.id);
       console.error("로그인", response.data.id);
