@@ -19,11 +19,11 @@ const MapNList = () => {
 
   useEffect(() => {
     axios
-    .get("/api/farms")
-    .then((res) => {
-      setPlaces(res.data);
-    })
-    .catch();
+      .get("/api/farms")
+      .then((res) => {
+        setPlaces(res.data);
+      })
+      .catch();
   }, []);
 
   async function getData(cate) {
@@ -72,7 +72,7 @@ const MapNList = () => {
     const container = document.getElementById("mapNList");
     const options = {
       center: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)), //검색좌표
-      level: 10,
+      level: 5,
     };
     const map = new kakao.maps.Map(container, options);
 
@@ -108,7 +108,10 @@ const MapNList = () => {
         map: map,
         clickable: true, // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
       });
-      var position = new window.kakao.maps.LatLng(37.586272, 127.029005);
+      var position = new window.kakao.maps.LatLng(
+        parseFloat(rcloc.y),
+        parseFloat(rcloc.x)
+      );
       map.setCenter(position); //중심좌표 재설정
     }
 
@@ -171,8 +174,10 @@ const MapNList = () => {
 
   return (
     <div>
-      <div style={{fontSize: '11px'}}>검색 결과 {Places.length}개 </div>
-      <span style={{fontSize: '11px', color: '#7c7c7c'}}>지도에서 농장의 이름을 누르면 농장에 대한 자세한 정보를 볼 수 있어요</span>
+      <div style={{ fontSize: "11px" }}>검색 결과 {Places.length}개 </div>
+      <span style={{ fontSize: "11px", color: "#7c7c7c" }}>
+        지도에서 농장의 이름을 누르면 농장에 대한 자세한 정보를 볼 수 있어요
+      </span>
       <div>
         <div id="mapNList" style={{ width: "100%", height: "40vh" }}></div>
       </div>

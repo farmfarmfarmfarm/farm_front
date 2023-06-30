@@ -76,7 +76,7 @@ const Recipe = () => {
   };
 
   return (
-    <div>
+    <div style={{ padding: "0px 10px" }}>
       <div className="titlewrap">
         {cropinfo && (
           <>
@@ -113,7 +113,9 @@ const Recipe = () => {
             <div className="stepWrap">
               {item.recipeSteps.map((step) => (
                 <div className="step" key={step.id}>
-                  <div className="stepIdx">Step {step.stepIdx.toString().padStart(2, '0')}</div>
+                  <div className="stepIdx">
+                    Step {step.stepIdx.toString().padStart(2, "0")}
+                  </div>
                   <div className="stepCooking">{step.cooking}</div>
                 </div>
               ))}

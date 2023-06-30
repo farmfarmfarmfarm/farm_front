@@ -34,7 +34,7 @@ const AllCrops = () => {
   const formData = allcrops;
   console.log(formData);
   return (
-    <div>
+    <div style={{ padding: "0px 10px" }}>
       <h2>모든 작물 보기</h2>
       <p style={{ fontSize: "14px", color: "#7c7c7c" }}>
         {" "}
