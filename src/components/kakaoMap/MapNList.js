@@ -3,9 +3,9 @@ import { useRecoilState } from "recoil";
 import "../../pages/Home/Home.css";
 import { selectedLoc, selectedFarm, thisloc } from "../../Atom";
 import axios from "axios";
-import listFarm from "../../assets/icons/listFarm.png";
 import { useNavigate } from "react-router-dom";
-
+import pin from "assets/icons/pin.png";
+import call from "assets/icons/call.png";
 const { kakao } = window;
 
 const MapNList = () => {
@@ -31,7 +31,6 @@ const MapNList = () => {
     await axios
       .get(`api/farms/category/${cate}`)
       .then((res) => {
-        console.log(res); /////
         setPlaces(res.data);
         setDone(true);
       })
@@ -126,52 +125,6 @@ const MapNList = () => {
     }
   });
 
-  useEffect(() => {
-    let slider = document.querySelector(".slider");
-    let innerSlider = document.querySelector(".slider-inner");
-    let pressed = false;
-    let startx;
-    let x;
-
-    slider.addEventListener("mousedown", (e) => {
-      pressed = true;
-      startx = e.offsetX - innerSlider.offsetLeft;
-      slider.style.cursor = "grabbing";
-    });
-
-    slider.addEventListener("mouseenter", () => {
-      slider.style.cursor = "grab";
-    });
-
-    slider.addEventListener("mouseup", () => {
-      slider.style.cursor = "grab";
-    });
-
-    window.addEventListener("mouseup", () => {
-      pressed = false;
-    });
-
-    slider.addEventListener("mousemove", (e) => {
-      if (!pressed) return;
-      e.preventDefault();
-      x = e.offsetX;
-
-      innerSlider.style.left = `${x - startx}px`;
-      checkboundary();
-    });
-
-    function checkboundary() {
-      let outer = slider.getBoundingClientRect();
-      let inner = innerSlider.getBoundingClientRect();
-
-      if (parseInt(innerSlider.style.left) > 0) {
-        innerSlider.style.left = "0px";
-      } else if (inner.right < outer.right) {
-        innerSlider.style.left = `-${inner.width - outer.width}px`;
-      }
-    }
-  });
-
   return (
     <div>
       <div style={{ fontSize: "11px" }}>검색 결과 {Places.length}개 </div>
@@ -181,56 +134,85 @@ const MapNList = () => {
       <div>
         <div id="mapNList" style={{ width: "100%", height: "40vh" }}></div>
       </div>
-      <div className="slider">
+      <div style={{ marginTop: "1rem", color: "#020302" }}>
+        가까운 농장 바로가기
+      </div>
+      <div>
         <div
-          className="slider-inner"
-          style={{ gridTemplateColumns: `repeat(${resultLength}, 1fr)` }}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "10px",
+            overflow: "scroll",
+            height: "150px",
+            padding: "5px 0",
+            alignItems: "center",
+            cursor: "pointer",
+          }}
         >
-          {Places.map((item, i) => (
-            <div
-              key={i}
-              style={
-                i === 0
-                  ? { marginLeft: "16px" }
-                  : i === resultLength - 1
-                  ? { marginRigth: "16px" }
-                  : null
-              }
-              className="slider-item"
-            >
-              <div
-                style={{
-                  display: "grid",
-                  justifyContent: "center",
-                  width: "200px",
-                }}
-              >
+          {Places.map(
+            (item, i) =>
+              Math.abs(parseFloat(item.location_x) - parseFloat(rcloc.x)) <
+                0.2 &&
+              Math.abs(parseFloat(item.location_y) - parseFloat(rcloc.y)) <
+                0.2 && (
                 <div
-                  style={{
-                    marginBottom: "10px",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
+                  key={i}
+                  id={i}
+                  style={
+                    i === 0
+                      ? { marginLeft: "16px" }
+                      : i === resultLength - 1
+                      ? { marginRigth: "16px" }
+                      : null
+                  }
+                  className="slider-item"
+                  onClick={() => navigate(`review/${item.id}`)}
                 >
-                  <img
+                  <div
                     style={{
-                      width: "50px",
-                      height: "50px",
-                      display: "inline-block",
-                      marginRight: "20px",
+                      display: "grid",
+                      justifyContent: "center",
+                      width: "200px",
                     }}
-                    src={listFarm}
-                    alt="로고"
-                  />
-                  <div style={{ display: "inline-block", fontSize: "20px" }}>
-                    {item.name}
+                  >
+                    <div
+                      style={{
+                        marginBottom: "10px",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      <div
+                        style={{ display: "inline-block", fontSize: "20px" }}
+                      >
+                        {item.name}
+                      </div>
+                    </div>
+                    <div
+                      style={{ color: "#5f5f5f", display: "flex", gap: "2px" }}
+                    >
+                      <img
+                        src={pin}
+                        alt="📍"
+                        style={{ width: "1rem", height: "1rem" }}
+                      />
+                      <div>{item.address}</div>
+                    </div>
+                    <div
+                      style={{ color: "#5f5f5f", display: "flex", gap: "2px" }}
+                    >
+                      <img
+                        src={call}
+                        alt="📞"
+                        style={{ width: "1rem", height: "1rem" }}
+                      />
+                      <div>{item.phone}</div>
+                    </div>
                   </div>
                 </div>
-                <div style={{ color: "#5f5f5f" }}>🏡{item.address}</div>
-                <div style={{ color: "#5f5f5f" }}>🌾{item.phone}</div>
-              </div>
-            </div>
-          ))}
+              )
+          )}
         </div>
       </div>
     </div>
