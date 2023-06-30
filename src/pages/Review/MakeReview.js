@@ -34,8 +34,12 @@ const MakeReview = () => {
     navigate(`/home/review/${params.farmId}`);
   }
   function onClickSave() {
-    postData(inputRating, inputTitle, inputText);
-    navigate(`/home/review/${params.farmId}`);
+    if (!localStorage.getItem("userId")){
+      alert("로그인 해주세요!")
+    }else{
+      postData(inputRating, inputTitle, inputText);
+      navigate(`/home/review/${params.farmId}`);
+    }
   }
   const headers = {
     Accept: "application/json",
