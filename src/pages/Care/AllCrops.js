@@ -32,7 +32,7 @@ const AllCrops = () => {
   if (!allcrops) return null;
 
   const formData = allcrops;
-  console.log(formData);
+
   return (
     <div style={{ padding: "0px 10px" }}>
       <h2>모든 작물 보기</h2>
