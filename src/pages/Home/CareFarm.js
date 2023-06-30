@@ -3,7 +3,7 @@ import "./Home.css";
 
 const CareFarm = () => {
   return (
-    <div>
+    <div style={{padding: '0 20px'}}>
       <h2 className="carefarm">치유농장 소개</h2>
       <p style={{ textAlign: "justify" }}>
         치유농장(Care farms)은 지원, 치유 또는 지도가 필요한 사람들에게 가능성을
