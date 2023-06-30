@@ -18,7 +18,7 @@ const Disease = () => {
       setDiseases(null);
       setError(null);
       setLoading(true); //로딩이 시작됨
-      const response = await axios.get("/api/effects");
+      const response = await axios.get(process.env.REACT_APP_DB_HOST+`/api/effects`);
       setDiseases(response.data);
     } catch (e) {
       setError(e);
@@ -40,7 +40,7 @@ const Disease = () => {
   const formData = diseases;
 
   const onRemove = (id) => {
-    setcheckedItems(checkedItems.filter((each) => each !== id));
+    setcheckedItems(checkedItems.filter((each) => each != id));
   };
   const checkHandler = ({ target }) => {
     setIsChecked(!isChecked);
@@ -87,7 +87,7 @@ const Disease = () => {
             </div>
           ))}
       </div>
-      {(rcdiease !== "") & (checkedItems[0] !== undefined) ? (
+      {(rcdiease != "") & (checkedItems[0] != undefined) ? (
         <Link to="/crop" style={{ color: "white", textDecoration: "none" }}>
           <button className="after-btn">결과보기</button>
         </Link>

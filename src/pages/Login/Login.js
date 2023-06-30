@@ -29,10 +29,11 @@ const Login = () => {
     try {
       //응답 성공
       const response = await axios.post(
-        "api/members",
+        process.env.REACT_APP_DB_HOST+`/api/members`,
         JSON.stringify({ nickname, email }),
         { headers } // 500에러
       );
+      console.log(response.data);
       setRcUserId(response.data.id);
       localStorage.setItem("userId", response.data.id);
       console.error("로그인", response.data.id);

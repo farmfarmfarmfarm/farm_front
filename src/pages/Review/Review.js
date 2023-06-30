@@ -28,7 +28,7 @@ const Review = () => {
 
   async function getLocation(farmID) {
     await axios
-      .get(`/api/farms/${farmID}`)
+      .get(process.env.REACT_APP_DB_HOST+`/api/farms/${farmID}`)
       .then((res) => {
         setFarmInfo(res.data)
         console.log(res.data)
@@ -45,7 +45,7 @@ const Review = () => {
   useEffect(() => {
     getLocation(params.farmId);
     axios
-      .get(`/api/farms/${params.farmId}/reviews`)
+      .get(process.env.REACT_APP_DB_HOST+`/api/farms/${params.farmId}/reviews`)
       .then((res) => {
         setReviews((Reviews) => []);
         res.data.forEach((e) => {

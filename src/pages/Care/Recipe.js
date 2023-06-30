@@ -20,7 +20,7 @@ const Recipe = () => {
       setCrop(null);
       setError(null);
       setLoading(true); //로딩이 시작됨
-      const response = await axios.get(`/api/crops/${cropId}/effects`);
+      const response = await axios.get(process.env.REACT_APP_DB_HOST+`/api/crops/${cropId}/effects`);
       setCrop(response.data);
     } catch (e) {
       setError(e);
@@ -37,7 +37,7 @@ const Recipe = () => {
       setRecipe(null);
       setError(null);
       setLoading(true); //로딩이 시작됨
-      const response = await axios.get(`/api/crops/${cropId}/recipes`);
+      const response = await axios.get(process.env.REACT_APP_DB_HOST+`/api/crops/${cropId}/recipes`);
       setRecipe(response.data);
     } catch (e) {
       setError(e);
@@ -46,7 +46,7 @@ const Recipe = () => {
   };
   async function getCropInfo(farmID) {
     await axios
-      .get(`/api/crops/${farmID}`)
+      .get(process.env.REACT_APP_DB_HOST+`/api/crops/${farmID}`)
       .then((res) => {
         setCropinfo(res.data);
       })

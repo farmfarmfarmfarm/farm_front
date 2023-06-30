@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Check from "pages/Home/Check";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { selectedLoc, selectedFarm, selectedPlace } from "../../Atom";
@@ -29,7 +28,7 @@ function Main() {
 
   useEffect(() => {
     axios
-      .get("/api/farms")
+      .get(process.env.REACT_APP_DB_HOST+`/api/farms`)
       .then((res) => {
         console.log(res.data.length, "개의 농장 찾기 성공");
       })
@@ -59,7 +58,7 @@ function Main() {
 
   let navigate = useNavigate();
   useEffect(() => {
-    if ((place !== "") & (checkedItems[0] !== undefined)) {
+    if ((place != "") & (checkedItems[0] != undefined)) {
       navigate("/home");
     }
   }, [checkedItems]);
@@ -79,7 +78,7 @@ function Main() {
             onChange={onChange}
             value={inputText}
           />
-          {place !== "" ? (
+          {place != "" ? (
             <Link to="/home">
               <img className="search" src={search} alt="검색"></img>
             </Link>

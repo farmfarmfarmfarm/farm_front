@@ -8,10 +8,10 @@ import pin from "assets/icons/pin.png";
 import call from "assets/icons/call.png";
 const { kakao } = window;
 
-const MapNList = () => {
+const MapNList = (props) => {
+  const { rcfarm } = props;
   const navigate = useNavigate();
   const [rcloc, setRcloc] = useRecoilState(selectedLoc); //설정한 중심위치 좌표
-  const [rcfarm, setRcfarm] = useRecoilState(selectedFarm); //선택한 농장종류 ['주말농장', '치유농장', '체험농장']
   const [resultLength, setLength] = useState(10); //결과값 길이
   const [Places, setPlaces] = useState([]); // 검색결과 배열에 담아줌
   const [done, setDone] = useState(false);
@@ -19,7 +19,7 @@ const MapNList = () => {
 
   useEffect(() => {
     axios
-      .get("/api/farms")
+      .get(process.env.REACT_APP_DB_HOST + `/api/farms`)
       .then((res) => {
         setPlaces(res.data);
       })
@@ -29,7 +29,7 @@ const MapNList = () => {
   async function getData(cate) {
     // console.log(cate);
     await axios
-      .get(`api/farms/category/${cate}`)
+      .get(process.env.REACT_APP_DB_HOST + `/api/farms/category/${cate}`)
       .then((res) => {
         setPlaces(res.data);
         setDone(true);
@@ -47,15 +47,13 @@ const MapNList = () => {
     } else if (rcfarm === "체험농장") {
       getData("EXP");
     }
-    // console.log("RECOIL","중심좌표:", rcloc, "선택한농장",rcfarm);
   }, [rcfarm]);
 
   useEffect(() => {
     function handleIwClick(e) {
       axios
-        .get(`/api/farms/${e.target.id}`)
+        .get(process.env.REACT_APP_DB_HOST + `/api/farms/${e.target.id}`)
         .then((res) => {
-          // console.log("농장좌표!!!!!!!!!!,", res.data);
           setThislocation((prev) => ({
             ...prev,
             x: res.data.location_x,
@@ -67,11 +65,11 @@ const MapNList = () => {
         });
       navigate(`review/${e.target.id}`);
     }
-    // console.log(Places);
+
     const container = document.getElementById("mapNList");
     const options = {
       center: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)), //검색좌표
-      level: 5,
+      level: 10,
     };
     const map = new kakao.maps.Map(container, options);
 
@@ -138,18 +136,7 @@ const MapNList = () => {
         가까운 농장 바로가기
       </div>
       <div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "10px",
-            overflow: "scroll",
-            height: "150px",
-            padding: "5px 0",
-            alignItems: "center",
-            cursor: "pointer",
-          }}
-        >
+        <div className="farmlist">
           {Places.map(
             (item, i) =>
               Math.abs(parseFloat(item.location_x) - parseFloat(rcloc.x)) <
