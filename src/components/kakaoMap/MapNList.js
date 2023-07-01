@@ -16,7 +16,7 @@ const MapNList = (props) => {
   const [Places, setPlaces] = useState([]); // 검색결과 배열에 담아줌
   const [done, setDone] = useState(false);
   const [thislocation, setThislocation] = useRecoilState(thisloc);
-
+  
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_DB_HOST + `/api/farms`)
@@ -71,6 +71,7 @@ const MapNList = (props) => {
       center: new kakao.maps.LatLng(parseFloat(rcloc.y), parseFloat(rcloc.x)), //검색좌표
       level: 10,
     };
+    // console.log(rcloc, options)
     const map = new kakao.maps.Map(container, options);
 
     for (let i = 0; i < Places.length; i++) {

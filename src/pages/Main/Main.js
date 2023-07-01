@@ -9,39 +9,23 @@ import search from "assets/icons/search.png";
 
 function Main() {
   const { kakao } = window;
+  const navigate = useNavigate();
   const [rcloc, setRcloc] = useRecoilState(selectedLoc);
   const [place, setPlace] = useRecoilState(selectedPlace);
-
-  const [checkedItems, setcheckedItems] = useState("");
   const [inputText, setInputText] = useState("");
+  const [checkedItems, setcheckedItems] = useState("");
 
   const onChange = (e) => {
     setInputText(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("IP", inputText);
     setPlace(inputText);
-    navigate("/home");
-    setInputText("");
-  };
-
-  useEffect(() => {
-    axios
-      .get(process.env.REACT_APP_DB_HOST + `/api/farms`)
-      .then((res) => {
-        console.log(res.data.length, "개의 농장 찾기 성공");
-      })
-      .catch();
-
     const ps = new kakao.maps.services.Places();
-    // if (place != "") {
-    //   ps.keywordSearch(place, placesSearchCB);
-    //   console.log("괜차나!");
-    // }
-    ps.keywordSearch(place, placesSearchCB);
+    
+    ps.keywordSearch(inputText, placesSearchCB);
     function placesSearchCB(data, status, pagination) {
-      console.log("설정위치", data, "??", data[0]);
+      // console.log("설정위치", data, "??", data[0]);
       if (data.length === 0) {
         setPlace("");
         alert("해당하는 위치를 찾을 수 없습니다");
@@ -54,9 +38,10 @@ function Main() {
         console.log("setRcloc", data[0]);
       }
     }
-  }, [place]);
+    navigate("/home");
+    setInputText("");
+  };
 
-  let navigate = useNavigate();
   useEffect(() => {
     if ((place != "") & (checkedItems[0] != undefined)) {
       navigate("/home");
@@ -65,7 +50,6 @@ function Main() {
 
   return (
     <div>
-      {/* <Check checkedItems={checkedItems} setcheckedItems={setcheckedItems}></Check> */}
       <div className="warp">
         <h3 className="farmQ">
           어떤 지역에서 주변 농장을 검색하고 싶으신가요?
@@ -82,7 +66,7 @@ function Main() {
           />
           {place != "" ? (
             <Link to="/home">
-              <img className="search" src={search} alt="검색"></img>
+              <img className="search" src={search} alt="검색" onClick={handleSubmit}></img>
             </Link>
           ) : (
             <img className="search" src={search} alt="검색"></img>
