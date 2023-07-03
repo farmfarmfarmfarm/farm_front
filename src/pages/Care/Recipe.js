@@ -38,6 +38,7 @@ const Recipe = () => {
       setError(null);
       setLoading(true); //로딩이 시작됨
       const response = await axios.get(process.env.REACT_APP_DB_HOST+`/api/crops/${cropId}/recipes`);
+      console.log(response.data)
       setRecipe(response.data);
     } catch (e) {
       setError(e);
@@ -103,7 +104,7 @@ const Recipe = () => {
         {formData.map((item, i) => (
           <div className="recipeitem" key={item.id}>
             <div className="recipeName">
-              <div className="recipeId">-{item.id}번째 레시피-</div>
+              <div className="recipeId">-{i+1}번째 레시피-</div>
               <div>{item.name}</div>
             </div>
             <div className="recipeIngre">

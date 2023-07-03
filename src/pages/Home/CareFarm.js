@@ -5,7 +5,7 @@ const CareFarm = () => {
   return (
     <div style={{padding: '0 20px'}}>
       <h2 className="carefarm">치유농장 소개</h2>
-      <p style={{ textAlign: "justify" }}>
+      <p style={{ textAlign: "justify"}}>
         치유농장(Care farms)은 지원, 치유 또는 지도가 필요한 사람들에게 가능성을
         제공하는 일종의 농업회사입니다. 농업과 치유는 치유농업으로 연결됩니다.
         치유농장에서는 치유와 농업이 결합되어 있으며, 치유농장주는 자신의 의지로
@@ -15,7 +15,7 @@ const CareFarm = () => {
       </p>
 
       <h2 className="carefarm">치유농장 역사</h2>
-      <p style={{ textAlign: "justify" }}>
+      <p style={{ textAlign: "justify"}}>
         오늘날과 같이 장애인의 사회 복귀, 작업요법의 활용 등으로 전문화되기
         시작한 것은 1950년대 이후입니다. 자연을 중요한 치료 수단으로 간주하는
         생활 및 근로 공동체가 갈수록 증가하였는데, 특히 아일랜드와 영국에서

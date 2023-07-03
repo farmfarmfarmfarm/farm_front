@@ -20,26 +20,29 @@ function Main() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setPlace(inputText);
-    const ps = new kakao.maps.services.Places();
-    
-    ps.keywordSearch(inputText, placesSearchCB);
-    function placesSearchCB(data, status, pagination) {
-      // console.log("설정위치", data, "??", data[0]);
-      if (data.length === 0) {
-        setPlace("");
-        alert("해당하는 위치를 찾을 수 없습니다");
-      } else {
-        setRcloc((prev) => ({
-          ...prev,
-          x: data[0].x,
-          y: data[0].y,
-        })); // 첫번째 검색결과의 좌표를 center좌표로 한다.
-        console.log("setRcloc", data[0]);
+
+    if (inputText != ""){
+      setPlace(inputText);
+      const ps = new kakao.maps.services.Places();
+      
+      ps.keywordSearch(inputText, placesSearchCB);
+      function placesSearchCB(data, status, pagination) {
+        // console.log("설정위치", data, "??", data[0]);
+        if (data.length === 0) {
+          setPlace("");
+          alert("해당하는 위치를 찾을 수 없습니다");
+        } else {
+          setRcloc((prev) => ({
+            ...prev,
+            x: data[0].x,
+            y: data[0].y,
+          })); // 첫번째 검색결과의 좌표를 center좌표로 한다.
+          console.log("setRcloc", data[0]);
+        }
       }
+      navigate("/home");
+      setInputText("");
     }
-    navigate("/home");
-    setInputText("");
   };
 
   useEffect(() => {
@@ -64,7 +67,7 @@ function Main() {
             onChange={onChange}
             value={inputText}
           />
-          {place != "" ? (
+          {inputText != "" ? (
             <Link to="/home">
               <img className="search" src={search} alt="검색" onClick={handleSubmit}></img>
             </Link>
